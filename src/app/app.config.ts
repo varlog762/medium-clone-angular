@@ -9,8 +9,8 @@ import { authFeatureKey, authReducer } from './auth/store/reducers';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideStore({ [authFeatureKey]: authReducer }),
-    // provideState({ name: authFeatureKey, reducer: authReducer }),
+    provideStore(),
+    provideState({ name: authFeatureKey, reducer: authReducer }),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
