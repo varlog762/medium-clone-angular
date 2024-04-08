@@ -4,13 +4,13 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
-import { authFeatureKey, authReducer } from './auth/store/reducers';
+import { authFeature } from './auth/store/auth.feature';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideStore(),
-    provideState({ name: authFeatureKey, reducer: authReducer }),
+    provideState(authFeature),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

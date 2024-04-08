@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store';
+
 import { registerAction } from '../../store/actions/register.action';
 
 @Component({
   selector: 'mc-register',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, StoreModule],
+  imports: [RouterLink, ReactiveFormsModule, StoreModule, AsyncPipe],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
