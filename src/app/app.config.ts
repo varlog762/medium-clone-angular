@@ -7,6 +7,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { routes } from './app.routes';
 import { authFeature } from './auth/store/auth.feature';
 import { urlInterceptor } from './shared/incterceptors/url.interceptor';
+import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([urlInterceptor])),
     provideStore(),
     provideState(authFeature),
+    provideEffects(),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
