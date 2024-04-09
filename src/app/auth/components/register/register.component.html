@@ -33,6 +33,7 @@
             <button class="btn btn-lg btn-primary pull-xs-right" type="submit" [disabled]="isSubmitting$ | async">
               Sign up
             </button>
+            <div>{{srvResp$ | async}}</div>
           </fieldset>
         </form>
       </div>

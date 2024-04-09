@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { registerAction } from '../../store/actions/register.action';
 import { authFeature } from '../../store/auth.feature';
+import { AuthService } from '../../services/auth.service';
+import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 
 @Component({
   selector: 'mc-register',
@@ -18,8 +20,13 @@ import { authFeature } from '../../store/auth.feature';
 export class RegisterComponent implements OnInit {
   public form!: FormGroup;
   public isSubmitting$!: Observable<boolean>;
+  public srvResp$!: Observable<CurrentUserInterface>;
 
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(
+    private fb: FormBuilder,
+    private store: Store,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -41,6 +48,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.store.dispatch(registerAction(this.form.value));
+    // this.store.dispatch(registerAction(this.form.value));
+    const reqBody = {
+      user: this.form.value,
+    };
+
+    this.srvResp$ = this.authService.register(reqBody);
   }
 }
