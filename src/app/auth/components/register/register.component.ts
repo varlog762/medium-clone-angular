@@ -9,11 +9,18 @@ import { registerAction } from '../../store/actions/register.action';
 import { authFeature } from '../../store/auth.feature';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
+import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
 
 @Component({
   selector: 'mc-register',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, StoreModule, AsyncPipe],
+  imports: [
+    RouterLink,
+    ReactiveFormsModule,
+    StoreModule,
+    AsyncPipe,
+    BackendErrorMessagesComponent,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
