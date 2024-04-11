@@ -1,1 +1,5 @@
-<p>backend-error-messages works!</p>
+<ul class="error-messages">
+  @for (errorMessage of errorMesages; track errorMessage) {
+    <li>{{ errorMessage }}</li>
+  }
+</ul>
