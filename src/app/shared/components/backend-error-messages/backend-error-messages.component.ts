@@ -22,7 +22,7 @@ export class BackendErrorMessagesComponent implements OnInit {
             ? this.backendErrors[name].join(', ')
             : '';
 
-          return `${name} ${messages}`;
+          return `${name}: ${messages}`;
         }
       );
     }
