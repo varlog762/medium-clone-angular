@@ -20,7 +20,7 @@ export class RegisterEffects {
       switchMap(({ request }) => {
         return this.authService.register(request).pipe(
           map((currentUser: CurrentUserInterface) => {
-            localStorage.setItem('accessToken', currentUser.token);
+            // localStorage.setItem('accessToken', currentUser.token);
 
             return registerSuccessAction({ currentUser });
           }),
