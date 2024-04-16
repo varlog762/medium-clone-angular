@@ -12,14 +12,12 @@ export class PersistanceService {
     }
   }
 
-  get(key: string): string | null {
+  get(key: string): any {
     try {
-      return localStorage.getItem(key)
-        ? JSON.parse(localStorage.getItem(key)!)
-        : null;
+      const data = localStorage.getItem(key);
+      return data ? JSON.parse(data) : null;
     } catch (error) {
-      console.error(`Error reading from localStorage: ${error}`);
-
+      console.error(`Error getting data "${key}" from localStorage: ${error}`);
       return null;
     }
   }
