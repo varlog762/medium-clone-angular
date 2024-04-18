@@ -1,11 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { AuthStateInterface } from '../types/auth-state.interface';
-import {
-  registerAction,
-  registerFailureAction,
-  registerSuccessAction,
-} from './actions/register.action';
+import { AuthActions } from '../store/auth.actions';
 
 export const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -19,7 +15,7 @@ export const authFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(
-      registerAction,
+      AuthActions.register,
       (state): AuthStateInterface => ({
         ...state,
         isSubmitting: true,
@@ -27,7 +23,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      registerSuccessAction,
+      AuthActions.registerSuccess,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
@@ -37,7 +33,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      registerFailureAction,
+      AuthActions.registerFailure,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,

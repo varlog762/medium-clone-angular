@@ -7,9 +7,9 @@ import { Store, StoreModule, select } from '@ngrx/store';
 
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
 import { authFeature } from '../../store/auth.feature';
-import { RegisterRequestInterface } from '../../types/register-request.interface';
-import { registerAction } from '../../store/actions/register.action';
 import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
+import { LoginRequestInterface } from '../../types/login-request.interface';
+import { AuthActions } from '../../store/auth.actions';
 
 @Component({
   selector: 'mc-login',
@@ -53,10 +53,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const request: RegisterRequestInterface = {
+    const request: LoginRequestInterface = {
       user: this.form.value,
     };
 
-    this.store.dispatch(registerAction({ request }));
+    this.store.dispatch(AuthActions.login({ request }));
   }
 }

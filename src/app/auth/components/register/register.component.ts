@@ -5,11 +5,11 @@ import { RouterLink } from '@angular/router';
 import { Store, StoreModule, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { registerAction } from '../../store/actions/register.action';
 import { authFeature } from '../../store/auth.feature';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
 import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
+import { AuthActions } from '../../store/auth.actions';
 
 @Component({
   selector: 'mc-register',
@@ -58,6 +58,6 @@ export class RegisterComponent implements OnInit {
       user: this.form.value,
     };
 
-    this.store.dispatch(registerAction({ request }));
+    this.store.dispatch(AuthActions.register({ request }));
   }
 }
