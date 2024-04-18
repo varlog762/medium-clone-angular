@@ -23,7 +23,25 @@ export const authFeature = createFeature({
       })
     ),
     on(
+      AuthActions.login,
+      (state): AuthStateInterface => ({
+        ...state,
+        isSubmitting: true,
+        validationErrors: null,
+      })
+    ),
+    on(
       AuthActions.registerSuccess,
+      (state, action): AuthStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        currentUser: action.currentUser,
+        isLoggedIn: true,
+        validationErrors: null,
+      })
+    ),
+    on(
+      AuthActions.loginSuccess,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
