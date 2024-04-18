@@ -9,6 +9,7 @@ import { authFeature } from './auth/store/auth.feature';
 import { urlInterceptor } from './shared/incterceptors/url.interceptor';
 import { provideEffects } from '@ngrx/effects';
 import { RegisterEffects } from './auth/store/effects/register.effects';
+import { LoginEffects } from './auth/store/effects/login.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([urlInterceptor])),
     provideStore(),
     provideState(authFeature),
-    provideEffects(RegisterEffects),
+    provideEffects(RegisterEffects, LoginEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

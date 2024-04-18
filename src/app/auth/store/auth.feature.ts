@@ -57,6 +57,14 @@ export const authFeature = createFeature({
         isSubmitting: false,
         validationErrors: action.errors,
       })
+    ),
+    on(
+      AuthActions.loginFailure,
+      (state, action): AuthStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        validationErrors: action.errors,
+      })
     )
   ),
 });

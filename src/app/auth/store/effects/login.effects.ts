@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
@@ -20,7 +21,13 @@ export class LoginEffects {
 
             return AuthActions.loginSuccess({ currentUser });
           }),
-          catchError(errors => of(AuthActions.loginFailure({ errors })))
+          catchError((errorResponse: HttpErrorResponse) =>
+            of(
+              AuthActions.registerFailure({
+                errors: errorResponse.error.errors,
+              })
+            )
+          )
         );
       })
     )
