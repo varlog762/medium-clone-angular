@@ -1,4 +1,4 @@
-import { createFeature, createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 
 import { AuthStateInterface } from '../types/auth-state.interface';
 import { AuthActions } from '../store/auth.actions';
@@ -67,4 +67,10 @@ export const authFeature = createFeature({
       })
     )
   ),
+  extraSelectors: ({ selectIsLoggedIn }) => ({
+    selectIsAnonymous: createSelector(
+      selectIsLoggedIn,
+      isLoggedIn => isLoggedIn === false
+    ),
+  }),
 });
