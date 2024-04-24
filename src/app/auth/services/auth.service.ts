@@ -13,15 +13,19 @@ import { LoginRequestInterface } from '../types/login-request.interface';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
+  getUser(response: AuthResponseInterface): CurrentUserInterface {
+    return response.user;
+  }
+
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
     return this.http
       .post<AuthResponseInterface>('/users', data)
-      .pipe(map((res: AuthResponseInterface) => res.user));
+      .pipe(map(this.getUser));
   }
 
   login(data: LoginRequestInterface): Observable<CurrentUserInterface> {
     return this.http
-      .post<AuthResponseInterface>('/users', data)
-      .pipe(map((res: AuthResponseInterface) => res.user));
+      .post<AuthResponseInterface>('/users/login', data)
+      .pipe(map(this.getUser));
   }
 }
