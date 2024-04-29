@@ -10,14 +10,16 @@ import { urlInterceptor } from './shared/incterceptors/url.interceptor';
 import { provideEffects } from '@ngrx/effects';
 import { RegisterEffects } from './auth/store/effects/register.effects';
 import { LoginEffects } from './auth/store/effects/login.effects';
+import { GetCurrentUserEffects } from './auth/store/effects/get-current-user.effects';
+import { authInterceptor } from './shared/incterceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptors([urlInterceptor])),
+    provideHttpClient(withInterceptors([urlInterceptor, authInterceptor])),
     provideStore(),
     provideState(authFeature),
-    provideEffects(RegisterEffects, LoginEffects),
+    provideEffects(RegisterEffects, LoginEffects, GetCurrentUserEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
