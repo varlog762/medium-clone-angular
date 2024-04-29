@@ -31,6 +31,14 @@ export const authFeature = createFeature({
       })
     ),
     on(
+      AuthActions.getCurrentUser,
+      (state): AuthStateInterface => ({
+        ...state,
+        isSubmitting: true,
+        validationErrors: null,
+      })
+    ),
+    on(
       AuthActions.registerSuccess,
       (state, action): AuthStateInterface => ({
         ...state,
@@ -51,6 +59,16 @@ export const authFeature = createFeature({
       })
     ),
     on(
+      AuthActions.getCurrentUserSuccess,
+      (state, action): AuthStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        currentUser: action.currentUser,
+        isLoggedIn: true,
+        validationErrors: null,
+      })
+    ),
+    on(
       AuthActions.registerFailure,
       (state, action): AuthStateInterface => ({
         ...state,
@@ -60,6 +78,14 @@ export const authFeature = createFeature({
     ),
     on(
       AuthActions.loginFailure,
+      (state, action): AuthStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        validationErrors: action.errors,
+      })
+    ),
+    on(
+      AuthActions.getCurrentUserFailure,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,

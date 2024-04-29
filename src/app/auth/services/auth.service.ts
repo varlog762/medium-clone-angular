@@ -28,4 +28,10 @@ export class AuthService {
       .post<AuthResponseInterface>('/users/login', data)
       .pipe(map(this.getUser));
   }
+
+  getCurrentUser(): Observable<CurrentUserInterface> {
+    return this.http
+      .get<AuthResponseInterface>('/user')
+      .pipe(map(this.getUser));
+  }
 }
