@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
+import { AuthActions } from './auth/store/auth.actions';
 
 @Component({
   selector: 'mc-root',
@@ -11,4 +13,10 @@ import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(AuthActions.getCurrentUser());
+  }
+}

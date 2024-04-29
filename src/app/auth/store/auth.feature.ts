@@ -5,6 +5,7 @@ import { AuthActions } from '../store/auth.actions';
 
 export const initialState: AuthStateInterface = {
   isSubmitting: false,
+  isLoading: false,
   currentUser: null,
   isLoggedIn: null,
   validationErrors: null,
@@ -34,8 +35,7 @@ export const authFeature = createFeature({
       AuthActions.getCurrentUser,
       (state): AuthStateInterface => ({
         ...state,
-        isSubmitting: true,
-        validationErrors: null,
+        isLoading: true,
       })
     ),
     on(
@@ -62,10 +62,9 @@ export const authFeature = createFeature({
       AuthActions.getCurrentUserSuccess,
       (state, action): AuthStateInterface => ({
         ...state,
-        isSubmitting: false,
+        isLoading: false,
         currentUser: action.currentUser,
         isLoggedIn: true,
-        validationErrors: null,
       })
     ),
     on(
@@ -88,8 +87,9 @@ export const authFeature = createFeature({
       AuthActions.getCurrentUserFailure,
       (state): AuthStateInterface => ({
         ...state,
-        isSubmitting: false,
-        // validationErrors: action.errors,
+        isLoading: false,
+        isLoggedIn: false,
+        currentUser: null,
       })
     )
   ),
