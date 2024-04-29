@@ -86,10 +86,10 @@ export const authFeature = createFeature({
     ),
     on(
       AuthActions.getCurrentUserFailure,
-      (state, action): AuthStateInterface => ({
+      (state): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
-        validationErrors: action.errors,
+        // validationErrors: action.errors,
       })
     )
   ),
