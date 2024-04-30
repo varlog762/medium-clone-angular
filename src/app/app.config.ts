@@ -13,6 +13,7 @@ import { LoginEffects } from './auth/store/effects/login.effects';
 import { GetCurrentUserEffects } from './auth/store/effects/get-current-user.effects';
 import { authInterceptor } from './shared/incterceptors/auth.interceptor';
 import { GetFeedEffects } from './global-feed/store/effects/get-feed.effects';
+import { feedFeature } from './global-feed/store/feed.feature';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([urlInterceptor, authInterceptor])),
     provideStore(),
     provideState(authFeature),
+    provideState(feedFeature),
     provideEffects(
       RegisterEffects,
       LoginEffects,
