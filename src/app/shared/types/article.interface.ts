@@ -1,5 +1,5 @@
 export interface ArticleInterface {
-  // author: {};
+  author: ProfileInterface;
   body: string;
   createdAt: string;
   description: string;
