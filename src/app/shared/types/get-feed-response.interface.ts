@@ -1,4 +1,4 @@
 export interface GetFeedResponseInterface {
   articles: ArticleInterface[];
-  articleCount: number;
+  articlesCount: number;
 }
