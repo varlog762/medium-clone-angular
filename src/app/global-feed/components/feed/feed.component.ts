@@ -7,11 +7,12 @@ import { Observable } from 'rxjs/internal/Observable';
 import { FeedActions } from '../../store/actions/feed.actions';
 import { GetFeedResponseInterface } from '../../types/get-feed-response.interface';
 import { feedFeature } from '../../store/feed.feature';
+import { ErrorMessageComponent } from '../error-message/error-message.component';
 
 @Component({
   selector: 'mc-feed',
   standalone: true,
-  imports: [AsyncPipe, RouterLink],
+  imports: [AsyncPipe, RouterLink, ErrorMessageComponent],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss',
 })
