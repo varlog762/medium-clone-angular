@@ -1,1 +1,26 @@
-<h2>Feed is working</h2>
+@if (isLoading$ | async) {
+<div>Loading...</div>
+} @if (error$ | async) {
+<div>Some error happened...</div>
+} @if (feed$ | async) { @for (article of (feed$ | async)?.articles; track
+article.title) {
+<div class="article-preview">
+  <div class="article-meta">
+    <a [routerLink]="['/profiles', article.author.username]">
+      <img [src]="article.author.image" alt="Author logo" />
+    </a>
+    <div class="info">
+      <a [routerLink]="['/profiles', article.author.username]">
+        {{ article.author.username }}
+      </a>
+      <span class="date">{{ article.createdAt }}</span>
+    </div>
+    <div class="pull-xs-right">ADD TO FAVORITE</div>
+  </div>
+  <a [routerLink]="['articles', article.slug]" class="preview-link">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.description }}</p>
+    HERE IS LIST OF TAGS
+  </a>
+</div>
+PAGINATION } }
