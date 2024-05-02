@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'mc-error-message',
   standalone: true,
   imports: [],
-  templateUrl: './error-message.component.html',
-  styleUrl: './error-message.component.scss',
+  template: '<div>{{message}}</div>',
 })
-export class ErrorMessageComponent {}
+export class ErrorMessageComponent {
+  @Input('message') message: string = 'Something went wrong';
+}
