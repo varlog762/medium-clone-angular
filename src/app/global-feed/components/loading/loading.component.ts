@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'mc-loading',
   standalone: true,
   imports: [],
-  template: '<div></div>',
+  template: '<div>Loading...</div>',
 })
 export class LoadingComponent {}

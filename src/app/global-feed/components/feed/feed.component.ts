@@ -8,11 +8,12 @@ import { FeedActions } from '../../store/actions/feed.actions';
 import { GetFeedResponseInterface } from '../../types/get-feed-response.interface';
 import { feedFeature } from '../../store/feed.feature';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'mc-feed',
   standalone: true,
-  imports: [AsyncPipe, RouterLink, ErrorMessageComponent],
+  imports: [AsyncPipe, RouterLink, ErrorMessageComponent, LoadingComponent],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss',
 })
