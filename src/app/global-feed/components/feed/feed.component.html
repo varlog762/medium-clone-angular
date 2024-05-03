@@ -23,10 +23,11 @@ article.title) {
     HERE IS LIST OF TAGS
   </a>
 </div>
+}
 <mc-pagination
   [total]="(feed$ | async)?.articlesCount"
   [limit]="limit"
   [url]="baseUrl"
   [currentPage]="currentPage">
 </mc-pagination>
-} }
+}
