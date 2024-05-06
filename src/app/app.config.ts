@@ -13,7 +13,7 @@ import { LoginEffects } from './auth/store/effects/login.effects';
 import { GetCurrentUserEffects } from './auth/store/effects/get-current-user.effects';
 import { authInterceptor } from './shared/incterceptors/auth.interceptor';
 import { GetFeedEffects } from './global-feed/store/effects/get-feed.effects';
-import { feedFeature } from './global-feed/store/feed.feature';
+import { feedFeature } from './global-feed/store/features/feed.feature';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {

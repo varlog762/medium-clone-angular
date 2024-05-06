@@ -8,7 +8,7 @@ import queryString from 'query-string';
 
 import { FeedActions } from '../../store/actions/feed.actions';
 import { GetFeedResponseInterface } from '../../types/get-feed-response.interface';
-import { feedFeature } from '../../store/feed.feature';
+import { feedFeature } from '../../store/features/feed.feature';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { environment } from '../../../../environments/environment.development';
