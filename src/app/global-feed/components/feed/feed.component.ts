@@ -3,6 +3,7 @@ import { AsyncPipe } from '@angular/common';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 import { FeedActions } from '../../store/actions/feed.actions';
 import { GetFeedResponseInterface } from '../../types/get-feed-response.interface';
@@ -10,7 +11,6 @@ import { feedFeature } from '../../store/feed.feature';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { environment } from '../../../../environments/environment.development';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
