@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
 import { Subscription } from 'rxjs/internal/Subscription';
+import queryString from 'query-string';
 
 import { FeedActions } from '../../store/actions/feed.actions';
 import { GetFeedResponseInterface } from '../../types/get-feed-response.interface';
@@ -66,7 +67,16 @@ export class FeedComponent implements OnInit, OnDestroy {
   }
 
   fetchFeed(): void {
-    this.store.dispatch(FeedActions.getFeed({ url: this.apiUrl }));
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = queryString.parseUrl(this.apiUrl);
+    const stringifiedParams = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    });
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+
+    this.store.dispatch(FeedActions.getFeed({ url: apiUrlWithParams }));
   }
 
   ngOnDestroy(): void {
