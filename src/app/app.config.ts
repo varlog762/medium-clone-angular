@@ -14,12 +14,15 @@ import { GetCurrentUserEffects } from './auth/store/effects/get-current-user.eff
 import { authInterceptor } from './shared/incterceptors/auth.interceptor';
 import { GetFeedEffects } from './global-feed/store/effects/get-feed.effects';
 import { feedFeature } from './global-feed/store/feed.feature';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(withInterceptors([urlInterceptor, authInterceptor])),
-    provideStore(),
+    provideStore({
+      router: routerReducer,
+    }),
     provideState(authFeature),
     provideState(feedFeature),
     provideEffects(
@@ -36,5 +39,6 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75,
       connectInZone: true,
     }),
+    provideRouterStore(),
   ],
 };
