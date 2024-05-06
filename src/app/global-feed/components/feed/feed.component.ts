@@ -13,6 +13,7 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
 import { LoadingComponent } from '../loading/loading.component';
 import { environment } from '../../../../environments/environment.development';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { TagListCompoinent } from '../tag-list/tag-list.component';
 
 @Component({
   selector: 'mc-feed',
@@ -23,6 +24,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
+    TagListCompoinent,
   ],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss',
@@ -38,6 +40,8 @@ export class FeedComponent implements OnInit, OnDestroy {
   public baseUrl!: string;
   public currentPage!: number;
   public paramsSubscribe$!: Subscription;
+
+  public testTagsCollection = ['angular', 'js', 'web-dev'];
 
   constructor(
     private store: Store,

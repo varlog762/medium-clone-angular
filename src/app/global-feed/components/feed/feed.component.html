@@ -7,7 +7,8 @@ article.title) {
 <div class="article-preview">
   <div class="article-meta">
     <a [routerLink]="['/profiles', article.author.username]">
-      <img [src]="article.author.image" alt="Author logo" />
+      <!-- <img [src]="article.author.image" alt="Author logo" /> -->
+      <img src="../../../../assets/images/default-user.png" alt="Author logo" />
     </a>
     <div class="info">
       <a [routerLink]="['/profiles', article.author.username]">
@@ -20,7 +21,7 @@ article.title) {
   <a [routerLink]="['articles', article.slug]" class="preview-link">
     <h1>{{ article.title }}</h1>
     <p>{{ article.description }}</p>
-    <mc-tag-list [tags]="article.tagList"></mc-tag-list>
+    <mc-tag-list [tags]="testTagsCollection"></mc-tag-list>
   </a>
 </div>
 }
