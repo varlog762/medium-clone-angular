@@ -1,0 +1,11 @@
+<div class="feed-toggle">
+  <ul class="nav nav-pills outline_active">
+    @if (isLoggedIn$ | async) {
+    <li class="nav-item">Your Feed</li>
+    }
+    <li class="nav-item">Global Feed</li>
+    @if (tagName) {
+    <li class="nav-item">#{{ tagName }}</li>
+    }
+  </ul>
+</div>
