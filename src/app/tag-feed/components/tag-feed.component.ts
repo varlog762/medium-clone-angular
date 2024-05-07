@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 import { FeedComponent } from '../../shared/feed/components/feed.component';
 import { BannerComponent } from '../../shared/banner/components/banner.component';
@@ -17,6 +19,21 @@ import { FeedTogglerComponent } from '../../shared/feed-toggler/components/feed-
   templateUrl: './tag-feed.component.html',
   styleUrl: './tag-feed.component.scss',
 })
-export class TagFeedComponent {
-  public apiUrl = '/';
+export class TagFeedComponent implements OnInit, OnDestroy {
+  public tagName!: string | null;
+  public apiUrl!: string;
+  public paramsSubscription$!: Subscription;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.paramsSubscription$ = this.route.params.subscribe((params: Params) => {
+      this.tagName = params['slug'];
+      this.apiUrl = `/articles?tag=${this.tagName}`;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.paramsSubscription$.unsubscribe();
+  }
 }
