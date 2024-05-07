@@ -1,0 +1,5 @@
+<ul class="tags-list">
+  @for (tag of (tags$ | async); track tag) {
+  <li>{{ tag }}</li>
+  }
+</ul>
