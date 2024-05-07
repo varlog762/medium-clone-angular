@@ -1,11 +1,26 @@
 <div class="feed-toggle">
-  <ul class="nav nav-pills outline_active">
+  <ul class="nav nav-pills outline-active">
     @if (isLoggedIn$ | async) {
-    <li class="nav-item">Your Feed</li>
+    <li class="nav-item">
+      <a [routerLink]="['/feed']" routerLinkActive="active" class="nav-link">
+        Your Feed
+      </a>
+    </li>
     }
-    <li class="nav-item">Global Feed</li>
+    <li class="nav-item">
+      <a [routerLink]="['/']" routerLinkActive="active" class="nav-link">
+        Global Feed
+      </a>
+    </li>
     @if (tagName) {
-    <li class="nav-item">#{{ tagName }}</li>
+    <li class="nav-item">
+      <a
+        [routerLink]="['/tags', tagName]"
+        routerLinkActive="active"
+        class="nav-link">
+        #{{ tagName }}
+      </a>
+    </li>
     }
   </ul>
 </div>
