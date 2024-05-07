@@ -12,11 +12,11 @@ import { RegisterEffects } from './auth/store/effects/register.effects';
 import { LoginEffects } from './auth/store/effects/login.effects';
 import { GetCurrentUserEffects } from './auth/store/effects/get-current-user.effects';
 import { authInterceptor } from './shared/incterceptors/auth.interceptor';
-import { GetFeedEffects } from './global-feed/store/effects/get-feed.effects';
-import { feedFeature } from './global-feed/store/features/feed.feature';
+import { GetFeedEffects } from './shared/feed/store/get-feed.effects';
+import { feedFeature } from './shared/feed/store/feed.feature';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
-import { popularTagsFeature } from './global-feed/store/features/popular-tags.feature';
-import { GetPopularTagsEffects } from './global-feed/store/effects/get-popular-tags.effects';
+import { popularTagsFeature } from './shared/popular-tags/store/popular-tags.feature';
+import { GetPopularTagsEffects } from './shared/popular-tags/store/get-popular-tags.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [

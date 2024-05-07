@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
+import { TopBarComponent } from './shared/top-bar/components/top-bar.component';
 import { AuthActions } from './auth/store/auth.actions';
 
 @Component({

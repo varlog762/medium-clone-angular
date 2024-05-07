@@ -5,9 +5,9 @@ import { map } from 'rxjs/internal/operators/map';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { of } from 'rxjs/internal/observable/of';
 
-import { FeedActions } from '../actions/feed.actions';
-import { FeedService } from '../../services/feed.service';
-import { GetFeedResponseInterface } from '../../types/get-feed-response.interface';
+import { FeedActions } from './feed.actions';
+import { FeedService } from '../services/feed.service';
+import { GetFeedResponseInterface } from '../types/get-feed-response.interface';
 
 @Injectable()
 export class GetFeedEffects {

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
-import { FeedComponent } from '../feed/feed.component';
-import { BannerComponent } from '../banner/banner.component';
-import { PopularTagsComponent } from '../popular-tags/popular-tags.component';
-import { FeedTogglerComponent } from '../feed-toggler/feed-toggler.component';
+import { FeedComponent } from '../../../shared/feed/components/feed.component';
+import { BannerComponent } from '../../../shared/banner/components/banner.component';
+import { PopularTagsComponent } from '../../../shared/popular-tags/components/popular-tags.component';
+import { FeedTogglerComponent } from '../../../shared/feed-toggler/components/feed-toggler.component';
 
 @Component({
   selector: 'mc-global-feed',

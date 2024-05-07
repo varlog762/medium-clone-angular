@@ -7,7 +7,7 @@ import { Store, StoreModule, select } from '@ngrx/store';
 
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
 import { authFeature } from '../../store/auth.feature';
-import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
+import { BackendErrorMessagesComponent } from '../../../shared/backend-error-messages/components/backend-error-messages.component';
 import { LoginRequestInterface } from '../../types/login-request.interface';
 import { AuthActions } from '../../store/auth.actions';
 

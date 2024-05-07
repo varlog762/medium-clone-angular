@@ -1,4 +1,4 @@
-import { PopularTagType } from '../../shared/types/popular-tag.type';
+import { PopularTagType } from '../../types/popular-tag.type';
 
 export interface GetPopularTagsResponseInterface {
   tags: PopularTagType[];

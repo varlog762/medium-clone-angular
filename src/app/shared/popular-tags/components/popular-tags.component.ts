@@ -4,11 +4,11 @@ import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
 
-import { PopularTagType } from '../../../shared/types/popular-tag.type';
-import { PopularTagsActions } from '../../store/actions/popular-tags.actions';
-import { popularTagsFeature } from '../../store/features/popular-tags.feature';
-import { LoadingComponent } from '../loading/loading.component';
-import { ErrorMessageComponent } from '../error-message/error-message.component';
+import { PopularTagType } from '../../types/popular-tag.type';
+import { PopularTagsActions } from '../store/popular-tags.actions';
+import { popularTagsFeature } from '../store/popular-tags.feature';
+import { LoadingComponent } from '../../../global-feed/components/loading/loading.component';
+import { ErrorMessageComponent } from '../../../global-feed/components/error-message/error-message.component';
 
 @Component({
   selector: 'mc-popular-tags',

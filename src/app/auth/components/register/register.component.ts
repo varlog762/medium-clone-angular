@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { authFeature } from '../../store/auth.feature';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
-import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
+import { BackendErrorMessagesComponent } from '../../../shared/backend-error-messages/components/backend-error-messages.component';
 import { AuthActions } from '../../store/auth.actions';
 
 @Component({

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/internal/operators/map';
 
-import { PopularTagType } from '../../shared/types/popular-tag.type';
+import { PopularTagType } from '../../types/popular-tag.type';
 import { GetPopularTagsResponseInterface } from '../types/get-popular-tags-response.interface';
 
 @Injectable({
