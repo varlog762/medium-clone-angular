@@ -17,6 +17,7 @@ import { feedFeature } from './shared/feed/store/feed.feature';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { popularTagsFeature } from './shared/popular-tags/store/popular-tags.feature';
 import { GetPopularTagsEffects } from './shared/popular-tags/store/get-popular-tags.effects';
+import { GetArticleEffects } from './article/store/get-article.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,7 +34,8 @@ export const appConfig: ApplicationConfig = {
       LoginEffects,
       GetCurrentUserEffects,
       GetFeedEffects,
-      GetPopularTagsEffects
+      GetPopularTagsEffects,
+      GetArticleEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
