@@ -13,18 +13,27 @@ export const popularTagsFeature = createFeature({
   name: 'popularTags',
   reducer: createReducer(
     initialSate,
-    on(PopularTagsActions.getPopularTags, state => ({
-      ...state,
-      isLoading: true,
-    })),
-    on(PopularTagsActions.getPopularTagsSuccess, (state, action) => ({
-      ...state,
-      isLoading: false,
-      tags: action.tags,
-    })),
-    on(PopularTagsActions.getPopularTagsFailure, state => ({
-      ...state,
-      isLoading: false,
-    }))
+    on(
+      PopularTagsActions.getPopularTags,
+      (state): PopularTagsStateInterface => ({
+        ...state,
+        isLoading: true,
+      })
+    ),
+    on(
+      PopularTagsActions.getPopularTagsSuccess,
+      (state, action): PopularTagsStateInterface => ({
+        ...state,
+        isLoading: false,
+        tags: action.tags,
+      })
+    ),
+    on(
+      PopularTagsActions.getPopularTagsFailure,
+      (state): PopularTagsStateInterface => ({
+        ...state,
+        isLoading: false,
+      })
+    )
   ),
 });
