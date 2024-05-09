@@ -18,6 +18,7 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { popularTagsFeature } from './shared/popular-tags/store/popular-tags.feature';
 import { GetPopularTagsEffects } from './shared/popular-tags/store/get-popular-tags.effects';
 import { GetArticleEffects } from './article/store/get-article.effects';
+import { articleFeature } from './article/store/article.feature';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -29,6 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeature),
     provideState(feedFeature),
     provideState(popularTagsFeature),
+    provideState(articleFeature),
     provideEffects(
       RegisterEffects,
       LoginEffects,
