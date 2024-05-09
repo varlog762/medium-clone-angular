@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Store } from '@ngrx/store';
 
-import { authFeature } from '../../../auth/store/auth.feature';
+import { authFeature } from '../../../auth/store/auth.state';
 
 @Component({
   selector: 'mc-feed-toggler',

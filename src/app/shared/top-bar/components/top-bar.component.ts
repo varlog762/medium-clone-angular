@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Store } from '@ngrx/store';
 
 import { CurrentUserInterface } from '../../types/current-user.interface';
-import { authFeature } from '../../../auth/store/auth.feature';
+import { authFeature } from '../../../auth/store/auth.state';
 
 @Component({
   selector: 'mc-top-bar',

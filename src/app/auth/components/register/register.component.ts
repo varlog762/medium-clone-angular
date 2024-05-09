@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { Store, StoreModule, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { authFeature } from '../../store/auth.feature';
+import { authFeature } from '../../store/auth.state';
 import { RegisterRequestInterface } from '../../types/register-request.interface';
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
 import { BackendErrorMessagesComponent } from '../../../shared/backend-error-messages/components/backend-error-messages.component';

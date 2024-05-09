@@ -15,7 +15,7 @@ import queryString from 'query-string';
 
 import { FeedActions } from '../store/feed.actions';
 import { GetFeedResponseInterface } from '../types/get-feed-response.interface';
-import { feedFeature } from '../store/feed.feature';
+import { feedFeature } from '../store/feed.state';
 import { ErrorMessageComponent } from '../../../global-feed/components/error-message/error-message.component';
 import { LoadingComponent } from '../../../global-feed/components/loading/loading.component';
 import { environment } from '../../../../environments/environment.development';
