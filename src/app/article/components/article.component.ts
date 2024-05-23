@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { Observable, Subscription, combineLatest, map } from 'rxjs';
 
 import { ArticleInterface } from '../../shared/types/article.interface';
+import { CurrentUserInterface } from '../../shared/types/current-user.interface';
 import { articleFeature } from '../store/article.state';
 import { ArticleActions } from '../store/article.actions';
+import { authFeature } from '../../auth/store/auth.state';
 
 @Component({
   selector: 'mc-article',
@@ -19,6 +21,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
   public slug!: string | null;
   public article!: ArticleInterface | null;
   public articleSubscription$!: Subscription;
+  public isLoading$!: Observable<boolean>;
+  public error$!: Observable<string | null>;
+  public isAuthor$!: Observable<boolean>;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 
@@ -30,6 +35,25 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   initializeValues(): void {
     this.slug = this.route.snapshot.paramMap.get('slug');
+    this.isLoading$ = this.store.select(articleFeature.selectIsLoading);
+    this.error$ = this.store.select(articleFeature.selectError);
+    this.isAuthor$ = combineLatest([
+      this.store.select(articleFeature.selectData),
+      this.store.select(authFeature.selectCurrentUser),
+    ]).pipe(
+      map(
+        ([article, currentUser]: [
+          ArticleInterface | null,
+          CurrentUserInterface | null
+        ]) => {
+          if (article && currentUser) {
+            return article.author.username === currentUser.username;
+          }
+
+          return false;
+        }
+      )
+    );
   }
 
   initializeListeners(): void {
