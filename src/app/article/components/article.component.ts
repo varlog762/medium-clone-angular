@@ -9,11 +9,13 @@ import { CurrentUserInterface } from '../../shared/types/current-user.interface'
 import { articleFeature } from '../store/article.state';
 import { ArticleActions } from '../store/article.actions';
 import { authFeature } from '../../auth/store/auth.state';
+import { LoadingComponent } from '../../shared/loading/loading.component';
+import { ErrorMessageComponent } from '../../shared/error-message/error-message.component';
 
 @Component({
   selector: 'mc-article',
   standalone: true,
-  imports: [AsyncPipe, RouterLink],
+  imports: [AsyncPipe, RouterLink, LoadingComponent, ErrorMessageComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })

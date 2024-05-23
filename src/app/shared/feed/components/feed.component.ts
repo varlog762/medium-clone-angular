@@ -19,7 +19,7 @@ import { feedFeature } from '../store/feed.state';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { LoadingComponent } from '../../loading/loading.component';
 import { PaginationComponent } from '../../../global-feed/components/pagination/pagination.component';
-import { TagListCompoinent } from '../../../global-feed/components/tag-list/tag-list.component';
+import { TagListCompoinent } from '../../tag-list/tag-list.component';
 import { ConstantsEnum } from '../../enums/constants.enum';
 
 @Component({

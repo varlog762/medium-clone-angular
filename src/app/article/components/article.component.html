@@ -8,7 +8,8 @@
       <h1>{{article.title}}</h1>
       <div class="article-meta">
         <a [routerLink]="['/profiles', article.author.username]">
-          <img [src]="article.author.image" alt="author logo">
+          <!-- <img [src]="article.author.image" alt="author logo"> -->
+          <img src="../../../assets/images/default-user.png" alt="author logo">
         </a>
         <div class="info">
           <a [routerLink]="['/profiles', article.author.username]">{{article.author.username}}</a>
@@ -28,6 +29,20 @@
     }
   </div>
   <div class="container page">
-
+    @if (isLoading$ | async) {
+    <mc-loading></mc-loading>
+    }
+    @if (error$ | async) {
+    <mc-error-message></mc-error-message>
+    }
+    <div class="row article-content">
+      @if (article) {
+      <div class="col-xs-12">
+        <div>
+          <p>{{article.body}}</p>
+        </div>
+      </div>
+      }
+    </div>
   </div>
 </div>
