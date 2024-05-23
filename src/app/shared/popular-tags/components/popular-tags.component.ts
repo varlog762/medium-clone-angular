@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { PopularTagType } from '../../types/popular-tag.type';
 import { PopularTagsActions } from '../store/popular-tags.actions';
 import { popularTagsFeature } from '../store/popular-tags.state';
-import { LoadingComponent } from '../../../global-feed/components/loading/loading.component';
-import { ErrorMessageComponent } from '../../../global-feed/components/error-message/error-message.component';
+import { LoadingComponent } from '../../loading/loading.component';
+import { ErrorMessageComponent } from '../../error-message/error-message.component';
 
 @Component({
   selector: 'mc-popular-tags',

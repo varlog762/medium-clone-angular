@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
 
@@ -13,7 +13,7 @@ import { authFeature } from '../../auth/store/auth.state';
 @Component({
   selector: 'mc-article',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, RouterLink],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })
