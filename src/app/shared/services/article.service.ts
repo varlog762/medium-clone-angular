@@ -14,7 +14,7 @@ export class ArticleService {
 
   getArticle(slug: string): Observable<ArticleInterface> {
     return this.http
-      .get<GetArticleResponseInterface>(slug)
+      .get<GetArticleResponseInterface>(`/articles/${slug}`)
       .pipe(map((response: GetArticleResponseInterface) => response.article));
   }
 }
