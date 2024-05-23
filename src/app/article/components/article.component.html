@@ -1,5 +1,5 @@
-@if (article$ | async) {
-<div>{{(article$ | async)?.title}}</div>
-<div>{{(article$ | async)?.author}}</div>
-<div>{{(article$ | async)?.description}}</div>
+@if (article) {
+<div>{{article.title}}</div>
+<div>{{article.author.username}}</div>
+<div>{{article.body}}</div>
 }
