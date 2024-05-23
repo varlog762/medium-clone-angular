@@ -36,6 +36,28 @@ export const articleFeature = createFeature({
         isLoading: false,
       })
     ),
+    on(
+      ArticleActions.deleteArticle,
+      (state): ArticleStateInterface => ({
+        ...state,
+        isLoading: true,
+      })
+    ),
+    on(
+      ArticleActions.deleteArticleSuccess,
+      (state): ArticleStateInterface => ({
+        ...state,
+        isLoading: false,
+        data: null,
+      })
+    ),
+    on(
+      ArticleActions.deleteArticleFailure,
+      (state): ArticleStateInterface => ({
+        ...state,
+        isLoading: false,
+      })
+    ),
     on(routerNavigationAction, (): ArticleStateInterface => initialState)
   ),
 });
