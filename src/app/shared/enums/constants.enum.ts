@@ -1,3 +1,3 @@
 export enum ConstantsEnum {
-  LIMIT = 10,
+  LIMIT_ARTICLES_PER_PAGE = 10,
 }

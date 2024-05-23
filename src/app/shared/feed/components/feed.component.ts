@@ -18,9 +18,9 @@ import { GetFeedResponseInterface } from '../types/get-feed-response.interface';
 import { feedFeature } from '../store/feed.state';
 import { ErrorMessageComponent } from '../../../global-feed/components/error-message/error-message.component';
 import { LoadingComponent } from '../../../global-feed/components/loading/loading.component';
-import { environment } from '../../../../environments/environment.development';
 import { PaginationComponent } from '../../../global-feed/components/pagination/pagination.component';
 import { TagListCompoinent } from '../../../global-feed/components/tag-list/tag-list.component';
+import { ConstantsEnum } from '../../enums/constants.enum';
 
 @Component({
   selector: 'mc-feed',
@@ -43,7 +43,7 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
   public error$!: Observable<string | null>;
   public feed$!: Observable<GetFeedResponseInterface | null>;
 
-  public limit = environment.limit;
+  public limit = ConstantsEnum.LIMIT_ARTICLES_PER_PAGE;
   public baseUrl!: string;
   public currentPage!: number;
   public paramsSubscribe$!: Subscription;
