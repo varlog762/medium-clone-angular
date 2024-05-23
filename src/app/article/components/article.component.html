@@ -1,6 +1,3 @@
-@if (article) {
-
-}
 <div class="article-page">
   <div class="banner">
     @if (article) {
@@ -17,7 +14,7 @@
         </div>
         @if (isAuthor$ | async) {
         <span>
-          <a href="" class="btn btn-outline-secondary btn-sm">
+          <a [routerLink]="['/articles', article.slug, 'edit']" class="btn btn-outline-secondary btn-sm">
             <i class="ion-edit"></i>
             Edit Article
           </a>
@@ -41,6 +38,7 @@
         <div>
           <p>{{article.body}}</p>
         </div>
+        <mc-tag-list [tags]="article.tagList"></mc-tag-list>
       </div>
       }
     </div>

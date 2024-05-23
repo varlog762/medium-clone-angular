@@ -11,11 +11,18 @@ import { ArticleActions } from '../store/article.actions';
 import { authFeature } from '../../auth/store/auth.state';
 import { LoadingComponent } from '../../shared/loading/loading.component';
 import { ErrorMessageComponent } from '../../shared/error-message/error-message.component';
+import { TagListCompoinent } from '../../shared/tag-list/tag-list.component';
 
 @Component({
   selector: 'mc-article',
   standalone: true,
-  imports: [AsyncPipe, RouterLink, LoadingComponent, ErrorMessageComponent],
+  imports: [
+    AsyncPipe,
+    RouterLink,
+    LoadingComponent,
+    ErrorMessageComponent,
+    TagListCompoinent,
+  ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
 })
