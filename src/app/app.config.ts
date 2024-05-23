@@ -17,7 +17,7 @@ import { GetFeedEffects } from './shared/feed/store/get-feed.effects';
 import { feedFeature } from './shared/feed/store/feed.state';
 import { popularTagsFeature } from './shared/popular-tags/store/popular-tags.state';
 import { GetPopularTagsEffects } from './shared/popular-tags/store/get-popular-tags.effects';
-import { GetArticleEffects } from './article/store/get-article.effects';
+import { GetArticleEffects } from './article/store/effects/get-article.effects';
 import { articleFeature } from './article/store/article.state';
 
 export const appConfig: ApplicationConfig = {

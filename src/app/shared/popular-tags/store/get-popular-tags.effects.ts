@@ -9,7 +9,7 @@ import { PopularTagType } from '../../types/popular-tag.type';
 @Injectable()
 export class GetPopularTagsEffects {
   getTags$ = createEffect(() =>
-    this.actions.pipe(
+    this.actions$.pipe(
       ofType(PopularTagsActions.getPopularTags),
       switchMap(() => {
         return this.popularTagsService.getPopularTags().pipe(
@@ -23,7 +23,7 @@ export class GetPopularTagsEffects {
   );
 
   constructor(
-    private actions: Actions,
+    private actions$: Actions,
     private popularTagsService: PopularTagsService
   ) {}
 }
