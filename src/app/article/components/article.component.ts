@@ -79,6 +79,12 @@ export class ArticleComponent implements OnInit, OnDestroy {
     }
   }
 
+  deleteArticle(): void {
+    if (this.slug) {
+      this.store.dispatch(ArticleActions.deleteArticle({ slug: this.slug }));
+    }
+  }
+
   ngOnDestroy(): void {
     this.articleSubscription$.unsubscribe();
   }
