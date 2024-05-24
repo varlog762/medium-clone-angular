@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'mc-article-form',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './article-form.component.html',
   styleUrl: './article-form.component.scss',
 })
-export class ArticleFormComponent {}
+export class ArticleFormComponent {
+  @Input()
+}
