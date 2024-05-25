@@ -9,4 +9,15 @@ import { ArticleFormComponent } from '../shared/article-form/article-form.compon
   templateUrl: './create-article.component.html',
   styleUrl: './create-article.component.scss',
 })
-export class CreateArticleComponent {}
+export class CreateArticleComponent {
+  public initialValues = {
+    title: 'foo',
+    description: 'bar',
+    body: 'foobar',
+    tagList: ['foo', 'bar'],
+  };
+
+  onSubmit(res: any) {
+    console.dir(res);
+  }
+}
