@@ -6,7 +6,7 @@ import { GlobalFeedComponent } from './global-feed/components/global-feed/global
 import { YourFeedComponent } from './your-feed/components/your-feed.component';
 import { TagFeedComponent } from './tag-feed/components/tag-feed.component';
 import { ArticleComponent } from './article/components/article.component';
-import { CreateArticleComponent } from './create-article/create-article.component';
+import { CreateArticleComponent } from './create-article/components/create-article/create-article.component';
 
 export const routes: Routes = [
   { path: '', component: GlobalFeedComponent },

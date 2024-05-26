@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ArticleFormComponent } from '../shared/article-form/article-form.component';
+import { ArticleFormComponent } from '../../../shared/article-form/article-form.component';
 
 @Component({
   selector: 'mc-create-article',
