@@ -14,7 +14,7 @@ import { BackendErrorMessagesComponent } from '../backend-error-messages/compone
 })
 export class ArticleFormComponent implements OnInit {
   @Input('initialValues') initialValues!: ArticleInputInterface;
-  @Input('isSubmiting') isSubmiting!: boolean;
+  @Input('isSubmitting') isSubmitting!: boolean | null;
   @Input('errors') errors!: BackendErrorsInterface | null;
 
   @Output('articleSubmit') articleSubmitEvent =
@@ -38,6 +38,15 @@ export class ArticleFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.articleSubmitEvent.emit(this.form.value);
+    const articleInput: ArticleInputInterface = {
+      title: this.form.value.title,
+      description: this.form.value.description,
+      body: this.form.value.body,
+      tagList: this.form.value.tagList
+        ? this.form.value.tagList.split(' ')
+        : [],
+    };
+
+    this.articleSubmitEvent.emit(articleInput);
   }
 }

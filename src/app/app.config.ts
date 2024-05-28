@@ -21,6 +21,7 @@ import { GetArticleEffects } from './article/store/effects/get-article.effects';
 import { articleFeature } from './article/store/article.state';
 import { DeleteArticleEffects } from './article/store/effects/delete-article.effects';
 import { CreateArticleEffects } from './create-article/store/create-article.effects';
+import { createArticleFeature } from './create-article/store/create-article.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,6 +34,7 @@ export const appConfig: ApplicationConfig = {
     provideState(feedFeature),
     provideState(popularTagsFeature),
     provideState(articleFeature),
+    provideState(createArticleFeature),
     provideEffects(
       RegisterEffects,
       LoginEffects,
