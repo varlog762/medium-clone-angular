@@ -4,7 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
-import { AuthActions } from '../auth.actions';
+import { authActions } from '../auth.actions';
 import { AuthService } from '../../services/auth.service';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { PersistanceService } from '../../../shared/services/persistance.service';
@@ -13,17 +13,17 @@ import { PersistanceService } from '../../../shared/services/persistance.service
 export class LoginEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.login),
+      ofType(authActions.login),
       switchMap(({ request }) => {
         return this.authService.login(request).pipe(
           map((currentUser: CurrentUserInterface) => {
             this.persistanceService.set('accessToken', currentUser.token);
 
-            return AuthActions.loginSuccess({ currentUser });
+            return authActions.loginSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) =>
             of(
-              AuthActions.registerFailure({
+              authActions.registerFailure({
                 errors: errorResponse.error.errors,
               })
             )
@@ -36,7 +36,7 @@ export class LoginEffects {
   redirectAfterSubmit$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthActions.loginSuccess),
+        ofType(authActions.loginSuccess),
         tap(() => this.router.navigateByUrl('/'))
       ),
     { dispatch: false }

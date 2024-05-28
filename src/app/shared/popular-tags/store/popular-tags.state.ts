@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { PopularTagsStateInterface } from '../types/popular-tags-state.interface';
-import { PopularTagsActions } from './popular-tags.actions';
+import { popularTagsActions } from './popular-tags.actions';
 
 export const initialSate: PopularTagsStateInterface = {
   isLoading: false,
@@ -14,14 +14,14 @@ export const popularTagsFeature = createFeature({
   reducer: createReducer(
     initialSate,
     on(
-      PopularTagsActions.getPopularTags,
+      popularTagsActions.getPopularTags,
       (state): PopularTagsStateInterface => ({
         ...state,
         isLoading: true,
       })
     ),
     on(
-      PopularTagsActions.getPopularTagsSuccess,
+      popularTagsActions.getPopularTagsSuccess,
       (state, action): PopularTagsStateInterface => ({
         ...state,
         isLoading: false,
@@ -29,7 +29,7 @@ export const popularTagsFeature = createFeature({
       })
     ),
     on(
-      PopularTagsActions.getPopularTagsFailure,
+      popularTagsActions.getPopularTagsFailure,
       (state): PopularTagsStateInterface => ({
         ...state,
         isLoading: false,

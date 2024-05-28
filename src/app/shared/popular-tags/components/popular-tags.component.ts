@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { PopularTagType } from '../../types/popular-tag.type';
-import { PopularTagsActions } from '../store/popular-tags.actions';
+import { popularTagsActions } from '../store/popular-tags.actions';
 import { popularTagsFeature } from '../store/popular-tags.state';
 import { LoadingComponent } from '../../loading/loading.component';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
@@ -36,6 +36,6 @@ export class PopularTagsComponent implements OnInit {
   }
 
   fetchData(): void {
-    this.store.dispatch(PopularTagsActions.getPopularTags());
+    this.store.dispatch(popularTagsActions.getPopularTags());
   }
 }

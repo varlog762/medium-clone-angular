@@ -1,7 +1,7 @@
 import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 
 import { AuthStateInterface } from '../types/auth-state.interface';
-import { AuthActions } from './auth.actions';
+import { authActions } from './auth.actions';
 
 export const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -16,7 +16,7 @@ export const authFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(
-      AuthActions.register,
+      authActions.register,
       (state): AuthStateInterface => ({
         ...state,
         isSubmitting: true,
@@ -24,7 +24,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      AuthActions.login,
+      authActions.login,
       (state): AuthStateInterface => ({
         ...state,
         isSubmitting: true,
@@ -32,14 +32,14 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      AuthActions.getCurrentUser,
+      authActions.getCurrentUser,
       (state): AuthStateInterface => ({
         ...state,
         isLoading: true,
       })
     ),
     on(
-      AuthActions.registerSuccess,
+      authActions.registerSuccess,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
@@ -49,7 +49,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      AuthActions.loginSuccess,
+      authActions.loginSuccess,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
@@ -59,7 +59,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      AuthActions.getCurrentUserSuccess,
+      authActions.getCurrentUserSuccess,
       (state, action): AuthStateInterface => ({
         ...state,
         isLoading: false,
@@ -68,7 +68,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      AuthActions.registerFailure,
+      authActions.registerFailure,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
@@ -76,7 +76,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      AuthActions.loginFailure,
+      authActions.loginFailure,
       (state, action): AuthStateInterface => ({
         ...state,
         isSubmitting: false,
@@ -84,7 +84,7 @@ export const authFeature = createFeature({
       })
     ),
     on(
-      AuthActions.getCurrentUserFailure,
+      authActions.getCurrentUserFailure,
       (state): AuthStateInterface => ({
         ...state,
         isLoading: false,

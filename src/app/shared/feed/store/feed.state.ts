@@ -2,7 +2,7 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 import { routerNavigationAction } from '@ngrx/router-store';
 
 import { FeedStateInterface } from '../types/feed-state.interface';
-import { FeedActions } from './feed.actions';
+import { feedActions } from './feed.actions';
 
 export const initialState: FeedStateInterface = {
   isLoading: false,
@@ -15,14 +15,14 @@ export const feedFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(
-      FeedActions.getFeed,
+      feedActions.getFeed,
       (state): FeedStateInterface => ({
         ...state,
         isLoading: true,
       })
     ),
     on(
-      FeedActions.getFeedSuccess,
+      feedActions.getFeedSuccess,
       (state, action): FeedStateInterface => ({
         ...state,
         isLoading: false,
@@ -31,7 +31,7 @@ export const feedFeature = createFeature({
       })
     ),
     on(
-      FeedActions.getFeedFailure,
+      feedActions.getFeedFailure,
       (state): FeedStateInterface => ({
         ...state,
         isLoading: false,

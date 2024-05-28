@@ -5,7 +5,7 @@ import { CurrentUserInterface } from '../../shared/types/current-user.interface'
 import { BackendErrorsInterface } from '../../shared/types/backend-errors.interface';
 import { LoginRequestInterface } from '../types/login-request.interface';
 
-export const AuthActions = createActionGroup({
+export const authActions = createActionGroup({
   source: 'Auth',
   events: {
     Register: props<{ request: RegisterRequestInterface }>(),

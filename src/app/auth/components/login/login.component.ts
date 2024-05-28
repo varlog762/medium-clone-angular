@@ -9,7 +9,7 @@ import { BackendErrorsInterface } from '../../../shared/types/backend-errors.int
 import { authFeature } from '../../store/auth.state';
 import { BackendErrorMessagesComponent } from '../../../shared/backend-error-messages/components/backend-error-messages.component';
 import { LoginRequestInterface } from '../../types/login-request.interface';
-import { AuthActions } from '../../store/auth.actions';
+import { authActions } from '../../store/auth.actions';
 
 @Component({
   selector: 'mc-login',
@@ -57,6 +57,6 @@ export class LoginComponent implements OnInit {
       user: this.form.value,
     };
 
-    this.store.dispatch(AuthActions.login({ request }));
+    this.store.dispatch(authActions.login({ request }));
   }
 }

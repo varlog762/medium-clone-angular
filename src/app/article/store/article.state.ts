@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { ArticleStateInterface } from '../types/article-state.interface';
-import { ArticleActions } from './article.actions';
+import { articleActions } from './article.actions';
 import { routerNavigationAction } from '@ngrx/router-store';
 
 export const initialState: ArticleStateInterface = {
@@ -15,14 +15,14 @@ export const articleFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(
-      ArticleActions.getArticle,
+      articleActions.getArticle,
       (state): ArticleStateInterface => ({
         ...state,
         isLoading: true,
       })
     ),
     on(
-      ArticleActions.getArticleSuccess,
+      articleActions.getArticleSuccess,
       (state, action): ArticleStateInterface => ({
         ...state,
         isLoading: false,
@@ -30,7 +30,7 @@ export const articleFeature = createFeature({
       })
     ),
     on(
-      ArticleActions.getArticleFailure,
+      articleActions.getArticleFailure,
       (state): ArticleStateInterface => ({
         ...state,
         isLoading: false,

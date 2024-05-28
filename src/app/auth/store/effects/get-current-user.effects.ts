@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
-import { AuthActions } from '../auth.actions';
+import { authActions } from '../auth.actions';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { PersistanceService } from '../../../shared/services/persistance.service';
 
@@ -11,19 +11,19 @@ import { PersistanceService } from '../../../shared/services/persistance.service
 export class GetCurrentUserEffects {
   getCurrentUser$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(AuthActions.getCurrentUser),
+      ofType(authActions.getCurrentUser),
       switchMap(() => {
         const token = this.persistanceService.get('accessToken');
 
         if (!token) {
-          return of(AuthActions.getCurrentUserFailure());
+          return of(authActions.getCurrentUserFailure());
         }
 
         return this.authService.getCurrentUser().pipe(
           map((currentUser: CurrentUserInterface) =>
-            AuthActions.getCurrentUserSuccess({ currentUser })
+            authActions.getCurrentUserSuccess({ currentUser })
           ),
-          catchError(() => of(AuthActions.getCurrentUserFailure()))
+          catchError(() => of(authActions.getCurrentUserFailure()))
         );
       })
     )

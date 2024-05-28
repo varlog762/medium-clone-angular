@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Subscription } from 'rxjs/internal/Subscription';
 import queryString from 'query-string';
 
-import { FeedActions } from '../store/feed.actions';
+import { feedActions } from '../store/feed.actions';
 import { GetFeedResponseInterface } from '../types/get-feed-response.interface';
 import { feedFeature } from '../store/feed.state';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
@@ -87,7 +87,7 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
     });
     const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
 
-    this.store.dispatch(FeedActions.getFeed({ url: apiUrlWithParams }));
+    this.store.dispatch(feedActions.getFeed({ url: apiUrlWithParams }));
   }
 
   ngOnChanges(changes: SimpleChanges): void {

@@ -2,7 +2,7 @@ import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
 import { PopularTagType } from '../../types/popular-tag.type';
 
-export const PopularTagsActions = createActionGroup({
+export const popularTagsActions = createActionGroup({
   source: 'Popular tags',
   events: {
     'Get popular tags': emptyProps(),

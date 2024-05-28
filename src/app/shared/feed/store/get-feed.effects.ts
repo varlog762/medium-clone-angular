@@ -5,7 +5,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { of } from 'rxjs/internal/observable/of';
 
-import { FeedActions } from './feed.actions';
+import { feedActions } from './feed.actions';
 import { FeedService } from '../services/feed.service';
 import { GetFeedResponseInterface } from '../types/get-feed-response.interface';
 
@@ -13,13 +13,13 @@ import { GetFeedResponseInterface } from '../types/get-feed-response.interface';
 export class GetFeedEffects {
   getFeed$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(FeedActions.getFeed),
+      ofType(feedActions.getFeed),
       switchMap(({ url }) => {
         return this.feedService.getFeed(url).pipe(
           map((feed: GetFeedResponseInterface) => {
-            return FeedActions.getFeedSuccess({ feed });
+            return feedActions.getFeedSuccess({ feed });
           }),
-          catchError(() => of(FeedActions.getFeedFailure()))
+          catchError(() => of(feedActions.getFeedFailure()))
         );
       })
     )

@@ -4,20 +4,20 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { DeleteArticleService } from '../../services/delete-article.service';
-import { ArticleActions } from '../article.actions';
+import { articleActions } from '../article.actions';
 
 @Injectable()
 export class DeleteArticleEffects {
   deleteArticle$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ArticleActions.deleteArticle),
+      ofType(articleActions.deleteArticle),
       switchMap(({ slug }) => {
         return this.deleteArticleService.deleteArticle(slug).pipe(
           map(() => {
-            return ArticleActions.deleteArticleSuccess();
+            return articleActions.deleteArticleSuccess();
           }),
           catchError(() => {
-            return of(ArticleActions.deleteArticleFailure());
+            return of(articleActions.deleteArticleFailure());
           })
         );
       })
@@ -27,7 +27,7 @@ export class DeleteArticleEffects {
   redirectAfterDeleteArticle$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(ArticleActions.deleteArticleSuccess),
+        ofType(articleActions.deleteArticleSuccess),
         tap(() => this.router.navigateByUrl('/'))
       ),
     { dispatch: false }
