@@ -4,5 +4,5 @@ import { BackendErrorsInterface } from '../../shared/types/backend-errors.interf
 export interface EditArticleStateInterface {
   isSubmitting: boolean;
   data: ArticleInterface | null;
-  errors: BackendErrorsInterface | null;
+  validationErrors: BackendErrorsInterface | null;
 }
