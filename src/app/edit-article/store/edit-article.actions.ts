@@ -7,7 +7,7 @@ export const editArticleActions = createActionGroup({
   source: 'Edit Article',
   events: {
     'Edit article': props<{ slug: string }>(),
-    'Edit articvle success': props<{ article: ArticleInterface }>(),
+    'Edit article success': props<{ article: ArticleInterface }>(),
     'Edit article failure': props<{ errors: BackendErrorsInterface }>(),
   },
 });
