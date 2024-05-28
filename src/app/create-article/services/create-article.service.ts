@@ -5,6 +5,7 @@ import { map } from 'rxjs/internal/operators/map';
 
 import { ArticleInputInterface } from '../../shared/types/article-input.interface';
 import { ArticleInterface } from '../../shared/types/article.interface';
+import { SaveArticleInterface } from '../../shared/types/save-article-response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,9 +17,9 @@ export class CreateArticleService {
     articleInput: ArticleInputInterface
   ): Observable<ArticleInterface> {
     return this.http
-      .post<ArticleInterface>('/articles', {
+      .post<SaveArticleInterface>('/articles', {
         article: articleInput,
       })
-      .pipe(map((response: any) => response.article));
+      .pipe(map((response: SaveArticleInterface) => response.article));
   }
 }
