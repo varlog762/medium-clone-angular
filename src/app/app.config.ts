@@ -20,6 +20,7 @@ import { GetPopularTagsEffects } from './shared/popular-tags/store/get-popular-t
 import { GetArticleEffects } from './article/store/effects/get-article.effects';
 import { articleFeature } from './article/store/article.state';
 import { DeleteArticleEffects } from './article/store/effects/delete-article.effects';
+import { CreateArticleEffects } from './create-article/store/create-article.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -39,7 +40,8 @@ export const appConfig: ApplicationConfig = {
       GetFeedEffects,
       GetPopularTagsEffects,
       GetArticleEffects,
-      DeleteArticleEffects
+      DeleteArticleEffects,
+      CreateArticleEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
