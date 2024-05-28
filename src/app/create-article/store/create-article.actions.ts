@@ -1,4 +1,4 @@
-import { createActionGroup, props, emptyProps } from '@ngrx/store';
+import { createActionGroup, props } from '@ngrx/store';
 
 import { ArticleInputInterface } from '../../shared/types/article-input.interface';
 import { ArticleInterface } from '../../shared/types/article.interface';
