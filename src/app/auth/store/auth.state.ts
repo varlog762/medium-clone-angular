@@ -2,6 +2,7 @@ import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 
 import { AuthStateInterface } from '../types/auth-state.interface';
 import { authActions } from './auth.actions';
+import { state } from '@angular/animations';
 
 export const initialState: AuthStateInterface = {
   isSubmitting: false,
@@ -90,6 +91,13 @@ export const authFeature = createFeature({
         isLoading: false,
         isLoggedIn: false,
         currentUser: null,
+      })
+    ),
+    on(
+      authActions.updateCurrentUserSuccess,
+      (state, action): AuthStateInterface => ({
+        ...state,
+        currentUser: action.currentUser,
       })
     )
   ),
