@@ -13,8 +13,8 @@ export class EditArticleEffects {
   editArticle$ = createEffect(() =>
     this.actions$.pipe(
       ofType(editArticleActions.updateArticle),
-      switchMap(({ slug }) => {
-        return this.editArticleService.updateArticle(slug).pipe(
+      switchMap(({ slug, articleInput }) => {
+        return this.editArticleService.updateArticle(slug, articleInput).pipe(
           map((article: ArticleInterface) => {
             return editArticleActions.updateArticleSuccess({ article });
           }),

@@ -9,17 +9,20 @@ import { BackendErrorsInterface } from '../../../shared/types/backend-errors.int
 import { ArticleInputInterface } from '../../../shared/types/article-input.interface';
 import { ActivatedRoute } from '@angular/router';
 import { editArticleFeature } from '../../store/edit-article.state';
+import { editArticleActions } from '../../store/edit-article.actions';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
 
 @Component({
   selector: 'mc-edit-article',
   standalone: true,
-  imports: [AsyncPipe, ArticleFormComponent],
+  imports: [AsyncPipe, ArticleFormComponent, LoadingComponent],
   templateUrl: './edit-article.component.html',
   styleUrl: './edit-article.component.scss',
 })
 export class EditArticleComponent implements OnInit, OnDestroy {
   public slug!: string | null;
   public isSubmitting$!: Observable<boolean>;
+  public isLoading$!: Observable<boolean>;
   public backendErrors$!: Observable<BackendErrorsInterface | null>;
   public initialValues!: ArticleInputInterface;
   public initialValuesSubscription$!: Subscription;
@@ -28,6 +31,13 @@ export class EditArticleComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeValues();
+    this.fetchData();
+  }
+
+  fetchData(): void {
+    if (this.slug) {
+      this.store.dispatch(editArticleActions.getArticle({ slug: this.slug }));
+    }
   }
 
   initializeValues(): void {
@@ -35,10 +45,34 @@ export class EditArticleComponent implements OnInit, OnDestroy {
     this.isSubmitting$ = this.store.select(
       editArticleFeature.selectIsSubmitting
     );
+    this.isLoading$ = this.store.select(editArticleFeature.selectIsloading);
     this.backendErrors$ = this.store.select(
       editArticleFeature.selectValidationErrors
     );
+    this.initialValuesSubscription$ = this.store
+      .select(editArticleFeature.selectData)
+      .subscribe(article => {
+        this.initialValues = {
+          title: article?.title ?? '',
+          description: article?.description ?? '',
+          body: article?.body ?? '',
+          tagList: article?.tagList ?? [],
+        };
+      });
   }
 
-  ngOnDestroy(): void {}
+  onSubmit(articleInput: ArticleInputInterface) {
+    if (this.slug) {
+      this.store.dispatch(
+        editArticleActions.updateArticle({
+          slug: this.slug,
+          articleInput,
+        })
+      );
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.initialValuesSubscription$.unsubscribe();
+  }
 }

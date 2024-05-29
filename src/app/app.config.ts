@@ -18,6 +18,7 @@ import { feedFeature } from './shared/feed/store/feed.state';
 import { popularTagsFeature } from './shared/popular-tags/store/popular-tags.state';
 import { GetPopularTagsEffects } from './shared/popular-tags/store/get-popular-tags.effects';
 import { GetArticleEffects } from './article/store/effects/get-article.effects';
+import { GetArticleEffects as GetArticleForEditEffects } from './edit-article/store/effects/get-article.effects';
 import { articleFeature } from './article/store/article.state';
 import { DeleteArticleEffects } from './article/store/effects/delete-article.effects';
 import { CreateArticleEffects } from './create-article/store/create-article.effects';
@@ -47,7 +48,8 @@ export const appConfig: ApplicationConfig = {
       GetArticleEffects,
       DeleteArticleEffects,
       CreateArticleEffects,
-      EditArticleEffects
+      EditArticleEffects,
+      GetArticleForEditEffects
     ),
     provideStoreDevtools({
       maxAge: 25,

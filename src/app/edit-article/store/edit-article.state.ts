@@ -24,10 +24,9 @@ export const editArticleFeature = createFeature({
     ),
     on(
       editArticleActions.updateArticleSuccess,
-      (state, action): EditArticleStateInterface => ({
+      (state): EditArticleStateInterface => ({
         ...state,
         isSubmitting: false,
-        data: action.article,
         validationErrors: null,
       })
     ),
@@ -38,6 +37,29 @@ export const editArticleFeature = createFeature({
         isSubmitting: false,
         data: null,
         validationErrors: action.errors,
+      })
+    ),
+    on(
+      editArticleActions.getArticle,
+      (state): EditArticleStateInterface => ({
+        ...state,
+        isloading: true,
+      })
+    ),
+    on(
+      editArticleActions.getArticleSuccess,
+      (state, action): EditArticleStateInterface => ({
+        ...state,
+        isloading: false,
+        data: action.article,
+      })
+    ),
+    on(
+      editArticleActions.getArticleFailure,
+      (state): EditArticleStateInterface => ({
+        ...state,
+        isloading: false,
+        data: null,
       })
     ),
     on(
