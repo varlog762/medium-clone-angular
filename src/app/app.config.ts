@@ -25,6 +25,7 @@ import { CreateArticleEffects } from './create-article/store/create-article.effe
 import { createArticleFeature } from './create-article/store/create-article.state';
 import { EditArticleEffects } from './edit-article/store/effects/edit-article.effects';
 import { editArticleFeature } from './edit-article/store/edit-article.state';
+import { UpdateCurrentUserEffects } from './auth/store/effects/update-current-user.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -49,7 +50,8 @@ export const appConfig: ApplicationConfig = {
       DeleteArticleEffects,
       CreateArticleEffects,
       EditArticleEffects,
-      GetArticleForEditEffects
+      GetArticleForEditEffects,
+      UpdateCurrentUserEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
