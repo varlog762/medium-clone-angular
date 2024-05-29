@@ -26,6 +26,7 @@ import { createArticleFeature } from './create-article/store/create-article.stat
 import { EditArticleEffects } from './edit-article/store/effects/edit-article.effects';
 import { editArticleFeature } from './edit-article/store/edit-article.state';
 import { UpdateCurrentUserEffects } from './auth/store/effects/update-current-user.effects';
+import { userSettingsFeature } from './user-settings/store/user-setting.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -40,6 +41,7 @@ export const appConfig: ApplicationConfig = {
     provideState(articleFeature),
     provideState(createArticleFeature),
     provideState(editArticleFeature),
+    provideState(userSettingsFeature),
     provideEffects(
       RegisterEffects,
       LoginEffects,
