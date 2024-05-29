@@ -22,7 +22,7 @@ import { articleFeature } from './article/store/article.state';
 import { DeleteArticleEffects } from './article/store/effects/delete-article.effects';
 import { CreateArticleEffects } from './create-article/store/create-article.effects';
 import { createArticleFeature } from './create-article/store/create-article.state';
-import { EditArticleEffects } from './edit-article/store/edit-article.effects';
+import { EditArticleEffects } from './edit-article/store/effects/edit-article.effects';
 import { editArticleFeature } from './edit-article/store/edit-article.state';
 
 export const appConfig: ApplicationConfig = {

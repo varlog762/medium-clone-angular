@@ -3,24 +3,24 @@ import { Router } from '@angular/router';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
 import { switchMap, catchError, tap, map, of } from 'rxjs';
 
-import { EditArticleService } from '../services/edit-article.service';
-import { editArticleActions } from './edit-article.actions';
+import { EditArticleService } from '../../services/edit-article.service';
+import { editArticleActions } from '../edit-article.actions';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ArticleInterface } from '../../shared/types/article.interface';
+import { ArticleInterface } from '../../../shared/types/article.interface';
 
 @Injectable()
 export class EditArticleEffects {
   editArticle$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(editArticleActions.editArticle),
+      ofType(editArticleActions.updateArticle),
       switchMap(({ slug }) => {
-        return this.editArticleService.editArticle(slug).pipe(
+        return this.editArticleService.updateArticle(slug).pipe(
           map((article: ArticleInterface) => {
-            return editArticleActions.editArticleSuccess({ article });
+            return editArticleActions.updateArticleSuccess({ article });
           }),
           catchError((errorResponse: HttpErrorResponse) =>
             of(
-              editArticleActions.editArticleFailure({
+              editArticleActions.updateArticleFailure({
                 errors: errorResponse.error.errors,
               })
             )
@@ -33,7 +33,7 @@ export class EditArticleEffects {
   redirectAfterEdit$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(editArticleActions.editArticleSuccess),
+        ofType(editArticleActions.updateArticleSuccess),
         tap(({ article }) => {
           this.router.navigate(['articles', article.slug]);
         })

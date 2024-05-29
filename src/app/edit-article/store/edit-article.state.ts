@@ -5,6 +5,7 @@ import { editArticleActions } from './edit-article.actions';
 import { routerNavigationAction } from '@ngrx/router-store';
 
 export const initialState: EditArticleStateInterface = {
+  isloading: false,
   isSubmitting: false,
   data: null,
   validationErrors: null,
@@ -15,14 +16,14 @@ export const editArticleFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(
-      editArticleActions.editArticle,
+      editArticleActions.updateArticle,
       (state): EditArticleStateInterface => ({
         ...state,
         isSubmitting: true,
       })
     ),
     on(
-      editArticleActions.editArticleSuccess,
+      editArticleActions.updateArticleSuccess,
       (state, action): EditArticleStateInterface => ({
         ...state,
         isSubmitting: false,
@@ -31,7 +32,7 @@ export const editArticleFeature = createFeature({
       })
     ),
     on(
-      editArticleActions.editArticleFailure,
+      editArticleActions.updateArticleFailure,
       (state, action): EditArticleStateInterface => ({
         ...state,
         isSubmitting: false,
