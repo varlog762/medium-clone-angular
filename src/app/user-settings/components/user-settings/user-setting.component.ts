@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -13,7 +12,6 @@ import { BackendErrorsInterface } from '../../../shared/types/backend-errors.int
 import { userSettingsFeature } from '../../store/user-setting.state';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { BackendErrorMessagesComponent } from '../../../shared/backend-error-messages/components/backend-error-messages.component';
-import { PersistanceService } from '../../../shared/services/persistance.service';
 import CurrentUserInputInterface from '../../../shared/types/current-user-input.interface';
 import { authActions } from '../../../auth/store/auth.actions';
 
@@ -36,12 +34,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   public isSubmiting$!: Observable<boolean>;
   public backendErrors$!: Observable<BackendErrorsInterface | null>;
 
-  constructor(
-    private fb: FormBuilder,
-    private store: Store,
-    private persistanceService: PersistanceService,
-    private router: Router
-  ) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   ngOnInit(): void {
     this.initializeListeners();

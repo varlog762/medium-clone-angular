@@ -98,6 +98,13 @@ export const authFeature = createFeature({
         ...state,
         currentUser: action.currentUser,
       })
+    ),
+    on(
+      authActions.logout,
+      (): AuthStateInterface => ({
+        ...initialState,
+        isLoggedIn: false,
+      })
     )
   ),
   extraSelectors: ({ selectIsLoggedIn }) => ({
