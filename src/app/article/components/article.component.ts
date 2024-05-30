@@ -29,7 +29,7 @@ import { TagListCompoinent } from '../../shared/tag-list/tag-list.component';
 export class ArticleComponent implements OnInit, OnDestroy {
   public slug!: string | null;
   public article!: ArticleInterface | null;
-  public articleSubscription$!: Subscription;
+  public articleSubscription!: Subscription;
   public isLoading$!: Observable<boolean>;
   public error$!: Observable<string | null>;
   public isAuthor$!: Observable<boolean>;
@@ -66,7 +66,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
   }
 
   initializeListeners(): void {
-    this.articleSubscription$ = this.store
+    this.articleSubscription = this.store
       .select(articleFeature.selectData)
       .subscribe(
         (article: ArticleInterface | null) => (this.article = article)
@@ -86,6 +86,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.articleSubscription$.unsubscribe();
+    this.articleSubscription.unsubscribe();
   }
 }

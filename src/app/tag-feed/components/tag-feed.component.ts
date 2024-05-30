@@ -22,18 +22,18 @@ import { FeedTogglerComponent } from '../../shared/feed-toggler/components/feed-
 export class TagFeedComponent implements OnInit, OnDestroy {
   public tagName!: string | null;
   public apiUrl!: string;
-  public paramsSubscription$!: Subscription;
+  public paramsSubscription!: Subscription;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.paramsSubscription$ = this.route.params.subscribe((params: Params) => {
+    this.paramsSubscription = this.route.params.subscribe((params: Params) => {
       this.tagName = params['slug'];
       this.apiUrl = `/articles?tag=${this.tagName}`;
     });
   }
 
   ngOnDestroy(): void {
-    this.paramsSubscription$.unsubscribe();
+    this.paramsSubscription.unsubscribe();
   }
 }

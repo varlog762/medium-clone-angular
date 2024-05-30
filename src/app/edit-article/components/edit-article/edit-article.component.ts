@@ -25,7 +25,7 @@ export class EditArticleComponent implements OnInit, OnDestroy {
   public isLoading$!: Observable<boolean>;
   public backendErrors$!: Observable<BackendErrorsInterface | null>;
   public initialValues!: ArticleInputInterface;
-  public initialValuesSubscription$!: Subscription;
+  public initialValuesSubscription!: Subscription;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 
@@ -49,7 +49,7 @@ export class EditArticleComponent implements OnInit, OnDestroy {
     this.backendErrors$ = this.store.select(
       editArticleFeature.selectValidationErrors
     );
-    this.initialValuesSubscription$ = this.store
+    this.initialValuesSubscription = this.store
       .select(editArticleFeature.selectData)
       .subscribe(article => {
         this.initialValues = {
@@ -73,6 +73,6 @@ export class EditArticleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.initialValuesSubscription$.unsubscribe();
+    this.initialValuesSubscription.unsubscribe();
   }
 }
