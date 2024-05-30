@@ -40,7 +40,7 @@ export class AuthService {
     currentUserInput: CurrentUserInputInterface
   ): Observable<CurrentUserInterface> {
     return this.http
-      .put<AuthResponseInterface>('/user', currentUserInput)
+      .put<AuthResponseInterface>('/user', { user: currentUserInput })
       .pipe(map(this.getUser));
   }
 }
