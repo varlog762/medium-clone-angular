@@ -1,1 +1,2 @@
-<button type="button" class="like-button" [class.fav]="isFavoritedProps">Likes: {{favoritesCountProps}}</button>
+<button type="button" class="like-button" [class.fav]="isFavoritedProps" (click)="toggleFavorites()">Likes:
+  {{favoritesCountProps}}</button>
