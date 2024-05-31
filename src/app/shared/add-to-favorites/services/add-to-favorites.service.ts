@@ -12,13 +12,13 @@ import { GetArticleResponseInterface } from '../../types/get-article-response.in
 export class AddToFavoreitesService {
   constructor(private http: HttpClient) {}
 
-  toFavorite(slug: string): Observable<ArticleInterface> {
+  addToFavorites(slug: string): Observable<ArticleInterface> {
     return this.http
       .post<GetArticleResponseInterface>(`/articles/${slug}/favorite`, {})
       .pipe(map(response => response.article));
   }
 
-  toUnfavorite(slug: string): Observable<ArticleInterface> {
+  removeFromFavorites(slug: string): Observable<ArticleInterface> {
     return this.http
       .delete<GetArticleResponseInterface>(`/articles/${slug}/favorite`)
       .pipe(map(response => response.article));

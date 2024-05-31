@@ -12,7 +12,7 @@ export class AddToFavoriteEffects {
     this.actions$.pipe(
       ofType(addToFavoritesActions.addToFavorites),
       switchMap(({ slug }) => {
-        return this.addToFavoritesService.toFavorite(slug).pipe(
+        return this.addToFavoritesService.addToFavorites(slug).pipe(
           map((article: ArticleInterface) => {
             return addToFavoritesActions.addToFavoritesSuccess({ article });
           }),

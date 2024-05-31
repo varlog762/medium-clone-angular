@@ -12,7 +12,7 @@ export class RemoveFromFavoritesEffects {
     this.actions$.pipe(
       ofType(addToFavoritesActions.removeFromFavorites),
       switchMap(({ slug }) => {
-        return this.addToFavoritesService.toUnfavorite(slug).pipe(
+        return this.addToFavoritesService.removeFromFavorites(slug).pipe(
           map((article: ArticleInterface) => {
             return addToFavoritesActions.removeFromFavoritesSuccess({
               article,

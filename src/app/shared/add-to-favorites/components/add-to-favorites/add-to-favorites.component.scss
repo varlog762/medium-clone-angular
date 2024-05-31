@@ -1,23 +1,15 @@
-.like-button {
-  padding: 5px 20px;
-  background-color: white;
-  border: 1px solid blue;
-  border-radius: 10px;
-  color: #000;
+.like-btn {
+  background-color: #fff;
+  border: 1px solid #5cb85c;
+  color: #5cb85c;
+
+  &-active {
+    background-color: #5cb85c;
+    border: none;
+    color: #fff;
+  }
 
   &:focus {
     outline: none;
-  }
-  &:hover {
-    background-color: aqua;
-  }
-}
-
-.fav {
-  background-color: green;
-  border: none;
-
-  &:hover {
-    background-color: greenyellow;
   }
 }
