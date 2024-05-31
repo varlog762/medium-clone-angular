@@ -28,6 +28,7 @@ import { editArticleFeature } from './edit-article/store/edit-article.state';
 import { UpdateCurrentUserEffects } from './auth/store/effects/update-current-user.effects';
 import { userSettingsFeature } from './user-settings/store/user-setting.state';
 import { LogoutEffects } from './auth/store/effects/logout.effects';
+import { AddToFavoriteEffects } from './shared/add-to-favorites/store/effects/add-to-favorites.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -55,7 +56,8 @@ export const appConfig: ApplicationConfig = {
       EditArticleEffects,
       GetArticleForEditEffects,
       UpdateCurrentUserEffects,
-      LogoutEffects
+      LogoutEffects,
+      AddToFavoriteEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
