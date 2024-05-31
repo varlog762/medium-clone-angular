@@ -29,6 +29,7 @@ import { UpdateCurrentUserEffects } from './auth/store/effects/update-current-us
 import { userSettingsFeature } from './user-settings/store/user-setting.state';
 import { LogoutEffects } from './auth/store/effects/logout.effects';
 import { AddToFavoriteEffects } from './shared/add-to-favorites/store/effects/add-to-favorites.effects';
+import { RemoveFromFavoritesEffects } from './shared/add-to-favorites/store/effects/remove-from-favorites.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -57,7 +58,8 @@ export const appConfig: ApplicationConfig = {
       GetArticleForEditEffects,
       UpdateCurrentUserEffects,
       LogoutEffects,
-      AddToFavoriteEffects
+      AddToFavoriteEffects,
+      RemoveFromFavoritesEffects
     ),
     provideStoreDevtools({
       maxAge: 25,

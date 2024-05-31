@@ -14,7 +14,7 @@ export class AddToFavoreitesService {
 
   toFavorite(slug: string): Observable<ArticleInterface> {
     return this.http
-      .post<GetArticleResponseInterface>(`/favorite/${slug}/favorite`, {})
+      .post<GetArticleResponseInterface>(`/articles/${slug}/favorite`, {})
       .pipe(map(response => response.article));
   }
 
