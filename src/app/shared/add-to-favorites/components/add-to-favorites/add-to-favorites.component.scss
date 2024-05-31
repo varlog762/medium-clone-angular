@@ -12,3 +12,12 @@
     background-color: aqua;
   }
 }
+
+.fav {
+  background-color: green;
+  border: none;
+
+  &:hover {
+    background-color: greenyellow;
+  }
+}
