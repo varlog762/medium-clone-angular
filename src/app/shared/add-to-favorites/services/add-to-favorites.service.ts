@@ -20,7 +20,7 @@ export class AddToFavoreitesService {
 
   toUnfavorite(slug: string): Observable<ArticleInterface> {
     return this.http
-      .delete<GetArticleResponseInterface>(`/favorite/${slug}/favorite`)
+      .delete<GetArticleResponseInterface>(`/articles/${slug}/favorite`)
       .pipe(map(response => response.article));
   }
 }
