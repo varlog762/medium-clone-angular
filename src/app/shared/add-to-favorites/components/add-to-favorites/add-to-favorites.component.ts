@@ -7,4 +7,8 @@ import { Component, Input } from '@angular/core';
   templateUrl: './add-to-favorites.component.html',
   styleUrl: './add-to-favorites.component.scss',
 })
-export class AddToFavoritesComponent {}
+export class AddToFavoritesComponent {
+  @Input('isFavorited') isFavoritedProps!: boolean;
+  @Input('articleSlug') articleSlugProps!: string;
+  @Input('favoritesCount') favoritesCountProps!: number;
+}

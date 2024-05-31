@@ -21,6 +21,7 @@ import { LoadingComponent } from '../../loading/loading.component';
 import { PaginationComponent } from '../../../global-feed/components/pagination/pagination.component';
 import { TagListCompoinent } from '../../tag-list/tag-list.component';
 import { ConstantsEnum } from '../../enums/constants.enum';
+import { AddToFavoritesComponent } from '../../add-to-favorites/components/add-to-favorites/add-to-favorites.component';
 
 @Component({
   selector: 'mc-feed',
@@ -32,6 +33,7 @@ import { ConstantsEnum } from '../../enums/constants.enum';
     LoadingComponent,
     PaginationComponent,
     TagListCompoinent,
+    AddToFavoritesComponent,
   ],
   templateUrl: './feed.component.html',
   styleUrl: './feed.component.scss',

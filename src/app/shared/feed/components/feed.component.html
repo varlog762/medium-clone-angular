@@ -16,7 +16,10 @@ article.title) {
       </a>
       <span class="date">{{ article.createdAt }}</span>
     </div>
-    <div class="pull-xs-right">ADD TO FAVORITE</div>
+    <div class="pull-xs-right">
+      <mc-add-to-favorites [isFavorited]="article.favorited" [articleSlug]="article.slug"
+        [favoritesCount]="article.favoritesCount"></mc-add-to-favorites>
+    </div>
   </div>
   <a [routerLink]="['articles', article.slug]" class="preview-link">
     <h1>{{ article.title }}</h1>
@@ -25,10 +28,6 @@ article.title) {
   </a>
 </div>
 }
-<mc-pagination
-  [total]="(feed$ | async)?.articlesCount"
-  [limit]="limit"
-  [url]="baseUrl"
-  [currentPage]="currentPage">
+<mc-pagination [total]="(feed$ | async)?.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage">
 </mc-pagination>
 }
