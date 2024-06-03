@@ -31,6 +31,7 @@ import { LogoutEffects } from './auth/store/effects/logout.effects';
 import { AddToFavoriteEffects } from './shared/add-to-favorites/store/effects/add-to-favorites.effects';
 import { RemoveFromFavoritesEffects } from './shared/add-to-favorites/store/effects/remove-from-favorites.effects';
 import { GetUserProfileEffects } from './user-profile/store/get-user-profile.effects';
+import { userProfileFeature } from './user-profile/store/user-profile.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -46,6 +47,7 @@ export const appConfig: ApplicationConfig = {
     provideState(createArticleFeature),
     provideState(editArticleFeature),
     provideState(userSettingsFeature),
+    provideState(userProfileFeature),
     provideEffects(
       RegisterEffects,
       LoginEffects,
