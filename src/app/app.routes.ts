@@ -9,6 +9,7 @@ import { ArticleComponent } from './article/components/article.component';
 import { CreateArticleComponent } from './create-article/components/create-article/create-article.component';
 import { EditArticleComponent } from './edit-article/components/edit-article/edit-article.component';
 import { UserSettingsComponent } from './user-settings/components/user-settings/user-setting.component';
+import { UserProfileComponent } from './user-profile/components/user-profile/user-profile.component';
 
 export const routes: Routes = [
   { path: '', component: GlobalFeedComponent },
@@ -20,4 +21,6 @@ export const routes: Routes = [
   { path: 'articles/new', component: CreateArticleComponent },
   { path: 'articles/:slug/edit', component: EditArticleComponent },
   { path: 'articles/:slug', component: ArticleComponent },
+  { path: 'profiles/:slug/favorites', component: UserProfileComponent },
+  { path: 'profiles/:slug', component: UserProfileComponent },
 ];
