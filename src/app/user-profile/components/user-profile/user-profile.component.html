@@ -1,1 +1,51 @@
-USER PROFILE
+@if (userProfile$ | async; as userProfile) {
+<div class="profile-page">
+  <div class="user-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <img [src]="userProfile.image" alt="User image" width="200" height="200">
+          <h4>{{userProfile.username}}</h4>
+          <p>{{userProfile.bio}}</p>
+          <div>
+            @if (isCurrentUserProfile$ | async) {
+            <a [routerLink]="['/settings']" class="btn btn-sm btn-outline-secondary action-btn">
+              Edit Profile Settings
+            </a>
+            }
+            @else {
+            <a class="btn btn-sm btn-outline-secondary action-btn">
+              <i class="ion-plus-round"></i>
+              &nbsp; Follow {{userProfile.username}}
+            </a>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1">
+        <div class="articles-toggle">
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item">
+              <a [routerLink]="['/profiles', userProfile.username]" class="nav-link" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                My Posts
+              </a>
+            </li>
+            <li class="nav-item">
+              <a [routerLink]="['/profiles', userProfile.username, 'favorites']" class="nav-link"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                Favorites Posts
+              </a>
+            </li>
+          </ul>
+        </div>
+        <mc-feed [apiUrl]="getApiUrl()"></mc-feed>
+      </div>
+    </div>
+  </div>
+</div>
+}

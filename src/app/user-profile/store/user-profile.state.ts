@@ -7,7 +7,7 @@ import { userProfileActions } from './user-profile.actions';
 const initialState: UserProfileStateInterface = {
   isLoading: false,
   profile: null,
-  errors: null,
+  error: null,
 };
 
 export const userProfileFeature = createFeature({
@@ -15,23 +15,23 @@ export const userProfileFeature = createFeature({
   reducer: createReducer(
     initialState,
     on(
-      userProfileActions.getProfile,
+      userProfileActions.getUserProfile,
       (state): UserProfileStateInterface => ({
         ...state,
         isLoading: true,
       })
     ),
     on(
-      userProfileActions.getProfileSuccess,
+      userProfileActions.getUserProfileSuccess,
       (state, action): UserProfileStateInterface => ({
         ...state,
         isLoading: false,
-        errors: null,
+        error: null,
         profile: action.profile,
       })
     ),
     on(
-      userProfileActions.getProfileFailure,
+      userProfileActions.getUserProfileFailure,
       (state): UserProfileStateInterface => ({
         ...state,
         isLoading: false,

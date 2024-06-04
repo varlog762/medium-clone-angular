@@ -5,8 +5,8 @@ import { ProfileInterface } from '../../shared/types/profile.interface';
 export const userProfileActions = createActionGroup({
   source: 'User Profile',
   events: {
-    'Get profile': props<{ slug: string }>(),
-    'Get profile success': props<{ profile: ProfileInterface }>(),
-    'Get profile failure': emptyProps(),
+    'Get user profile': props<{ slug: string }>(),
+    'Get user profile success': props<{ profile: ProfileInterface }>(),
+    'Get user profile failure': emptyProps(),
   },
 });

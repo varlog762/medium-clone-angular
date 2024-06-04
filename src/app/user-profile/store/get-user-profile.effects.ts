@@ -9,14 +9,14 @@ import { userProfileActions } from './user-profile.actions';
 export class GetUserProfileEffects {
   getUserProfile$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(userProfileActions.getProfile),
+      ofType(userProfileActions.getUserProfile),
       switchMap(({ slug }) => {
         return this.userProfileService.getUserProfile(slug).pipe(
           map(profile => {
-            return userProfileActions.getProfileSuccess({ profile });
+            return userProfileActions.getUserProfileSuccess({ profile });
           }),
           catchError(() => {
-            return of(userProfileActions.getProfileFailure());
+            return of(userProfileActions.getUserProfileFailure());
           })
         );
       })
