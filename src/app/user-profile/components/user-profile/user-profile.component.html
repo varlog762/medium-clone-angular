@@ -4,7 +4,8 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-10 offset-md-1">
-          <img [src]="userProfile.image" alt="User image" width="200" height="200">
+          <img [src]="userProfile.image || '../../../../assets/images/default-user.png'" alt="User image" width="200"
+            height="200">
           <h4>{{userProfile.username}}</h4>
           <p>{{userProfile.bio}}</p>
           <div>
