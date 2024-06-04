@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, catchError, of, map } from 'rxjs';
 
-import { UserProfileService } from '../services/user-profile.service';
+import { GetUserProfileService } from '../services/get-user-profile.service';
 import { userProfileActions } from './user-profile.actions';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class GetUserProfileEffects {
     this.actions$.pipe(
       ofType(userProfileActions.getUserProfile),
       switchMap(({ slug }) => {
-        return this.userProfileService.getUserProfile(slug).pipe(
+        return this.getUserProfileService.getUserProfile(slug).pipe(
           map(profile => {
             return userProfileActions.getUserProfileSuccess({ profile });
           }),
@@ -25,6 +25,6 @@ export class GetUserProfileEffects {
 
   constructor(
     private actions$: Actions,
-    private userProfileService: UserProfileService
+    private getUserProfileService: GetUserProfileService
   ) {}
 }

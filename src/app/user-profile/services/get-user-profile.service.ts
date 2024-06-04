@@ -8,7 +8,7 @@ import { GetProfileResponseInterface } from '../types/get-profile-response.inter
 @Injectable({
   providedIn: 'root',
 })
-export class UserProfileService {
+export class GetUserProfileService {
   constructor(private http: HttpClient) {}
 
   getUserProfile(slug: string): Observable<ProfileInterface> {
