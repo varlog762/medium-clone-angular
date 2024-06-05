@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
-import { ProfileInterface } from '../../shared/types/profile.interface';
-import { GetProfileResponseInterface } from '../types/get-profile-response.interface';
+import { ProfileInterface } from '../../types/profile.interface';
+import { GetProfileResponseInterface } from '../../../user-profile/types/get-profile-response.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FollowUserService {
+export class AddToFollowService {
   constructor(private http: HttpClient) {}
 
   followUser(slug: string): Observable<ProfileInterface> {
