@@ -17,6 +17,7 @@ import { authFeature } from '../../../auth/store/auth.state';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { FeedComponent } from '../../../shared/feed/components/feed.component';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
+import { AddToFollowComponent } from '../../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
 
 @Component({
   selector: 'mc-user-profile',
@@ -27,6 +28,7 @@ import { LoadingComponent } from '../../../shared/loading/loading.component';
     RouterLinkActive,
     FeedComponent,
     LoadingComponent,
+    AddToFollowComponent,
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',
@@ -102,17 +104,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     return (this.apiUrl = isFavorited
       ? `/articles?favorited=${this.slug}`
       : `/articles?author=${this.slug}`);
-  }
-
-  handleFollowing(): void {
-    this.store.dispatch(
-      userProfileActions.followUser({
-        slug: this.slug,
-        isFollowed: this.isFollowed,
-      })
-    );
-
-    this.isFollowed = !this.isFollowed;
   }
 
   ngOnDestroy(): void {

@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, catchError, of, map } from 'rxjs';
 
-import { userProfileActions } from '../../../user-profile/store/user-profile.actions';
 import { ProfileInterface } from '../../types/profile.interface';
 import { AddToFollowService } from '../services/add-to-follow.service';
+import { addToFollowActions } from './add-to-follow.actions';
 
 @Injectable()
 export class AddToFollowEffects {
   addToFollow$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(userProfileActions.followUser),
+      ofType(addToFollowActions.followUser),
       switchMap(({ slug, isFollowed }) => {
         const stream$ = isFollowed
           ? this.addToFollowService.unfollowUser(slug)
@@ -18,10 +18,10 @@ export class AddToFollowEffects {
 
         return stream$.pipe(
           map((profile: ProfileInterface) => {
-            return userProfileActions.followUserSuccess({ profile });
+            return addToFollowActions.followUserSuccess({ profile });
           }),
           catchError(() => {
-            return of(userProfileActions.followUserFailure());
+            return of(addToFollowActions.followUserFailure());
           })
         );
       })

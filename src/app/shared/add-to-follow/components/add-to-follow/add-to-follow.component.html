@@ -1,0 +1,10 @@
+<button class="btn btn-sm action-btn" [class.btn-outline-secondary]="!isFollowed" [class.btn-secondary]="isFollowed"
+  (click)="handleFollowing()">
+  <i class="ion-plus-round"></i>
+  @if (isFollowed) {
+  &nbsp; Unfollow {{usernameProps}}
+  }
+  @else {
+  &nbsp; Follow {{usernameProps}}
+  }
+</button>

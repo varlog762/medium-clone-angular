@@ -12,15 +12,20 @@
           <a [routerLink]="['/profiles', article.author.username]">{{article.author.username}}</a>
           <span class="date">{{article.createdAt}}</span>
         </div>
-        @if (isAuthor$ | async) {
         <span>
+          @if (isAuthor$ | async) {
           <a [routerLink]="['/articles', article.slug, 'edit']" class="btn btn-outline-secondary btn-sm">
             <i class="ion-edit"></i>
             Edit Article
           </a>
-          <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">Delete Article</button>
+          <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">
+            <i class="ion-trash-a"></i>
+            Delete Article</button>
+          } @else {
+          <mc-add-to-follow [isFollwed]="article.author.following"
+            [username]="article.author.username"></mc-add-to-follow>
+          }
         </span>
-        }
       </div>
     </div>
     }

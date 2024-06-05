@@ -12,6 +12,7 @@ import { authFeature } from '../../auth/store/auth.state';
 import { LoadingComponent } from '../../shared/loading/loading.component';
 import { ErrorMessageComponent } from '../../shared/error-message/error-message.component';
 import { TagListCompoinent } from '../../shared/tag-list/tag-list.component';
+import { AddToFollowComponent } from '../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
 
 @Component({
   selector: 'mc-article',
@@ -22,6 +23,7 @@ import { TagListCompoinent } from '../../shared/tag-list/tag-list.component';
     LoadingComponent,
     ErrorMessageComponent,
     TagListCompoinent,
+    AddToFollowComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',

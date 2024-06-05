@@ -18,15 +18,7 @@
             </a>
             }
             @else {
-            <a class="btn btn-sm btn-outline-secondary action-btn" (click)="handleFollowing()">
-              <i class="ion-plus-round"></i>
-              @if (isFollowed) {
-              &nbsp; Unfollow {{userProfile.username}}
-              }
-              @else {
-              &nbsp; Follow {{userProfile.username}}
-              }
-            </a>
+            <mc-add-to-follow [isFollwed]="isFollowed" [username]="userProfile.username"></mc-add-to-follow>
             }
           </div>
         </div>

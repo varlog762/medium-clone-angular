@@ -9,27 +9,23 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/articles/new']">
           <i class="ion-compose"></i>
-          &nbsp; New Post
+          &nbsp;New Post
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/settings']">
           <i class="ion-gear-a"></i>
-          &nbsp; Settings
+          &nbsp;Settings
         </a>
       </li>
       <li class="nav-item">
-        <a
-          class="nav-link"
-          [routerLink]="[
+        <a class="nav-link" [routerLink]="[
             '/profiles',
             (currentUser$ | async)?.username ?? 'User'
           ]">
-          <img
-            class="user-pic"
-            src="../../../../assets/images/default-user.png" />
+          <img class="user-pic" src="../../../../assets/images/default-user.png" />
           <!-- <img class="user-pic" [src]="(currentUser$ | async)?.image" /> -->
-          &nbsp; {{ (currentUser$ | async)?.username ?? 'User' }}
+          &nbsp;{{ (currentUser$ | async)?.username ?? 'User' }}
         </a>
       </li>
 
