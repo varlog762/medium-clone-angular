@@ -1,4 +1,7 @@
-@if (userProfile) {
+@if (isLoading$ | async) {
+<mc-loading></mc-loading>
+}
+@else if (userProfile) {
 <div class="profile-page">
   <div class="user-info">
     <div class="container">

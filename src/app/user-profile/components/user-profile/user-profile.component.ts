@@ -16,11 +16,18 @@ import { userProfileFeature } from '../../store/user-profile.state';
 import { authFeature } from '../../../auth/store/auth.state';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { FeedComponent } from '../../../shared/feed/components/feed.component';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
 
 @Component({
   selector: 'mc-user-profile',
   standalone: true,
-  imports: [AsyncPipe, RouterLink, RouterLinkActive, FeedComponent],
+  imports: [
+    AsyncPipe,
+    RouterLink,
+    RouterLinkActive,
+    FeedComponent,
+    LoadingComponent,
+  ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',
 })
