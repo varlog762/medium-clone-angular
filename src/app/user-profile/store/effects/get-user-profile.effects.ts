@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, catchError, of, map } from 'rxjs';
 
-import { GetUserProfileService } from '../services/get-user-profile.service';
-import { userProfileActions } from './user-profile.actions';
+import { GetUserProfileService } from '../../services/get-user-profile.service';
+import { userProfileActions } from '../user-profile.actions';
 
 @Injectable()
 export class GetUserProfileEffects {

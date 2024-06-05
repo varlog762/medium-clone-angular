@@ -1,4 +1,4 @@
-@if (userProfile$ | async; as userProfile) {
+@if (userProfile) {
 <div class="profile-page">
   <div class="user-info">
     <div class="container">
@@ -15,9 +15,14 @@
             </a>
             }
             @else {
-            <a class="btn btn-sm btn-outline-secondary action-btn">
+            <a class="btn btn-sm btn-outline-secondary action-btn" (click)="handleFollowing()">
               <i class="ion-plus-round"></i>
+              @if (isFollowed) {
+              &nbsp; Unfollow {{userProfile.username}}
+              }
+              @else {
               &nbsp; Follow {{userProfile.username}}
+              }
             </a>
             }
           </div>

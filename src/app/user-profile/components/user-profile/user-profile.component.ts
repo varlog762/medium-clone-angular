@@ -26,7 +26,9 @@ import { FeedComponent } from '../../../shared/feed/components/feed.component';
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
   slug!: string;
-  userProfile$!: Observable<ProfileInterface | null>;
+  userProfile!: ProfileInterface;
+  userProfileSubscription!: Subscription;
+  isFollowed!: boolean;
   isLoading$!: Observable<boolean>;
   error$!: Observable<string | null>;
   apiUrl!: string;
@@ -46,9 +48,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   initializeValues(): void {
     this.slug = this.route.snapshot.paramMap.get('slug') as string;
-    this.userProfile$ = this.store.pipe(
-      select(userProfileFeature.selectProfile)
-    );
     this.isLoading$ = this.store.pipe(
       select(userProfileFeature.selectIsLoading)
     );
@@ -79,6 +78,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         this.fetchUserProfile();
       }
     );
+    this.userProfileSubscription = this.store
+      .pipe(select(userProfileFeature.selectProfile), filter(Boolean))
+      .subscribe((userProfile: ProfileInterface) => {
+        this.userProfile = userProfile;
+        this.isFollowed = userProfile.following;
+      });
   }
 
   fetchUserProfile(): void {
@@ -92,7 +97,19 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       : `/articles?author=${this.slug}`);
   }
 
+  handleFollowing(): void {
+    this.store.dispatch(
+      userProfileActions.followUser({
+        slug: this.slug,
+        isFollowed: this.isFollowed,
+      })
+    );
+
+    this.isFollowed = !this.isFollowed;
+  }
+
   ngOnDestroy(): void {
     this.routParamsSubscription.unsubscribe();
+    this.userProfileSubscription.unsubscribe();
   }
 }

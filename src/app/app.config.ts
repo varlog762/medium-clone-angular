@@ -30,8 +30,9 @@ import { userSettingsFeature } from './user-settings/store/user-setting.state';
 import { LogoutEffects } from './auth/store/effects/logout.effects';
 import { AddToFavoriteEffects } from './shared/add-to-favorites/store/effects/add-to-favorites.effects';
 import { RemoveFromFavoritesEffects } from './shared/add-to-favorites/store/effects/remove-from-favorites.effects';
-import { GetUserProfileEffects } from './user-profile/store/get-user-profile.effects';
+import { GetUserProfileEffects } from './user-profile/store/effects/get-user-profile.effects';
 import { userProfileFeature } from './user-profile/store/user-profile.state';
+import { FollowUserEffects } from './user-profile/store/effects/follow-user.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -63,7 +64,8 @@ export const appConfig: ApplicationConfig = {
       LogoutEffects,
       AddToFavoriteEffects,
       RemoveFromFavoritesEffects,
-      GetUserProfileEffects
+      GetUserProfileEffects,
+      FollowUserEffects
     ),
     provideStoreDevtools({
       maxAge: 25,
