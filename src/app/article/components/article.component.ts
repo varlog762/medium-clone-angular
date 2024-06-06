@@ -13,6 +13,7 @@ import { LoadingComponent } from '../../shared/loading/loading.component';
 import { ErrorMessageComponent } from '../../shared/error-message/error-message.component';
 import { TagListCompoinent } from '../../shared/tag-list/tag-list.component';
 import { AddToFollowComponent } from '../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
+import { AddToFavoritesComponent } from '../../shared/add-to-favorites/components/add-to-favorites/add-to-favorites.component';
 
 @Component({
   selector: 'mc-article',
@@ -24,6 +25,7 @@ import { AddToFollowComponent } from '../../shared/add-to-follow/components/add-
     ErrorMessageComponent,
     TagListCompoinent,
     AddToFollowComponent,
+    AddToFavoritesComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',

@@ -15,6 +15,7 @@ export class AddToFavoritesComponent implements OnInit {
   @Input('isFavorited') isFavoritedProps!: boolean;
   @Input('articleSlug') articleSlugProps!: string;
   @Input('favoritesCount') favoritesCountProps!: number;
+  @Input('isBigButton') isBigButtonProps!: boolean;
 
   favoritesCount!: number;
   isFavorited!: boolean;

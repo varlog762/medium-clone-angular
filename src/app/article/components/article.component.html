@@ -24,6 +24,8 @@
           } @else {
           <mc-add-to-follow [isFollwed]="article.author.following"
             [username]="article.author.username"></mc-add-to-follow>
+          <mc-add-to-favorites [isFavorited]="article.favorited" [articleSlug]="article.slug"
+            [favoritesCount]="article.favoritesCount" [isBigButton]="true"></mc-add-to-favorites>
           }
         </span>
       </div>
