@@ -49,5 +49,35 @@
       </div>
       }
     </div>
+    <hr>
+    @if (article) {
+    <div class="article-actions">
+      <div class="article-meta">
+        <a [routerLink]="['/profile', article.author.username]">
+          <img [src]="article.author.image || '../../../../assets/images/default-user.png'" alt="User image">
+        </a>
+        <div class="info">
+          <a [routerLink]="['/profile', article.author.username]" class="author">{{article.author.username}}</a>
+          <span class="date">{{article.createdAt}}</span>
+        </div>
+        <span>
+          @if (isAuthor$ | async) {
+          <a [routerLink]="['/articles', article.slug, 'edit']" class="btn btn-outline-secondary btn-sm">
+            <i class="ion-edit"></i>
+            Edit Article
+          </a>
+          <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">
+            <i class="ion-trash-a"></i>
+            Delete Article</button>
+          } @else {
+          <mc-add-to-follow [isFollwed]="article.author.following"
+            [username]="article.author.username"></mc-add-to-follow>
+          <mc-add-to-favorites [isBigButton]="true" [isFavorited]="article.favorited"
+            [favoritesCount]="article.favoritesCount" [articleSlug]="article.slug"></mc-add-to-favorites>
+          }
+        </span>
+      </div>
+    </div>
+    }
   </div>
 </div>
