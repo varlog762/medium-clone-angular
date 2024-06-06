@@ -5,7 +5,7 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { GlobalFeedComponent } from './global-feed/components/global-feed/global-feed.component';
 import { YourFeedComponent } from './your-feed/components/your-feed.component';
 import { TagFeedComponent } from './tag-feed/components/tag-feed.component';
-import { ArticleComponent } from './article/components/article.component';
+import { ArticleComponent } from './article/components/article/article.component';
 import { CreateArticleComponent } from './create-article/components/create-article/create-article.component';
 import { EditArticleComponent } from './edit-article/components/edit-article/edit-article.component';
 import { UserSettingsComponent } from './user-settings/components/user-settings/user-setting.component';

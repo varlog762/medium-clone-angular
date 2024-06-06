@@ -4,16 +4,16 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
 
-import { ArticleInterface } from '../../shared/types/article.interface';
-import { CurrentUserInterface } from '../../shared/types/current-user.interface';
-import { articleFeature } from '../store/article.state';
-import { articleActions } from '../store/article.actions';
-import { authFeature } from '../../auth/store/auth.state';
-import { LoadingComponent } from '../../shared/loading/loading.component';
-import { ErrorMessageComponent } from '../../shared/error-message/error-message.component';
-import { TagListCompoinent } from '../../shared/tag-list/tag-list.component';
-import { AddToFollowComponent } from '../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
-import { AddToFavoritesComponent } from '../../shared/add-to-favorites/components/add-to-favorites/add-to-favorites.component';
+import { ArticleInterface } from '../../../shared/types/article.interface';
+import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
+import { articleFeature } from '../../store/article.state';
+import { articleActions } from '../../store/article.actions';
+import { authFeature } from '../../../auth/store/auth.state';
+import { LoadingComponent } from '../../../shared/loading/loading.component';
+import { ErrorMessageComponent } from '../../../shared/error-message/error-message.component';
+import { TagListCompoinent } from '../../../shared/tag-list/tag-list.component';
+import { AddToFollowComponent } from '../../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
+import { AddToFavoritesComponent } from '../../../shared/add-to-favorites/components/add-to-favorites/add-to-favorites.component';
 
 @Component({
   selector: 'mc-article',
