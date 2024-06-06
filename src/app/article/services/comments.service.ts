@@ -21,4 +21,8 @@ export class CommentsService {
         )
       );
   }
+
+  addComment(slug: string) {
+    return this.http.post(`/articles/${slug}/comments`, {});
+  }
 }
