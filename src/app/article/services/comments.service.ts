@@ -22,7 +22,7 @@ export class CommentsService {
       );
   }
 
-  addComment(slug: string) {
+  addComment(slug: string, body) {
     return this.http.post(`/articles/${slug}/comments`, {});
   }
 }
