@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 
 import { DeleteArticleService } from '../../services/delete-article.service';
-import { articleActions } from '../article.actions';
+import { articleActions } from '../actions/article.actions';
 
 @Injectable()
 export class DeleteArticleEffects {

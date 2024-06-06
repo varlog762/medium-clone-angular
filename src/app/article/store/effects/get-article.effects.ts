@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError, of } from 'rxjs';
 
-import { articleActions } from '../article.actions';
+import { articleActions } from '../actions/article.actions';
 import { ArticleService as SharedArticleService } from '../../../shared/services/article.service';
 import { ArticleInterface } from '../../../shared/types/article.interface';
 

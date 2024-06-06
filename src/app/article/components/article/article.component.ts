@@ -7,7 +7,7 @@ import { Observable, Subscription, combineLatest, map } from 'rxjs';
 import { ArticleInterface } from '../../../shared/types/article.interface';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { articleFeature } from '../../store/article.state';
-import { articleActions } from '../../store/article.actions';
+import { articleActions } from '../../store/actions/article.actions';
 import { authFeature } from '../../../auth/store/auth.state';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { ErrorMessageComponent } from '../../../shared/error-message/error-message.component';
