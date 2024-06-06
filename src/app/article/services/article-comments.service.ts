@@ -11,7 +11,7 @@ import { GetSingleCommentResponseInterface } from '../types/get-single-comment-r
 @Injectable({
   providedIn: 'root',
 })
-export class CommentsService {
+export class ArticleCommentsService {
   constructor(private http: HttpClient) {}
 
   getComments(slug: string): Observable<CommentInterface[]> {
