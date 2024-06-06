@@ -1,5 +1,5 @@
 import { CommentInterface } from './comment.interface';
 
-export interface GetCommentsResponseInterface {
+export interface GetMultipleCommentsResponseInterface {
   comments: CommentInterface[];
 }
