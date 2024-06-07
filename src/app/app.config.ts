@@ -34,6 +34,7 @@ import { userProfileFeature } from './user-profile/store/user-profile.state';
 import { GetUserProfileEffects } from './user-profile/store/get-user-profile.effects';
 import { AddToFollowEffects } from './shared/add-to-follow/store/add-to-follow.effects';
 import { GetArticleCommentsEffects } from './article/store/effects/get-article-comments.effects';
+import { articleCommentsFeature } from './article/store/states/article-comments.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -50,6 +51,7 @@ export const appConfig: ApplicationConfig = {
     provideState(editArticleFeature),
     provideState(userSettingsFeature),
     provideState(userProfileFeature),
+    provideState(articleCommentsFeature),
     provideEffects(
       RegisterEffects,
       LoginEffects,
