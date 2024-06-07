@@ -14,6 +14,7 @@ import { CurrentUserInterface } from '../../../shared/types/current-user.interfa
 import { authFeature } from '../../../auth/store/auth.state';
 import { CommentInputInterface } from '../../types/comment-input.interface';
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
+import { CommentCardComponent } from '../component-card/comment-card.component';
 
 @Component({
   selector: 'mc-article-comments',
@@ -23,6 +24,7 @@ import { BackendErrorsInterface } from '../../../shared/types/backend-errors.int
     BackendErrorMessagesComponent,
     RouterLink,
     ReactiveFormsModule,
+    CommentCardComponent,
   ],
   templateUrl: './article-comments.component.html',
   styleUrl: './article-comments.component.scss',

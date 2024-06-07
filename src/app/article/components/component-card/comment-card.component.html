@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-block">
+    <p class="card-text">{{commentProps.body}}</p>
+  </div>
+  <div class="card-footer">
+    <a [routerLink]="['/profiles', commentProps.author.username]">
+      <img [src]="commentProps.author.image" class="comment-author-img" alt="Comment author image">
+    </a>
+    <a [routerLink]="['/profiles', commentProps.author.username]">{{commentProps.author.username}}</a>
+    <span class="date-posted">{{commentProps.createdAt | date: 'longDate'}}</span>
+    <span class="mod-options" (click)="deleteComment()">
+      <i class="ion-trash-a"></i>
+    </span>
+  </div>
+</div>

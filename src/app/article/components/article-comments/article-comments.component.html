@@ -7,17 +7,23 @@
     <mc-backend-error-messages [backendErrors]="errors$ | async"></mc-backend-error-messages>
     }
     @if (isLoggedIn$ | async) {
-    <form class="card comment-form" [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">
-      <fieldset>
-        <div class="card-block">
-          <textarea placeholder="Write a comment..." rows="3" class="form-control" formControlName="body"></textarea>
-        </div>
-        <div class="card-footer">
-          <img [src]="(currentUser$ | async)?.image" class="comment-author-img" alt="Comment author image">
-          <button type="submit" class="btn btn-sm btn-primary" [disabled]="isSubmitting$ | async">Post Comment</button>
-        </div>
-      </fieldset>
-    </form>
+    <div>
+      <form class="card comment-form" [formGroup]="addCommentForm" id="addCommentForm" (ngSubmit)="onSubmit()">
+        <fieldset>
+          <div class="card-block">
+            <textarea placeholder="Write a comment..." rows="3" class="form-control" formControlName="body"></textarea>
+          </div>
+          <div class="card-footer">
+            <img [src]="(currentUser$ | async)?.image" class="comment-author-img" alt="Comment author image">
+            <button type="submit" class="btn btn-sm btn-primary" [disabled]="isSubmitting$ | async">Post
+              Comment</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    @for (comment of articleComments$ | async; track comment.id) {
+    <mc-comment-card [articleSlug]="articleSlugProps" [comment]="comment"></mc-comment-card>
+    }
     } @else {
     <div><a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">Sign up</a> to add comments on this
       article.</div>

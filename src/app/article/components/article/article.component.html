@@ -52,11 +52,11 @@
     @if (article) {
     <div class="article-actions">
       <div class="article-meta">
-        <a [routerLink]="['/profile', article.author.username]">
+        <a [routerLink]="['/profiles', article.author.username]">
           <img [src]="article.author.image || '../../../../assets/images/default-user.png'" alt="User image">
         </a>
         <div class="info">
-          <a [routerLink]="['/profile', article.author.username]" class="author">{{article.author.username}}</a>
+          <a [routerLink]="['/profiles', article.author.username]" class="author">{{article.author.username}}</a>
           <span class="date">{{article.createdAt}}</span>
         </div>
         <span>
