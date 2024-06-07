@@ -63,6 +63,34 @@ export const articleCommentsFeature = createFeature({
       })
     ),
     on(
+      articleCommentsActions.deleteComment,
+      (state): ArticleCommentsStateInterface => ({
+        ...state,
+        isLoading: true,
+      })
+    ),
+    on(
+      articleCommentsActions.deleteCommentSuccess,
+      (state, action): ArticleCommentsStateInterface => {
+        const updatedCommentsArray = state.data?.filter(
+          comment => comment.id !== action.commentId
+        );
+
+        return {
+          ...state,
+          isLoading: false,
+          data: updatedCommentsArray ?? [],
+        };
+      }
+    ),
+    on(
+      articleCommentsActions.addCommentFailure,
+      (state): ArticleCommentsStateInterface => ({
+        ...state,
+        isLoading: false,
+      })
+    ),
+    on(
       routerNavigationAction,
       (state): ArticleCommentsStateInterface => initialState
     )
