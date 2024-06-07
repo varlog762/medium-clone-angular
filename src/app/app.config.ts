@@ -19,7 +19,7 @@ import { popularTagsFeature } from './shared/popular-tags/store/popular-tags.sta
 import { GetPopularTagsEffects } from './shared/popular-tags/store/get-popular-tags.effects';
 import { GetArticleEffects } from './article/store/effects/get-article.effects';
 import { GetArticleEffects as GetArticleForEditEffects } from './edit-article/store/effects/get-article.effects';
-import { articleFeature } from './article/store/article.state';
+import { articleFeature } from './article/store/states/article.state';
 import { DeleteArticleEffects } from './article/store/effects/delete-article.effects';
 import { CreateArticleEffects } from './create-article/store/create-article.effects';
 import { createArticleFeature } from './create-article/store/create-article.state';

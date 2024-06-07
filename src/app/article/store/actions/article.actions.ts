@@ -1,6 +1,6 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
-import { ArticleInterface } from '../../shared/types/article.interface';
+import { ArticleInterface } from '../../../shared/types/article.interface';
 
 export const articleActions = createActionGroup({
   source: 'Article',

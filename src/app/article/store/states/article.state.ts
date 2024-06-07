@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
-import { ArticleStateInterface } from '../types/article-state.interface';
-import { articleActions } from './article.actions';
+import { ArticleStateInterface } from '../../types/article-state.interface';
+import { articleActions } from '../actions/article.actions';
 import { routerNavigationAction } from '@ngrx/router-store';
 
 export const initialState: ArticleStateInterface = {
