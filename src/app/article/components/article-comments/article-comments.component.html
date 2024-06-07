@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xs-12 col-md-8 offset-md-2">
+    @if (isLoading$ | async) {
+    <div>Loading...</div>
+    }
+    <mc-backend-error-messages></mc-backend-error-messages>
+    @if (isLoggedIn$ | async) {
+    <form class="card comment-form" [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <div class="card-block">
+          <textarea placeholder="Write a comment..." rows="3" class="form-control" formControlName="body"></textarea>
+        </div>
+        <div class="card-footer">
+          <img [src]="(currentUser$ | async)?.image" class="comment-author-img" alt="Comment author image">
+          <button type="submit" class="btn btn-sm btn-primary">Post Comment</button>
+        </div>
+      </fieldset>
+    </form>
+    } @else {
+    <div><a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">Sign up</a> to add comments on this
+      article.</div>
+    }
+  </div>
+</div>

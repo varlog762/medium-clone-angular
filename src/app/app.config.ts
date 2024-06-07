@@ -35,6 +35,7 @@ import { GetUserProfileEffects } from './user-profile/store/get-user-profile.eff
 import { AddToFollowEffects } from './shared/add-to-follow/store/add-to-follow.effects';
 import { GetArticleCommentsEffects } from './article/store/effects/get-article-comments.effects';
 import { articleCommentsFeature } from './article/store/states/article-comments.state';
+import { AddArticleCommentEffects } from './article/store/effects/add-article-comment.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -69,7 +70,8 @@ export const appConfig: ApplicationConfig = {
       RemoveFromFavoritesEffects,
       GetUserProfileEffects,
       AddToFollowEffects,
-      GetArticleCommentsEffects
+      GetArticleCommentsEffects,
+      AddArticleCommentEffects
     ),
     provideStoreDevtools({
       maxAge: 25,

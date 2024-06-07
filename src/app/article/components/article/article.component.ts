@@ -14,6 +14,7 @@ import { ErrorMessageComponent } from '../../../shared/error-message/error-messa
 import { TagListCompoinent } from '../../../shared/tag-list/tag-list.component';
 import { AddToFollowComponent } from '../../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
 import { AddToFavoritesComponent } from '../../../shared/add-to-favorites/components/add-to-favorites/add-to-favorites.component';
+import { ArticleCommentsComponent } from '../article-comments/article-comments.component';
 
 @Component({
   selector: 'mc-article',
@@ -26,6 +27,7 @@ import { AddToFavoritesComponent } from '../../../shared/add-to-favorites/compon
     TagListCompoinent,
     AddToFollowComponent,
     AddToFavoritesComponent,
+    ArticleCommentsComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
