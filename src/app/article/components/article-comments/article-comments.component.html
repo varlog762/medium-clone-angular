@@ -3,7 +3,9 @@
     @if (isLoading$ | async) {
     <div>Loading...</div>
     }
-    <mc-backend-error-messages></mc-backend-error-messages>
+    @if (errors$ | async) {
+    <mc-backend-error-messages [backendErrors]="errors$ | async"></mc-backend-error-messages>
+    }
     @if (isLoggedIn$ | async) {
     <form class="card comment-form" [formGroup]="addCommentForm" (ngSubmit)="onSubmit()">
       <fieldset>
@@ -12,7 +14,7 @@
         </div>
         <div class="card-footer">
           <img [src]="(currentUser$ | async)?.image" class="comment-author-img" alt="Comment author image">
-          <button type="submit" class="btn btn-sm btn-primary">Post Comment</button>
+          <button type="submit" class="btn btn-sm btn-primary" [disabled]="isSubmitting$ | async">Post Comment</button>
         </div>
       </fieldset>
     </form>

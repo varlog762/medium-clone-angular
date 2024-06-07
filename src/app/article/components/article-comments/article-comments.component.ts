@@ -13,6 +13,7 @@ import { BackendErrorMessagesComponent } from '../../../shared/backend-error-mes
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { authFeature } from '../../../auth/store/auth.state';
 import { CommentInputInterface } from '../../types/comment-input.interface';
+import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
 
 @Component({
   selector: 'mc-article-comments',
@@ -30,7 +31,8 @@ export class ArticleCommentsComponent implements OnInit {
   @Input('articleSlug') articleSlugProps!: string;
 
   isLoading$!: Observable<boolean>;
-  error$!: Observable<string | null>;
+  isSubmitting$!: Observable<boolean>;
+  errors$!: Observable<BackendErrorsInterface | null>;
   articleComments$!: Observable<CommentInterface[] | null>;
   isLoggedIn$!: Observable<boolean | null>;
   currentUser$!: Observable<CurrentUserInterface>;
@@ -48,7 +50,10 @@ export class ArticleCommentsComponent implements OnInit {
     this.isLoading$ = this.store.pipe(
       select(articleCommentsFeature.selectIsLoading)
     );
-    this.error$ = this.store.pipe(select(articleCommentsFeature.selectError));
+    this.isSubmitting$ = this.store.pipe(
+      select(articleCommentsFeature.selectIsSubmitting)
+    );
+    this.errors$ = this.store.pipe(select(articleCommentsFeature.selectErrors));
     this.articleComments$ = this.store.pipe(
       select(articleCommentsFeature.selectData)
     );
@@ -78,5 +83,6 @@ export class ArticleCommentsComponent implements OnInit {
     };
 
     this.store.dispatch(articleCommentsActions.addComment(addCommentRequest));
+    this.addCommentForm.reset();
   }
 }

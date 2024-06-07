@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, of, catchError } from 'rxjs';
 
@@ -23,9 +24,13 @@ export class AddArticleCommentEffects {
           map((comment: CommentInterface) => {
             return articleCommentsActions.addCommentSuccess({ comment });
           }),
-          catchError(() => {
-            return of(articleCommentsActions.addCommentFailure());
-          })
+          catchError((errorResponse: HttpErrorResponse) =>
+            of(
+              articleCommentsActions.addCommentFailure({
+                errors: errorResponse.error.errors,
+              })
+            )
+          )
         );
       })
     )

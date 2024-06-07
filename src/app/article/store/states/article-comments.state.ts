@@ -6,7 +6,8 @@ import { articleCommentsActions } from '../actions/article-comments.actions';
 
 const initialState: ArticleCommentsStateInterface = {
   isLoading: false,
-  error: null,
+  isSubmitting: false,
+  errors: null,
   data: null,
 };
 
@@ -26,7 +27,7 @@ export const articleCommentsFeature = createFeature({
       (state, action): ArticleCommentsStateInterface => ({
         ...state,
         isLoading: false,
-        error: null,
+        errors: null,
         data: action.comments,
       })
     ),
@@ -35,7 +36,30 @@ export const articleCommentsFeature = createFeature({
       (state): ArticleCommentsStateInterface => ({
         ...state,
         isLoading: false,
-        data: null,
+      })
+    ),
+    on(
+      articleCommentsActions.addComment,
+      (state): ArticleCommentsStateInterface => ({
+        ...state,
+        isSubmitting: true,
+      })
+    ),
+    on(
+      articleCommentsActions.addCommentSuccess,
+      (state, action): ArticleCommentsStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        errors: null,
+        data: [...(state.data || []), action.comment],
+      })
+    ),
+    on(
+      articleCommentsActions.addCommentFailure,
+      (state, action): ArticleCommentsStateInterface => ({
+        ...state,
+        isSubmitting: false,
+        errors: action.errors,
       })
     ),
     on(
