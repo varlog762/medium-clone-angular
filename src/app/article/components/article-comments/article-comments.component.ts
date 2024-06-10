@@ -1,7 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
 import { filter } from 'rxjs/internal/operators/filter';
@@ -67,8 +72,8 @@ export class ArticleCommentsComponent implements OnInit {
   }
 
   initializeForm(): void {
-    this.addCommentForm = this.fb.group<CommentInputInterface>({
-      body: '',
+    this.addCommentForm = this.fb.group({
+      body: ['', Validators.required],
     });
   }
 
