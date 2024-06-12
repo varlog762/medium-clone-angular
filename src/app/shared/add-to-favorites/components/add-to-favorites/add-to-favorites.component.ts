@@ -1,17 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 import { addToFavoritesActions } from '../../store/add-to-favorites.actions';
+import { addToFavoritesFeature } from '../../store/add-to-favorites.state';
+import { ArticleInterface } from '../../../types/article.interface';
 
 @Component({
   selector: 'mc-add-to-favorites',
   standalone: true,
-  imports: [NgClass],
+  imports: [AsyncPipe],
   templateUrl: './add-to-favorites.component.html',
   styleUrl: './add-to-favorites.component.scss',
 })
-export class AddToFavoritesComponent implements OnInit {
+export class AddToFavoritesComponent implements OnInit, OnDestroy {
   @Input('isFavorited') isFavoritedProps!: boolean;
   @Input('articleSlug') articleSlugProps!: string;
   @Input('favoritesCount') favoritesCountProps!: number;
@@ -19,29 +22,47 @@ export class AddToFavoritesComponent implements OnInit {
 
   favoritesCount!: number;
   isFavorited!: boolean;
+  favoritesSubscription!: Subscription;
 
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.isFavorited = this.isFavoritedProps;
-    this.favoritesCount = this.favoritesCountProps;
+    this.initializeListeners();
+  }
+
+  initializeListeners(): void {
+    this.favoritesSubscription = this.store
+      .select(addToFavoritesFeature.selectArticles)
+      .subscribe((articles: ArticleInterface[]) => {
+        const targetArticle = articles.find(
+          (article: ArticleInterface) => article.slug === this.articleSlugProps
+        );
+
+        if (targetArticle) {
+          this.favoritesCount = targetArticle.favoritesCount;
+          this.isFavorited = targetArticle.favorited;
+        } else {
+          this.favoritesCount = this.favoritesCountProps;
+          this.isFavorited = this.isFavoritedProps;
+        }
+      });
   }
 
   handleLikes(): void {
     if (this.isFavorited) {
-      this.favoritesCount -= 1;
       this.store.dispatch(
         addToFavoritesActions.removeFromFavorites({
           slug: this.articleSlugProps,
         })
       );
     } else {
-      this.favoritesCount += 1;
       this.store.dispatch(
         addToFavoritesActions.addToFavorites({ slug: this.articleSlugProps })
       );
     }
+  }
 
-    this.isFavorited = !this.isFavorited;
+  ngOnDestroy(): void {
+    this.favoritesSubscription.unsubscribe();
   }
 }

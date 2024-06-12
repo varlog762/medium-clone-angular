@@ -37,6 +37,7 @@ import { GetArticleCommentsEffects } from './article/store/effects/get-article-c
 import { articleCommentsFeature } from './article/store/states/article-comments.state';
 import { AddArticleCommentEffects } from './article/store/effects/add-article-comment.effects';
 import { DeleteArticleCommentEffects } from './article/store/effects/delete-article-comment.effects';
+import { addToFavoritesFeature } from './shared/add-to-favorites/store/add-to-favorites.state';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -54,6 +55,7 @@ export const appConfig: ApplicationConfig = {
     provideState(userSettingsFeature),
     provideState(userProfileFeature),
     provideState(articleCommentsFeature),
+    provideState(addToFavoritesFeature),
     provideEffects(
       RegisterEffects,
       LoginEffects,

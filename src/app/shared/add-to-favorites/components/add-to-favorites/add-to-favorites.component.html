@@ -1,14 +1,10 @@
 <button type="button" class="btn btn-sm like-btn" [class.like-btn-active]="isFavorited" (click)="handleLikes()">
   <i class="ion-heart"></i>
   <span>
-    @if (isBigButtonProps) {
-    @if (isFavorited) {
-    &nbsp;Unfavorite article ({{favoritesCount}})
-    } @else {
-    &nbsp;Favorite article ({{favoritesCount}})
-    }
-    } @else {
-    &nbsp;{{favoritesCount}}
+    @if (isBigButtonProps) { @if (isFavorited) { &nbsp;Unfavorite article ({{
+    favoritesCount
+    }}) } @else { &nbsp;Favorite article ({{ favoritesCount }}) } } @else {
+    &nbsp;{{ favoritesCount }}
     }
   </span>
 </button>
