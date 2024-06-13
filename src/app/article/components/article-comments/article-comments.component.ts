@@ -17,9 +17,8 @@ import { articleCommentsFeature } from '../../store/states/article-comments.stat
 import { BackendErrorMessagesComponent } from '../../../shared/backend-error-messages/components/backend-error-messages.component';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { authFeature } from '../../../auth/store/auth.state';
-import { CommentInputInterface } from '../../types/comment-input.interface';
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
-import { CommentCardComponent } from '../component-card/comment-card.component';
+import { CommentCardComponent } from '../comment-card/comment-card.component';
 
 @Component({
   selector: 'mc-article-comments',

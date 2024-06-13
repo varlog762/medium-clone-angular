@@ -2,13 +2,12 @@
 <mc-loading></mc-loading>
 } @if (error$ | async) {
 <mc-error-message></mc-error-message>
-} @if (feed$ | async) { @for (article of (feed$ | async)?.articles; track
+} @if ((feed$ | async)) { @for (article of (feed$ | async)?.articles; track
 article.title) {
 <div class="article-preview">
   <div class="article-meta">
     <a [routerLink]="['/profiles', article.author.username]">
-      <!-- <img [src]="article.author.image" alt="Author logo" /> -->
-      <img src="../../../../assets/images/default-user.png" alt="Author logo" />
+      <img [src]="article.author.image || '../../../../assets/images/default-user.png'" alt="Author logo" />
     </a>
     <div class="info">
       <a [routerLink]="['/profiles', article.author.username]">
@@ -28,6 +27,12 @@ article.title) {
   </a>
 </div>
 }
+@if (((feed$ | async)?.articlesCount ?? 0) > limit) {
 <mc-pagination [total]="(feed$ | async)?.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage">
 </mc-pagination>
+} @else if (!((feed$ | async)?.articlesCount)) {
+<div>
+  <h4 class="nothing-here-title">There is nothing here at the moment</h4>
+</div>
+}
 }
