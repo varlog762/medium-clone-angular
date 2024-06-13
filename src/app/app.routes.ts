@@ -10,6 +10,7 @@ import { CreateArticleComponent } from './create-article/components/create-artic
 import { EditArticleComponent } from './edit-article/components/edit-article/edit-article.component';
 import { UserSettingsComponent } from './user-settings/components/user-settings/user-setting.component';
 import { UserProfileComponent } from './user-profile/components/user-profile/user-profile.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   { path: '', component: GlobalFeedComponent },
@@ -23,4 +24,5 @@ export const routes: Routes = [
   { path: 'articles/:slug', component: ArticleComponent },
   { path: 'profiles/:slug/favorites', component: UserProfileComponent },
   { path: 'profiles/:slug', component: UserProfileComponent },
+  { path: '**', component: PageNotFoundComponent },
 ];

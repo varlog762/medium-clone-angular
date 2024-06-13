@@ -1,0 +1,38 @@
+.not-found {
+  position: relative;
+  height: calc(100vh - 156px);
+  background: url('../../../assets/images/error-404.jpeg') no-repeat center
+    center / contain;
+
+  &-title {
+    padding-top: 15%;
+    font-weight: bold;
+    font-size: 44px;
+    letter-spacing: 3px;
+    text-align: center;
+  }
+
+  &-btn {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-35px);
+    border: none;
+    letter-spacing: 2px;
+    color: #fff;
+    background-color: #5cb85c;
+    padding: 0.25rem 15px;
+    font-size: 1.2rem;
+    border-radius: 0.2rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      border: 1px #5cb85c solid;
+      background-color: transparent;
+      color: #5cb85c;
+    }
+  }
+}
