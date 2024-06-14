@@ -24,7 +24,7 @@ export class AddToFollowComponent implements OnInit {
   handleFollowing(): void {
     this.store.dispatch(
       addToFollowActions.followUser({
-        slug: this.usernameProps,
+        username: this.usernameProps,
         isFollowed: this.isFollowed,
       })
     );

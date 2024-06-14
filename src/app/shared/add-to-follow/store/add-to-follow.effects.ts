@@ -11,12 +11,12 @@ export class AddToFollowEffects {
   addToFollow$ = createEffect(() =>
     this.actions$.pipe(
       ofType(addToFollowActions.followUser),
-      switchMap(({ slug, isFollowed }) => {
-        const stream$ = isFollowed
-          ? this.addToFollowService.unfollowUser(slug)
-          : this.addToFollowService.followUser(slug);
+      switchMap(({ username, isFollowed }) => {
+        const followStream$ = isFollowed
+          ? this.addToFollowService.unfollowUser(username)
+          : this.addToFollowService.followUser(username);
 
-        return stream$.pipe(
+        return followStream$.pipe(
           map((profile: ProfileInterface) => {
             return addToFollowActions.followUserSuccess({ profile });
           }),
