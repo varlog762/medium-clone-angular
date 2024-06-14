@@ -1,7 +1,9 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 import { addToFollowActions } from '../../store/add-to-follow.actions';
+import { addToFollowFeature } from '../../store/add-to-follow.state';
 
 @Component({
   selector: 'mc-add-to-follow',
@@ -10,15 +12,24 @@ import { addToFollowActions } from '../../store/add-to-follow.actions';
   templateUrl: './add-to-follow.component.html',
   styleUrl: './add-to-follow.component.scss',
 })
-export class AddToFollowComponent implements OnInit {
+export class AddToFollowComponent implements OnInit, OnDestroy {
   @Input('isFollwed') isFollowedProps!: boolean;
   @Input('username') usernameProps!: string;
 
   isFollowed!: boolean;
+  isFollowedSubscription!: Subscription;
   store = inject(Store);
 
   ngOnInit(): void {
-    this.isFollowed = this.isFollowedProps;
+    this.initializeListeners();
+  }
+
+  initializeListeners(): void {
+    this.isFollowedSubscription = this.store
+      .select(addToFollowFeature.selectIsFollowed)
+      .subscribe((isFollowed: boolean | null) => {
+        this.isFollowed = isFollowed ?? this.isFollowedProps;
+      });
   }
 
   handleFollowing(): void {
@@ -28,6 +39,9 @@ export class AddToFollowComponent implements OnInit {
         isFollowed: this.isFollowed,
       })
     );
-    this.isFollowed = !this.isFollowed;
+  }
+
+  ngOnDestroy(): void {
+    this.isFollowedSubscription.unsubscribe();
   }
 }
