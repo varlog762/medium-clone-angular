@@ -11,11 +11,13 @@
       <form class="card comment-form" [formGroup]="addCommentForm" id="addCommentForm" (ngSubmit)="onSubmit()">
         <fieldset>
           <div class="card-block">
-            <textarea placeholder="Write a comment..." rows="3" class="form-control" formControlName="body"></textarea>
+            <textarea id="commentBody" placeholder="Write a comment..." rows="3" class="form-control"
+              formControlName="body"></textarea>
           </div>
           <div class="card-footer">
             <img [src]="(currentUser$ | async)?.image" class="comment-author-img" alt="Comment author image">
-            <button type="submit" class="btn btn-sm btn-primary" [disabled]="isSubmitting$ | async">Post
+            <button type="submit" class="btn btn-sm btn-primary"
+              [disabled]="(isSubmitting$ | async) || body?.invalid">Post
               Comment</button>
           </div>
         </fieldset>

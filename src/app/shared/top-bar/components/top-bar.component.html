@@ -24,7 +24,7 @@
             (currentUser$ | async)?.username ?? 'User'
           ]">
           <img class="user-pic" [src]="(currentUser$ | async)?.image || '../../../../assets/images/default-user.png'" />
-          &nbsp;{{ (currentUser$ | async)?.username ?? 'User' }}
+          {{ (currentUser$ | async)?.username ?? 'User' }}
         </a>
       </li>
 

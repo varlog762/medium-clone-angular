@@ -76,6 +76,10 @@ export class ArticleCommentsComponent implements OnInit {
     });
   }
 
+  get body() {
+    return this.addCommentForm.get('body');
+  }
+
   fetchData(): void {
     this.store.dispatch(
       articleCommentsActions.getComments({ articleSlug: this.articleSlugProps })
