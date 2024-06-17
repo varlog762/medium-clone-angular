@@ -18,7 +18,8 @@
             </a>
             }
             @else {
-            <mc-add-to-follow [isFollwed]="isFollowed" [username]="userProfile.username"></mc-add-to-follow>
+            <mc-add-to-follow [isFollwed]="isFollowed" [username]="userProfile.username"
+              [isLoggedIn]="isLoggedIn$ | async"></mc-add-to-follow>
             }
           </div>
         </div>

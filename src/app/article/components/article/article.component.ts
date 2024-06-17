@@ -33,12 +33,13 @@ import { ArticleCommentsComponent } from '../article-comments/article-comments.c
   styleUrl: './article.component.scss',
 })
 export class ArticleComponent implements OnInit, OnDestroy {
-  public slug!: string | null;
-  public article!: ArticleInterface | null;
-  public articleSubscription!: Subscription;
-  public isLoading$!: Observable<boolean>;
-  public error$!: Observable<string | null>;
-  public isAuthor$!: Observable<boolean>;
+  slug!: string | null;
+  article!: ArticleInterface | null;
+  articleSubscription!: Subscription;
+  isLoading$!: Observable<boolean>;
+  error$!: Observable<string | null>;
+  isAuthor$!: Observable<boolean>;
+  isLoggedIn$!: Observable<boolean | null>;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 
@@ -52,6 +53,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.slug = this.route.snapshot.paramMap.get('slug');
     this.isLoading$ = this.store.select(articleFeature.selectIsLoading);
     this.error$ = this.store.select(articleFeature.selectError);
+    this.isLoggedIn$ = this.store.select(authFeature.selectIsLoggedIn);
     this.isAuthor$ = combineLatest([
       this.store.select(articleFeature.selectData),
       this.store.select(authFeature.selectCurrentUser),

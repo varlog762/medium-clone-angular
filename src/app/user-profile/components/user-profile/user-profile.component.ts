@@ -43,6 +43,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   apiUrl!: string;
   isCurrentUserProfile$!: Observable<boolean>;
   routParamsSubscription!: Subscription;
+  isLoggedIn$!: Observable<boolean | null>;
 
   constructor(
     private route: ActivatedRoute,
@@ -57,6 +58,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   initializeValues(): void {
     this.slug = this.route.snapshot.paramMap.get('slug') as string;
+    this.isLoggedIn$ = this.store.select(authFeature.selectIsLoggedIn);
     this.isLoading$ = this.store.pipe(
       select(userProfileFeature.selectIsLoading)
     );

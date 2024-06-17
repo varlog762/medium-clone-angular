@@ -22,6 +22,7 @@ import { PaginationComponent } from '../../../global-feed/components/pagination/
 import { TagListCompoinent } from '../../tag-list/tag-list.component';
 import { ConstantsEnum } from '../../enums/constants.enum';
 import { AddToFavoritesComponent } from '../../add-to-favorites/components/add-to-favorites/add-to-favorites.component';
+import { authFeature } from '../../../auth/store/auth.state';
 
 @Component({
   selector: 'mc-feed',
@@ -41,16 +42,15 @@ import { AddToFavoritesComponent } from '../../add-to-favorites/components/add-t
 export class FeedComponent implements OnInit, OnDestroy, OnChanges {
   @Input('apiUrl') apiUrl!: string;
 
-  public isLoading$!: Observable<boolean>;
-  public error$!: Observable<string | null>;
-  public feed$!: Observable<GetFeedResponseInterface | null>;
+  isLoading$!: Observable<boolean>;
+  error$!: Observable<string | null>;
+  feed$!: Observable<GetFeedResponseInterface | null>;
+  isLoggedIn$!: Observable<boolean | null>;
 
-  public limit = ConstantsEnum.LIMIT_ARTICLES_PER_PAGE;
-  public baseUrl!: string;
-  public currentPage!: number;
-  public paramsSubscribe$!: Subscription;
-
-  public testTagsCollection = ['angular', 'js', 'web-dev'];
+  limit = ConstantsEnum.LIMIT_ARTICLES_PER_PAGE;
+  baseUrl!: string;
+  currentPage!: number;
+  paramsSubscribe$!: Subscription;
 
   constructor(
     private store: Store,
@@ -68,6 +68,7 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
     this.error$ = this.store.select(feedFeature.selectError);
     this.feed$ = this.store.select(feedFeature.selectData);
     this.baseUrl = this.router.url.split('?')[0];
+    this.isLoggedIn$ = this.store.select(authFeature.selectIsLoggedIn);
   }
 
   initializeListeners(): void {

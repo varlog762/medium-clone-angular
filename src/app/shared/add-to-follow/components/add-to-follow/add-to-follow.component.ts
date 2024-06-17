@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { Router } from '@angular/router';
 
 import { addToFollowActions } from '../../store/add-to-follow.actions';
 import { addToFollowFeature } from '../../store/add-to-follow.state';
@@ -13,12 +14,14 @@ import { addToFollowFeature } from '../../store/add-to-follow.state';
   styleUrl: './add-to-follow.component.scss',
 })
 export class AddToFollowComponent implements OnInit, OnDestroy {
-  @Input('isFollwed') isFollowedProps!: boolean;
-  @Input('username') usernameProps!: string;
+  @Input({ alias: 'isFollwed' }) isFollowedProps!: boolean;
+  @Input({ alias: 'username' }) usernameProps!: string;
+  @Input({ alias: 'isLoggedIn' }) isLoggedInProps!: boolean | null;
 
   isFollowed!: boolean;
   isFollowedSubscription!: Subscription;
   store = inject(Store);
+  router = inject(Router);
 
   ngOnInit(): void {
     this.initializeListeners();
@@ -33,12 +36,16 @@ export class AddToFollowComponent implements OnInit, OnDestroy {
   }
 
   handleFollowing(): void {
-    this.store.dispatch(
-      addToFollowActions.followUser({
-        username: this.usernameProps,
-        isFollowed: this.isFollowed,
-      })
-    );
+    if (this.isLoggedInProps) {
+      this.store.dispatch(
+        addToFollowActions.followUser({
+          username: this.usernameProps,
+          isFollowed: this.isFollowed,
+        })
+      );
+    } else {
+      this.router.navigateByUrl('/login');
+    }
   }
 
   ngOnDestroy(): void {
