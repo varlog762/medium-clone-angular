@@ -28,8 +28,7 @@ import { editArticleFeature } from './edit-article/store/edit-article.state';
 import { UpdateCurrentUserEffects } from './auth/store/effects/update-current-user.effects';
 import { userSettingsFeature } from './user-settings/store/user-setting.state';
 import { LogoutEffects } from './auth/store/effects/logout.effects';
-import { AddToFavoriteEffects } from './shared/add-to-favorites/store/effects/add-to-favorites.effects';
-import { RemoveFromFavoritesEffects } from './shared/add-to-favorites/store/effects/remove-from-favorites.effects';
+import { AddToFavoriteEffects } from './shared/add-to-favorites/store/add-to-favorites.effects';
 import { userProfileFeature } from './user-profile/store/user-profile.state';
 import { GetUserProfileEffects } from './user-profile/store/get-user-profile.effects';
 import { AddToFollowEffects } from './shared/add-to-follow/store/add-to-follow.effects';
@@ -72,7 +71,6 @@ export const appConfig: ApplicationConfig = {
       UpdateCurrentUserEffects,
       LogoutEffects,
       AddToFavoriteEffects,
-      RemoveFromFavoritesEffects,
       GetUserProfileEffects,
       AddToFollowEffects,
       GetArticleCommentsEffects,

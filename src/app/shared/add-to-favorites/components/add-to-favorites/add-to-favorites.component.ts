@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/internal/Subscription';
 
@@ -19,12 +20,13 @@ export class AddToFavoritesComponent implements OnInit, OnDestroy {
   @Input('articleSlug') articleSlugProps!: string;
   @Input('favoritesCount') favoritesCountProps!: number;
   @Input('isBigButton') isBigButtonProps!: boolean;
+  @Input({ alias: 'isLoggedIn' }) isLoggedInProps!: boolean | null;
 
   favoritesCount!: number;
   isFavorited!: boolean;
   favoritesSubscription!: Subscription;
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.initializeListeners();
@@ -49,16 +51,15 @@ export class AddToFavoritesComponent implements OnInit, OnDestroy {
   }
 
   handleLikes(): void {
-    if (this.isFavorited) {
+    if (this.isLoggedInProps) {
       this.store.dispatch(
-        addToFavoritesActions.removeFromFavorites({
+        addToFavoritesActions.addToFavorites({
           slug: this.articleSlugProps,
+          isFavorited: this.isFavorited,
         })
       );
     } else {
-      this.store.dispatch(
-        addToFavoritesActions.addToFavorites({ slug: this.articleSlugProps })
-      );
+      this.router.navigateByUrl('/login');
     }
   }
 

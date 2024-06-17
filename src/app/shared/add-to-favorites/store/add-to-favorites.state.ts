@@ -42,36 +42,6 @@ export const addToFavoritesFeature = createFeature({
         isLoading: false,
       })
     ),
-    on(
-      addToFavoritesActions.removeFromFavorites,
-      (state): AddToFavoritesStateInterface => ({
-        ...state,
-        isLoading: true,
-      })
-    ),
-    on(
-      addToFavoritesActions.removeFromFavoritesSuccess,
-      (state, action): AddToFavoritesStateInterface => {
-        const filteredArticles = state.articles.filter(
-          article => article.slug !== action.article.slug
-        );
-
-        console.log(filteredArticles);
-
-        return {
-          ...state,
-          isLoading: false,
-          articles: [...filteredArticles, action.article],
-        };
-      }
-    ),
-    on(
-      addToFavoritesActions.removeFromFavoritesFailure,
-      (state): AddToFavoritesStateInterface => ({
-        ...state,
-        isLoading: false,
-      })
-    ),
     on(routerNavigationAction, (): AddToFavoritesStateInterface => initialState)
   ),
 });

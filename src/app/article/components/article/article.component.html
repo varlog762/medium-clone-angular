@@ -24,7 +24,8 @@
           <mc-add-to-follow [isFollwed]="article.author.following" [username]="article.author.username"
             [isLoggedIn]="isLoggedIn$| async"></mc-add-to-follow>
           <mc-add-to-favorites [isFavorited]="article.favorited" [articleSlug]="article.slug"
-            [favoritesCount]="article.favoritesCount" [isBigButton]="true"></mc-add-to-favorites>
+            [favoritesCount]="article.favoritesCount" [isBigButton]="true"
+            [isLoggedIn]="isLoggedIn$ | async"></mc-add-to-favorites>
           }
         </span>
       </div>
@@ -69,10 +70,11 @@
             <i class="ion-trash-a"></i>
             Delete Article</button>
           } @else {
-          <mc-add-to-follow [isFollwed]="article.author.following"
-            [username]="article.author.username"></mc-add-to-follow>
+          <mc-add-to-follow [isFollwed]="article.author.following" [username]="article.author.username"
+            [isLoggedIn]="isLoggedIn$ | async"></mc-add-to-follow>
           <mc-add-to-favorites [isBigButton]="true" [isFavorited]="article.favorited"
-            [favoritesCount]="article.favoritesCount" [articleSlug]="article.slug"></mc-add-to-favorites>
+            [favoritesCount]="article.favoritesCount" [articleSlug]="article.slug"
+            [isLoggedIn]="isLoggedIn$ | async"></mc-add-to-favorites>
           }
         </span>
       </div>
