@@ -13,7 +13,7 @@ article.title) {
       <a [routerLink]="['/profiles', article.author.username]">
         {{ article.author.username }}
       </a>
-      <span class="date">{{ article.createdAt }}</span>
+      <span class="date">{{ article.createdAt | date: 'medium' }}</span>
     </div>
     <div class="pull-xs-right">
       <mc-add-to-favorites [isFavorited]="article.favorited" [articleSlug]="article.slug"

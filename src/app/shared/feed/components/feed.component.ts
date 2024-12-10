@@ -6,7 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/internal/Observable';
@@ -19,7 +19,7 @@ import { feedFeature } from '../store/feed.state';
 import { ErrorMessageComponent } from '../../error-message/error-message.component';
 import { LoadingComponent } from '../../loading/loading.component';
 import { PaginationComponent } from '../../../global-feed/components/pagination/pagination.component';
-import { TagListCompoinent } from '../../tag-list/tag-list.component';
+import { TagListComponent } from '../../tag-list/tag-list.component';
 import { ConstantsEnum } from '../../enums/constants.enum';
 import { AddToFavoritesComponent } from '../../add-to-favorites/components/add-to-favorites/add-to-favorites.component';
 import { authFeature } from '../../../auth/store/auth.state';
@@ -29,11 +29,12 @@ import { authFeature } from '../../../auth/store/auth.state';
   standalone: true,
   imports: [
     AsyncPipe,
+    DatePipe,
     RouterLink,
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
-    TagListCompoinent,
+    TagListComponent,
     AddToFavoritesComponent,
   ],
   templateUrl: './feed.component.html',

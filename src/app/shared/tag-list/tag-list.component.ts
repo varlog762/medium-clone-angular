@@ -9,6 +9,6 @@ import { PopularTagType } from '../types/popular-tag.type';
   templateUrl: './tag-list.component.html',
   styleUrl: './tag-list.component.scss',
 })
-export class TagListCompoinent {
+export class TagListComponent {
   @Input('tags') tags!: PopularTagType[];
 }
