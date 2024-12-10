@@ -14,7 +14,7 @@ import { addToFollowFeature } from '../../store/add-to-follow.state';
   styleUrl: './add-to-follow.component.scss',
 })
 export class AddToFollowComponent implements OnInit, OnDestroy {
-  @Input({ alias: 'isFollwed' }) isFollowedProps!: boolean;
+  @Input({ alias: 'isFollowed' }) isFollowedProps!: boolean;
   @Input({ alias: 'username' }) usernameProps!: string;
   @Input({ alias: 'isLoggedIn' }) isLoggedInProps!: boolean | null;
 
