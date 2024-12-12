@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
@@ -21,6 +21,7 @@ import { ArticleCommentsComponent } from '../article-comments/article-comments.c
   standalone: true,
   imports: [
     AsyncPipe,
+    DatePipe,
     RouterLink,
     LoadingComponent,
     ErrorMessageComponent,
@@ -78,7 +79,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
       .select(articleFeature.selectData)
       .subscribe((article: ArticleInterface | null) => {
         this.article = article;
-        console.log(this.article?.body);
       });
   }
 

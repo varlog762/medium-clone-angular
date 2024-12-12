@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { CommentInterface } from '../../types/comment.interface';
 import { articleCommentsActions } from '../../store/actions/article-comments.actions';
 import { DatePipe } from '@angular/common';
+import { ConstantsEnum } from '../../../shared/enums/constants.enum';
 
 @Component({
   selector: 'mc-comment-card',
@@ -18,6 +19,8 @@ export class CommentCardComponent {
   @Input('articleSlug') articleSlugProps!: string;
 
   store = inject(Store);
+
+  readonly defaultUserImage = ConstantsEnum.DEFAULT_USER_IMAGE as string;
 
   deleteComment(): void {
     this.store.dispatch(

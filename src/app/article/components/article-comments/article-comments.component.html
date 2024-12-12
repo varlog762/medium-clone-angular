@@ -15,7 +15,8 @@
               formControlName="body"></textarea>
           </div>
           <div class="card-footer">
-            <img [src]="(currentUser$ | async)?.image" class="comment-author-img" alt="Comment author image">
+            <img [src]="(currentUser$ | async)?.image || defaultUserImage" class="comment-author-img"
+              alt="Comment author image">
             <button type="submit" class="btn btn-sm btn-primary"
               [disabled]="(isSubmitting$ | async) || body?.invalid">Post
               Comment</button>

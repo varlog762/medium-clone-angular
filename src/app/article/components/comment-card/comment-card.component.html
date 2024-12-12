@@ -4,10 +4,10 @@
   </div>
   <div class="card-footer">
     <a [routerLink]="['/profiles', commentProps.author.username]">
-      <img [src]="commentProps.author.image" class="comment-author-img" alt="Comment author image">
+      <img [src]="commentProps.author.image || defaultUserImage" class="comment-author-img" alt="Comment author image">
     </a>
     <a [routerLink]="['/profiles', commentProps.author.username]">{{commentProps.author.username}}</a>
-    <span class="date-posted">{{commentProps.createdAt | date: 'longDate'}}</span>
+    <span class="date-posted">{{commentProps.createdAt | date: 'medium'}}</span>
     <span class="mod-options" (click)="deleteComment()">
       <i class="ion-trash-a"></i>
     </span>

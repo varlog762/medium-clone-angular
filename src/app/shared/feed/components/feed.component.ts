@@ -48,7 +48,7 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
   feed$!: Observable<GetFeedResponseInterface | null>;
   isLoggedIn$!: Observable<boolean | null>;
 
-  limit = ConstantsEnum.LIMIT_ARTICLES_PER_PAGE;
+  limit = ConstantsEnum.LIMIT_ARTICLES_PER_PAGE as number;
   baseUrl!: string;
   currentPage!: number;
   paramsSubscribe$!: Subscription;

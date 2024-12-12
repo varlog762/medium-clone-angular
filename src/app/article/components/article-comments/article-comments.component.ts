@@ -19,6 +19,7 @@ import { CurrentUserInterface } from '../../../shared/types/current-user.interfa
 import { authFeature } from '../../../auth/store/auth.state';
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
 import { CommentCardComponent } from '../comment-card/comment-card.component';
+import { ConstantsEnum } from '../../../shared/enums/constants.enum';
 
 @Component({
   selector: 'mc-article-comments',
@@ -43,6 +44,8 @@ export class ArticleCommentsComponent implements OnInit {
   isLoggedIn$!: Observable<boolean | null>;
   currentUser$!: Observable<CurrentUserInterface>;
   addCommentForm!: FormGroup;
+
+  readonly defaultUserImage = ConstantsEnum.DEFAULT_USER_IMAGE as string;
 
   constructor(private store: Store, private fb: FormBuilder) {}
 
