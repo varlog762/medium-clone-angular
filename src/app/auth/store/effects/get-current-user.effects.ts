@@ -5,7 +5,7 @@ import { catchError, map, of, switchMap } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { authActions } from '../auth.actions';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
-import { PersistanceService } from '../../../shared/services/persistance.service';
+import { PersistenceService } from '../../../shared/services/persistence.service';
 
 @Injectable()
 export class GetCurrentUserEffects {
@@ -13,7 +13,7 @@ export class GetCurrentUserEffects {
     this.actions$.pipe(
       ofType(authActions.getCurrentUser),
       switchMap(() => {
-        const token = this.persistanceService.get('accessToken');
+        const token = this.persistenceService.get('accessToken');
 
         if (!token) {
           return of(authActions.getCurrentUserFailure());
@@ -32,6 +32,6 @@ export class GetCurrentUserEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private persistanceService: PersistanceService
+    private persistenceService: PersistenceService
   ) {}
 }

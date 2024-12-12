@@ -7,7 +7,7 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { authActions } from '../auth.actions';
 import { AuthService } from '../../services/auth.service';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
-import { PersistanceService } from '../../../shared/services/persistance.service';
+import { PersistenceService } from '../../../shared/services/persistence.service';
 
 @Injectable()
 export class LoginEffects {
@@ -17,7 +17,7 @@ export class LoginEffects {
       switchMap(({ request }) => {
         return this.authService.login(request).pipe(
           map((currentUser: CurrentUserInterface) => {
-            this.persistanceService.set('accessToken', currentUser.token);
+            this.persistenceService.set('accessToken', currentUser.token);
 
             return authActions.loginSuccess({ currentUser });
           }),
@@ -45,7 +45,7 @@ export class LoginEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private persistanceService: PersistanceService,
+    private persistenceService: PersistenceService,
     private router: Router
   ) {}
 }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
 import { tap } from 'rxjs/internal/operators/tap';
 
-import { PersistanceService } from '../../../shared/services/persistance.service';
+import { PersistenceService } from '../../../shared/services/persistence.service';
 import { authActions } from '../auth.actions';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class LogoutEffects {
       this.actions$.pipe(
         ofType(authActions.logout),
         tap(() => {
-          this.persistanceService.delete('accessToken');
+          this.persistenceService.delete('accessToken');
           this.router.navigateByUrl('/login');
         })
       ),
@@ -22,7 +22,7 @@ export class LogoutEffects {
 
   constructor(
     private actions$: Actions,
-    private persistanceService: PersistanceService,
+    private persistenceService: PersistenceService,
     private router: Router
   ) {}
 }
