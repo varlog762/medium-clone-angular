@@ -5,14 +5,15 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideMarkdown } from 'ngx-markdown';
 
 import { routes } from './app.routes';
 import { authFeature } from './auth/store/auth.state';
-import { urlInterceptor } from './shared/incterceptors/url.interceptor';
+import { urlInterceptor } from './shared/interceptors/url.interceptor';
 import { RegisterEffects } from './auth/store/effects/register.effects';
 import { LoginEffects } from './auth/store/effects/login.effects';
 import { GetCurrentUserEffects } from './auth/store/effects/get-current-user.effects';
-import { authInterceptor } from './shared/incterceptors/auth.interceptor';
+import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { GetFeedEffects } from './shared/feed/store/get-feed.effects';
 import { feedFeature } from './shared/feed/store/feed.state';
 import { popularTagsFeature } from './shared/popular-tags/store/popular-tags.state';
@@ -77,6 +78,7 @@ export const appConfig: ApplicationConfig = {
       AddArticleCommentEffects,
       DeleteArticleCommentEffects
     ),
+    provideMarkdown(),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

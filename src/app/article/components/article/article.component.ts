@@ -3,6 +3,7 @@ import { AsyncPipe, DatePipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { ArticleInterface } from '../../../shared/types/article.interface';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
@@ -29,6 +30,7 @@ import { ArticleCommentsComponent } from '../article-comments/article-comments.c
     AddToFollowComponent,
     AddToFavoritesComponent,
     ArticleCommentsComponent,
+    MarkdownModule,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
