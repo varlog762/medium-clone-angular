@@ -18,6 +18,7 @@ import { CurrentUserInterface } from '../../../shared/types/current-user.interfa
 import { FeedComponent } from '../../../shared/feed/components/feed.component';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { AddToFollowComponent } from '../../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
+import { ConstantsEnum } from '../../../shared/enums/constants.enum';
 
 @Component({
   selector: 'mc-user-profile',
@@ -44,6 +45,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   isCurrentUserProfile$!: Observable<boolean>;
   routParamsSubscription!: Subscription;
   isLoggedIn$!: Observable<boolean | null>;
+  defaultUserImage = ConstantsEnum.DEFAULT_USER_IMAGE;
 
   constructor(
     private route: ActivatedRoute,

@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 
 import { CurrentUserInterface } from '../../types/current-user.interface';
 import { authFeature } from '../../../auth/store/auth.state';
+import { ConstantsEnum } from '../../enums/constants.enum';
 
 @Component({
   selector: 'mc-top-bar',
@@ -15,9 +16,11 @@ import { authFeature } from '../../../auth/store/auth.state';
   styleUrl: './top-bar.component.scss',
 })
 export class TopBarComponent implements OnInit {
-  public isLoggedIn$!: Observable<boolean | null>;
-  public isAnonymous$!: Observable<boolean>;
-  public currentUser$!: Observable<CurrentUserInterface | null>;
+  isLoggedIn$!: Observable<boolean | null>;
+  isAnonymous$!: Observable<boolean>;
+  currentUser$!: Observable<CurrentUserInterface | null>;
+
+  defaultUserImage = ConstantsEnum.DEFAULT_USER_IMAGE;
 
   constructor(private store: Store) {}
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
 
 import { ArticleInputInterface } from '../types/article-input.interface';
 import { BackendErrorsInterface } from '../types/backend-errors.interface';
@@ -8,7 +9,7 @@ import { BackendErrorMessagesComponent } from '../backend-error-messages/compone
 @Component({
   selector: 'mc-article-form',
   standalone: true,
-  imports: [BackendErrorMessagesComponent, ReactiveFormsModule],
+  imports: [BackendErrorMessagesComponent, ReactiveFormsModule, MarkdownModule],
   templateUrl: './article-form.component.html',
   styleUrl: './article-form.component.scss',
 })

@@ -23,7 +23,7 @@
             '/profiles',
             (currentUser$ | async)?.username ?? 'User'
           ]">
-          <img class="user-pic" [src]="(currentUser$ | async)?.image || '../../../../assets/images/default-user.png'" />
+          <img class="user-pic" [src]="(currentUser$ | async)?.image || defaultUserImage" />
           {{ (currentUser$ | async)?.username ?? 'User' }}
         </a>
       </li>

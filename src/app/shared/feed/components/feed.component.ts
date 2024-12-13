@@ -53,6 +53,8 @@ export class FeedComponent implements OnInit, OnDestroy, OnChanges {
   currentPage!: number;
   paramsSubscribe$!: Subscription;
 
+  defaultUserImage = ConstantsEnum.DEFAULT_USER_IMAGE;
+
   constructor(
     private store: Store,
     private router: Router,

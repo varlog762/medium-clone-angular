@@ -16,6 +16,7 @@ import { TagListComponent } from '../../../shared/tag-list/tag-list.component';
 import { AddToFollowComponent } from '../../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
 import { AddToFavoritesComponent } from '../../../shared/add-to-favorites/components/add-to-favorites/add-to-favorites.component';
 import { ArticleCommentsComponent } from '../article-comments/article-comments.component';
+import { ConstantsEnum } from '../../../shared/enums/constants.enum';
 
 @Component({
   selector: 'mc-article',
@@ -43,6 +44,8 @@ export class ArticleComponent implements OnInit, OnDestroy {
   error$!: Observable<string | null>;
   isAuthor$!: Observable<boolean>;
   isLoggedIn$!: Observable<boolean | null>;
+
+  defaultUserImage = ConstantsEnum.DEFAULT_USER_IMAGE as string;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 
