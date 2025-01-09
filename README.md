@@ -1,27 +1,60 @@
 # The Blog
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+**The Blog** is a frontend project built as part of the [RealWorld](https://realworld-docs.netlify.app/) specification. It is implemented using **Angular (standalone API)** and **NgRx** for state management.
 
-## Development server
+## About the Project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The Blog is a platform where users can interact with blog posts and authors. The main features include:
 
-## Code scaffolding
+- **For all users**:  
+  - Browse and read blog posts.
+  
+- **For registered users**:  
+  - Write, edit, and delete their own posts (Markdown syntax supported).  
+  - Like posts.  
+  - Follow/unfollow other authors.  
+  - Edit their profile.  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project adheres to the RealWorld specification, which provides API endpoints, markup, styles, and requirements, leaving the implementation to the developer's chosen technologies.
 
-## Build
+## Technologies Used
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular**: A modern frontend framework leveraging standalone APIs.  
+- **NgRx**: A library for reactive state management using the Redux pattern.  
+- **Marked** and **ngx-markdown**: For parsing and rendering Markdown content.  
+- **Query-string**: For managing URL parameters.
 
-## Running unit tests
+## Installation and Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To run the project locally:
 
-## Running end-to-end tests
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd medium-clone-angular
+```
+2. Install dependencies:
+```bash
+npm install
+```
+3. Start the development server:
+```bash
+npm start
+```
+The application will be available at http://localhost:4200.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Scripts
 
-## Further help
+The project includes the following scripts in the package.json file:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **start:** Runs the development server.
+- **build:** Builds the project for production.
+- **watch:** Builds the project in watch mode.
+
+## Project Details
+
+This frontend implementation is part of the RealWorld specification. Learn more about the RealWorld project at [RealWorld Docs](https://realworld-docs.netlify.app/).
+
+## Acknowledgements
+
+Special thanks to the **RealWorld team** for providing a detailed and structured project specification, which serves as an excellent resource for learning and practice.
