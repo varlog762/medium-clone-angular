@@ -2,6 +2,9 @@
 
 **The Blog** is a frontend project built as part of the [RealWorld](https://realworld-docs.netlify.app/) specification. It is implemented using **Angular (standalone API)** and **NgRx** for state management.
 
+![SCR-20250109-pxwj](https://github.com/user-attachments/assets/25549270-2477-4141-8ca4-beb479499479)
+
+
 ## About the Project
 
 The Blog is a platform where users can interact with blog posts and authors. The main features include:
