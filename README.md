@@ -30,7 +30,7 @@ To run the project locally:
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/varlog762/medium-clone-angular.git
 cd medium-clone-angular
 ```
 2. Install dependencies:
