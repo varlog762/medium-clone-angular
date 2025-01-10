@@ -6,6 +6,7 @@ import { switchMap, map, of, catchError } from 'rxjs';
 import { ArticleCommentsService } from '../../services/article-comments.service';
 import { articleCommentsActions } from '../actions/article-comments.actions';
 import { CommentInterface } from '../../types/comment.interface';
+import { DefaultErrorValuesEnum } from '../../../shared/enums/default-error-values.enum';
 
 @Injectable()
 export class AddArticleCommentEffects {
@@ -27,7 +28,9 @@ export class AddArticleCommentEffects {
           catchError((errorResponse: HttpErrorResponse) =>
             of(
               articleCommentsActions.addCommentFailure({
-                errors: errorResponse.error.errors,
+                errors: errorResponse.error.errors ?? {
+                  comment: [DefaultErrorValuesEnum.DEFAULT_COMMENT_ERROR],
+                },
               })
             )
           )

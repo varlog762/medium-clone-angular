@@ -7,6 +7,7 @@ import { switchMap, map, catchError, of, tap } from 'rxjs';
 import { ArticleInterface } from '../../shared/types/article.interface';
 import { CreateArticleService } from '../services/create-article.service';
 import { createArticleActions } from './create-article.actions';
+import { DefaultErrorValuesEnum } from '../../shared/enums/default-error-values.enum';
 
 @Injectable()
 export class CreateArticleEffects {
@@ -21,7 +22,11 @@ export class CreateArticleEffects {
           catchError((errorResponse: HttpErrorResponse) =>
             of(
               createArticleActions.createArticleFailure({
-                errors: errorResponse.error.errors,
+                errors: errorResponse.error.errors ?? {
+                  createArticle: [
+                    DefaultErrorValuesEnum.DEFAULT_CREATE_ARTICLE_ERROR,
+                  ],
+                },
               })
             )
           )

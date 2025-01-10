@@ -8,6 +8,7 @@ import { authActions } from '../auth.actions';
 import { AuthService } from '../../services/auth.service';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { PersistenceService } from '../../../shared/services/persistence.service';
+import { DefaultErrorValuesEnum } from '../../../shared/enums/default-error-values.enum';
 
 @Injectable()
 export class LoginEffects {
@@ -21,13 +22,15 @@ export class LoginEffects {
 
             return authActions.loginSuccess({ currentUser });
           }),
-          catchError((errorResponse: HttpErrorResponse) =>
-            of(
-              authActions.registerFailure({
-                errors: errorResponse.error.errors,
+          catchError((errorResponse: HttpErrorResponse) => {
+            return of(
+              authActions.loginFailure({
+                errors: errorResponse?.error?.errors ?? {
+                  login: [DefaultErrorValuesEnum.DEFAULT_LOGIN_ERROR],
+                },
               })
-            )
-          )
+            );
+          })
         );
       })
     )

@@ -18,12 +18,7 @@ import { authActions } from '../../../auth/store/auth.actions';
 @Component({
   selector: 'mc-user-settings',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    LoadingComponent,
-    BackendErrorMessagesComponent,
-    AsyncPipe,
-  ],
+  imports: [ReactiveFormsModule, BackendErrorMessagesComponent, AsyncPipe],
   templateUrl: './user-setting.component.html',
   styleUrl: './user-setting.component.scss',
 })
@@ -31,7 +26,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   public currentUser!: CurrentUserInterface;
   public currentUserSubscription!: Subscription;
   public form!: FormGroup;
-  public isSubmiting$!: Observable<boolean>;
+  public isSubmitting$!: Observable<boolean>;
   public backendErrors$!: Observable<BackendErrorsInterface | null>;
 
   constructor(private fb: FormBuilder, private store: Store) {}
@@ -51,7 +46,7 @@ export class UserSettingsComponent implements OnInit, OnDestroy {
   }
 
   initializeValues(): void {
-    this.isSubmiting$ = this.store.select(
+    this.isSubmitting$ = this.store.select(
       userSettingsFeature.selectIsSubmitting
     );
     this.backendErrors$ = this.store.select(

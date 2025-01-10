@@ -8,6 +8,7 @@ import { authActions } from '../auth.actions';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { HttpErrorResponse } from '@angular/common/http';
 import { PersistenceService } from '../../../shared/services/persistence.service';
+import { DefaultErrorValuesEnum } from '../../../shared/enums/default-error-values.enum';
 
 @Injectable()
 export class RegisterEffects {
@@ -24,7 +25,9 @@ export class RegisterEffects {
           catchError((errorResponse: HttpErrorResponse) =>
             of(
               authActions.registerFailure({
-                errors: errorResponse.error.errors,
+                errors: errorResponse?.error?.errors ?? {
+                  register: [DefaultErrorValuesEnum.DEFAULT_REGISTER_ERROR],
+                },
               })
             )
           )

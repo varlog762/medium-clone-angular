@@ -6,6 +6,7 @@ import { switchMap, map, catchError, of } from 'rxjs';
 import { CurrentUserInterface } from '../../../shared/types/current-user.interface';
 import { AuthService } from '../../services/auth.service';
 import { authActions } from '../auth.actions';
+import { DefaultErrorValuesEnum } from '../../../shared/enums/default-error-values.enum';
 
 @Injectable()
 export class UpdateCurrentUserEffects {
@@ -20,7 +21,11 @@ export class UpdateCurrentUserEffects {
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
               authActions.updateCurrentUserFailure({
-                errors: errorResponse.error.errors,
+                errors: errorResponse.error.errors ?? {
+                  currentUser: [
+                    DefaultErrorValuesEnum.DEFAULT_UPDATE_CURRENT_USER_ERROR,
+                  ],
+                },
               })
             );
           })

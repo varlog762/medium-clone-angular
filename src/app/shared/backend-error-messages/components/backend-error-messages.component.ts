@@ -12,11 +12,11 @@ import { BackendErrorsInterface } from '../../types/backend-errors.interface';
 export class BackendErrorMessagesComponent implements OnInit {
   @Input() backendErrors!: BackendErrorsInterface | null;
 
-  public errorMesages!: string[];
+  public errorMessages!: string[];
 
   ngOnInit(): void {
     if (this.backendErrors) {
-      this.errorMesages = Object.keys(this.backendErrors).map(
+      this.errorMessages = Object.keys(this.backendErrors).map(
         (name: string) => {
           const messages = this.backendErrors
             ? this.backendErrors[name].join(', ')
