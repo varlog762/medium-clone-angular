@@ -3,7 +3,7 @@
 } @if (error$ | async) {
 <mc-error-message></mc-error-message>
 } @if ((feed$ | async)) { @for (article of (feed$ | async)?.articles; track
-article.title) {
+article.title + article.createdAt) {
 <div class="article-preview">
   <div class="article-meta">
     <a [routerLink]="['/profiles', article.author.username]">

@@ -1,0 +1,27 @@
+<div class="article-meta">
+  <div class="article-author-wrapper">
+    <a [routerLink]="['/profiles', article.author.username]">
+      <img [src]="article.author.image || defaultUserImage" alt="User image">
+    </a>
+    <div class="info">
+      <a [routerLink]="['/profiles', article.author.username]" class="author">{{article.author.username}}</a>
+      <span class="date">{{article.createdAt | date: 'medium'}}</span>
+    </div>
+  </div>
+  <div class="article-controls">
+    @if (isAuthor) {
+    <button class="btn btn-outline-secondary btn-sm" (click)="editArticleEvent.emit()">
+      <i class="ion-edit"></i>
+      Edit Article</button>
+    <button class="btn btn-outline-danger btn-sm" (click)="deleteArticleEvent.emit()">
+      <i class="ion-trash-a"></i>
+      Delete Article</button>
+    } @else {
+    <mc-add-to-follow [isFollowed]="article.author.following" [username]="article.author.username"
+      [isLoggedIn]="isLoggedIn"></mc-add-to-follow>
+    <mc-add-to-favorites [isBigButton]="true" [isFavorited]="article.favorited"
+      [favoritesCount]="article.favoritesCount" [articleSlug]="article.slug"
+      [isLoggedIn]="isLoggedIn"></mc-add-to-favorites>
+    }
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe, DatePipe } from '@angular/common';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
 import { MarkdownModule } from 'ngx-markdown';
@@ -13,24 +13,19 @@ import { authFeature } from '../../../auth/store/auth.state';
 import { LoadingComponent } from '../../../shared/loading/loading.component';
 import { ErrorMessageComponent } from '../../../shared/error-message/error-message.component';
 import { TagListComponent } from '../../../shared/tag-list/tag-list.component';
-import { AddToFollowComponent } from '../../../shared/add-to-follow/components/add-to-follow/add-to-follow.component';
-import { AddToFavoritesComponent } from '../../../shared/add-to-favorites/components/add-to-favorites/add-to-favorites.component';
 import { ArticleCommentsComponent } from '../article-comments/article-comments.component';
-import { ConstantsEnum } from '../../../shared/enums/constants.enum';
+import { ArticleMetaComponent } from '../article-meta/article-meta.component';
 
 @Component({
   selector: 'mc-article',
   standalone: true,
   imports: [
     AsyncPipe,
-    DatePipe,
-    RouterLink,
     LoadingComponent,
     ErrorMessageComponent,
     TagListComponent,
-    AddToFollowComponent,
-    AddToFavoritesComponent,
     ArticleCommentsComponent,
+    ArticleMetaComponent,
     MarkdownModule,
   ],
   templateUrl: './article.component.html',
@@ -46,8 +41,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
   error$!: Observable<string | null>;
   isAuthor$!: Observable<boolean>;
   isLoggedIn$!: Observable<boolean | null>;
-
-  defaultUserImage = ConstantsEnum.DEFAULT_USER_IMAGE as string;
 
   constructor(private store: Store, private route: ActivatedRoute) {}
 

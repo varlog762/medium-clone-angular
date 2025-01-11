@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -11,7 +10,7 @@ import { ArticleInterface } from '../../../types/article.interface';
 @Component({
   selector: 'mc-add-to-favorites',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [],
   templateUrl: './add-to-favorites.component.html',
   styleUrl: './add-to-favorites.component.scss',
 })
