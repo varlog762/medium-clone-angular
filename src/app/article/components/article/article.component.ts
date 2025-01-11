@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription, combineLatest, map } from 'rxjs';
 import { MarkdownModule } from 'ngx-markdown';
@@ -37,6 +37,8 @@ import { ConstantsEnum } from '../../../shared/enums/constants.enum';
   styleUrl: './article.component.scss',
 })
 export class ArticleComponent implements OnInit, OnDestroy {
+  router = inject(Router);
+
   slug!: string | null;
   article!: ArticleInterface | null;
   articleSubscription!: Subscription;
@@ -96,6 +98,12 @@ export class ArticleComponent implements OnInit, OnDestroy {
   deleteArticle(): void {
     if (this.slug) {
       this.store.dispatch(articleActions.deleteArticle({ slug: this.slug }));
+    }
+  }
+
+  editArticle(): void {
+    if (this.slug) {
+      this.router.navigate(['articles', this.slug, 'edit']);
     }
   }
 

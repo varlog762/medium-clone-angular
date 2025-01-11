@@ -13,10 +13,9 @@
         </div>
         <span>
           @if (isAuthor$ | async) {
-          <a [routerLink]="['/articles', article.slug, 'edit']" class="btn btn-outline-secondary btn-sm">
+          <button class="btn btn-outline-secondary btn-sm" (click)="editArticle()">
             <i class="ion-edit"></i>
-            Edit Article
-          </a>
+            Edit Article</button>
           <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">
             <i class="ion-trash-a"></i>
             Delete Article</button>
@@ -55,19 +54,20 @@
     @if (article) {
     <div class="article-actions">
       <div class="article-meta">
-        <a [routerLink]="['/profiles', article.author.username]">
-          <img [src]="article.author.image || defaultUserImage" alt="User image">
-        </a>
-        <div class="info">
-          <a [routerLink]="['/profiles', article.author.username]" class="author">{{article.author.username}}</a>
-          <span class="date">{{article.createdAt | date: 'medium'}}</span>
-        </div>
-        <span>
-          @if (isAuthor$ | async) {
-          <a [routerLink]="['/articles', article.slug, 'edit']" class="btn btn-outline-secondary btn-sm">
-            <i class="ion-edit"></i>
-            Edit Article
+        <div class="article-author-wrapper">
+          <a [routerLink]="['/profiles', article.author.username]">
+            <img [src]="article.author.image || defaultUserImage" alt="User image">
           </a>
+          <div class="info">
+            <a [routerLink]="['/profiles', article.author.username]" class="author">{{article.author.username}}</a>
+            <span class="date">{{article.createdAt | date: 'medium'}}</span>
+          </div>
+        </div>
+        <div class="article-controls">
+          @if (isAuthor$ | async) {
+          <button class="btn btn-outline-secondary btn-sm" (click)="editArticle()">
+            <i class="ion-edit"></i>
+            Edit Article</button>
           <button class="btn btn-outline-danger btn-sm" (click)="deleteArticle()">
             <i class="ion-trash-a"></i>
             Delete Article</button>
@@ -78,7 +78,7 @@
             [favoritesCount]="article.favoritesCount" [articleSlug]="article.slug"
             [isLoggedIn]="isLoggedIn$ | async"></mc-add-to-favorites>
           }
-        </span>
+        </div>
       </div>
     </div>
     <mc-article-comments [articleSlug]="article.slug"></mc-article-comments>
