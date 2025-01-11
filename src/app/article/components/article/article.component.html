@@ -41,11 +41,9 @@
     <div class="row article-content">
       @if (article) {
       <div class="col-xs-12">
-        <div>
-          <p class="article-body" markdown ngPreserveWhitespaces>
-            {{article.body}}
-          </p>
-        </div>
+        <p class="article-body" markdown ngPreserveWhitespaces>
+          {{article.body}}
+        </p>
         <mc-tag-list [tags]="article.tagList"></mc-tag-list>
       </div>
       }
