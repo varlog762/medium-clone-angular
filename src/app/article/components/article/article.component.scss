@@ -1,3 +1,10 @@
+.article-title {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .article-body {
   text-align: justify;
 }

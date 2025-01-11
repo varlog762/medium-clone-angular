@@ -2,7 +2,7 @@
   <div class="banner">
     @if (article) {
     <div class="container">
-      <h1>{{article.title}}</h1>
+      <h1 class="article-title">{{article.title}}</h1>
       <div class="article-meta">
         <a [routerLink]="['/profiles', article.author.username]">
           <img [src]="article.author.image || defaultUserImage" alt="author logo">
