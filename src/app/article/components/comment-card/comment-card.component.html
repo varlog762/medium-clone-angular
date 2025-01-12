@@ -8,8 +8,10 @@
     </a>
     <a [routerLink]="['/profiles', commentProps.author.username]">{{commentProps.author.username}}</a>
     <span class="date-posted">{{commentProps.createdAt | date: 'medium'}}</span>
+    @if (isCommentAuthor) {
     <span class="mod-options" (click)="deleteComment()">
       <i class="ion-trash-a"></i>
     </span>
+    }
   </div>
 </div>

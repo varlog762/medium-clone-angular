@@ -24,11 +24,12 @@
               <input type="text" class="form-control form-control-lg" formControlName="email" placeholder="Email">
             </fieldset>
             <fieldset class="form-group">
+              <span class="new-password-tip">This field is required!</span>
               <input type="password" class="form-control form-control-lg" formControlName="password"
-                placeholder="Password">
+                placeholder="New password">
             </fieldset>
             <button type="submit" class="btn btn-lg btn-primary pull-xs-right"
-              [disabled]="(isSubmitting$ | async) || form.invalid">Update settings</button>
+              [disabled]="(isSubmitting$ | async) || form.invalid || !form.value.password">Update settings</button>
           </fieldset>
         </form>
         <hr>
