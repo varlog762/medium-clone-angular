@@ -1,4 +1,5 @@
 <div class="article-meta">
+  <!-- Author's information and profile link -->
   <div class="article-author-wrapper">
     <a [routerLink]="['/profiles', article.author.username]">
       <img [src]="article.author.image || defaultUserImage" alt="User image">
@@ -8,17 +9,25 @@
       <span class="date">{{article.createdAt | date: 'medium'}}</span>
     </div>
   </div>
+
+  <!-- Controls for editing/deleting the article or interacting with it -->
   <div class="article-controls">
     @if (isAuthor) {
+    <!-- Edit Article button -->
     <button class="btn btn-outline-secondary btn-sm" (click)="editArticleEvent.emit()">
       <i class="ion-edit"></i>
       Edit Article</button>
+
+    <!-- Delete Article button -->
     <button class="btn btn-outline-danger btn-sm" (click)="deleteArticleEvent.emit()">
       <i class="ion-trash-a"></i>
       Delete Article</button>
     } @else {
+    <!-- Follow button for the article's author -->
     <mc-add-to-follow [isFollowed]="article.author.following" [username]="article.author.username"
       [isLoggedIn]="isLoggedIn"></mc-add-to-follow>
+
+    <!-- Favorite button for the article -->
     <mc-add-to-favorites [isBigButton]="true" [isFavorited]="article.favorited"
       [favoritesCount]="article.favoritesCount" [articleSlug]="article.slug"
       [isLoggedIn]="isLoggedIn"></mc-add-to-favorites>

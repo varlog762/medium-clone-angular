@@ -9,7 +9,7 @@ import { GetArticleResponseInterface } from '../../types/get-article-response.in
 @Injectable({
   providedIn: 'root',
 })
-export class AddToFavoreitesService {
+export class AddToFavoritesService {
   constructor(private http: HttpClient) {}
 
   addToFavorites(slug: string): Observable<ArticleInterface> {

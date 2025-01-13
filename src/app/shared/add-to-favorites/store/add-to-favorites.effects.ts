@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap } from 'rxjs';
 
 import { addToFavoritesActions } from './add-to-favorites.actions';
-import { AddToFavoreitesService } from '../services/add-to-favorites.service';
+import { AddToFavoritesService } from '../services/add-to-favorites.service';
 import { ArticleInterface } from '../../types/article.interface';
 
 @Injectable()
@@ -30,6 +30,6 @@ export class AddToFavoriteEffects {
 
   constructor(
     private actions$: Actions,
-    private addToFavoritesService: AddToFavoreitesService
+    private addToFavoritesService: AddToFavoritesService
   ) {}
 }
