@@ -1,31 +1,45 @@
 <div class="article-page">
+  <!-- Banner with the article title and meta information -->
   <div class="banner">
+    <!-- Display the article if it is loaded -->
     @if (article) {
     <div class="container">
+      <!-- Article title -->
       <h1 class="article-title">{{article.title}}</h1>
+      <!-- Component for displaying meta information -->
       <mc-article-meta [article]="article" [isAuthor]="isAuthor$ | async" [isLoggedIn]="isLoggedIn$ | async"
         (editArticleEvent)="editArticle()" (deleteArticleEvent)="deleteArticle()"></mc-article-meta>
     </div>
     }
   </div>
+
+  <!-- Main content area -->
   <div class="container page">
+    <!-- Loading component if the data is being fetched -->
     @if (isLoading$ | async) {
     <mc-loading></mc-loading>
     }
+
+    <!-- Error message component if there is an error -->
     @if (error$ | async) {
     <mc-error-message></mc-error-message>
     }
+
+    <!-- Article content -->
     <div class="row article-content">
       @if (article) {
       <div class="col-xs-12">
+        <!-- Article body rendered with Markdown -->
         <p class="article-body" markdown ngPreserveWhitespaces>
           {{article.body}}
         </p>
+        <!-- Article tag list -->
         <mc-tag-list [tags]="article.tagList"></mc-tag-list>
       </div>
       }
     </div>
     <hr>
+    <!-- Article actions and comments -->
     @if (article) {
     <div class="article-actions">
       <mc-article-meta [article]="article" [isAuthor]="isAuthor$ | async" [isLoggedIn]="isLoggedIn$ | async"
