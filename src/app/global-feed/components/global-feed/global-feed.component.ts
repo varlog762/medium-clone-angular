@@ -5,6 +5,11 @@ import { BannerComponent } from '../../../shared/banner/components/banner.compon
 import { PopularTagsComponent } from '../../../shared/popular-tags/components/popular-tags.component';
 import { FeedTogglerComponent } from '../../../shared/feed-toggler/components/feed-toggler.component';
 
+/**
+ * GlobalFeedComponent represents the main page of the blog application.
+ * It contains a banner, a feed toggler to switch between different article feeds,
+ * a list of popular tags, and the main feed of articles.
+ */
 @Component({
   selector: 'mc-global-feed',
   standalone: true,
@@ -18,5 +23,6 @@ import { FeedTogglerComponent } from '../../../shared/feed-toggler/components/fe
   styleUrl: './global-feed.component.scss',
 })
 export class GlobalFeedComponent {
-  public apiUrl = '/articles';
+  /** The API URL for the main feed of articles */
+  apiUrl = '/articles';
 }
