@@ -2,34 +2,34 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
+        <!-- Page title -->
         <h1 class="text-xs-center">Sign in</h1>
         <p class="text-xs-center">
+          <!-- Link to the registration page -->
           <a [routerLink]="['/register']">Need an account?</a>
         </p>
+
+        <!-- Error messages component (if validation errors exist) -->
         @if (backendErrors$ | async) {
-        <mc-backend-error-messages
-          [backendErrors]="backendErrors$ | async"></mc-backend-error-messages>
+        <mc-backend-error-messages [backendErrors]="backendErrors$ | async"></mc-backend-error-messages>
         }
+
+        <!-- Login form -->
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset>
+            <!-- Email input field -->
             <fieldset class="form-group">
-              <input
-                formControlName="email"
-                type="text"
-                class="form-control form-control-lg"
-                placeholder="Email" />
+              <input formControlName="email" type="text" class="form-control form-control-lg" placeholder="Email" />
             </fieldset>
+
+            <!-- Password input field -->
             <fieldset class="form-group">
-              <input
-                formControlName="password"
-                type="password"
-                class="form-control form-control-lg"
+              <input formControlName="password" type="password" class="form-control form-control-lg"
                 placeholder="Password" />
             </fieldset>
-            <button
-              class="btn btn-lg btn-primary pull-xs-right"
-              type="submit"
-              [disabled]="isSubmitting$ | async">
+
+            <!-- Submit button -->
+            <button class="btn btn-lg btn-primary pull-xs-right" type="submit" [disabled]="isSubmitting$ | async">
               Sign in
             </button>
           </fieldset>

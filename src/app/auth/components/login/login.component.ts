@@ -11,6 +11,17 @@ import { BackendErrorMessagesComponent } from '../../../shared/backend-error-mes
 import { LoginRequestInterface } from '../../types/login-request.interface';
 import { authActions } from '../../store/auth.actions';
 
+/**
+ * This component represents the login page.
+ * It provides:
+ * - A form with fields for email and password.
+ * - Validation error messages if the login fails.
+ * - A link to navigate to the registration page for new users.
+ *
+ * The component uses:
+ * - Reactive forms for handling form state.
+ * - NgRx for state management and handling login actions.
+ */
 @Component({
   selector: 'mc-login',
   standalone: true,
@@ -25,17 +36,31 @@ import { authActions } from '../../store/auth.actions';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  public form!: FormGroup;
-  public isSubmitting$!: Observable<boolean>;
-  public backendErrors$!: Observable<BackendErrorsInterface | null>;
+  /** Reactive form group for managing the login form */
+  form!: FormGroup;
+
+  /** Observable to track form submission status */
+  isSubmitting$!: Observable<boolean>;
+
+  /** Observable to track backend validation errors */
+  backendErrors$!: Observable<BackendErrorsInterface | null>;
 
   constructor(private fb: FormBuilder, private store: Store) {}
 
+  /**
+   * Initializes the component.
+   * - Sets up the reactive form for login.
+   * - Initializes the Observables for tracking form submission status and backend validation errors.
+   */
   ngOnInit(): void {
     this.initializeForm();
     this.initializeValues();
   }
 
+  /**
+   * Initializes the observables for tracking form submission status
+   * and backend validation errors.
+   */
   initializeValues(): void {
     this.isSubmitting$ = this.store.pipe(
       select(authFeature.selectIsSubmitting)
@@ -45,6 +70,11 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  /**
+   * Sets up the reactive form for login.
+   * - The form has two fields: email and password.
+   * - The fields are initialized with empty values.
+   */
   initializeForm(): void {
     this.form = this.fb.group({
       email: '',
@@ -52,6 +82,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  /**
+   * Submits the login form.
+   * - Creates a request object with the email and password from the form.
+   * - Dispatches the login action with the request object.
+   */
   onSubmit(): void {
     const request: LoginRequestInterface = {
       user: this.form.value,
