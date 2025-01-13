@@ -9,6 +9,10 @@ import { ArticleInputInterface } from '../../../shared/types/article-input.inter
 import { BackendErrorsInterface } from '../../../shared/types/backend-errors.interface';
 import { createArticleActions } from '../../store/create-article.actions';
 
+/**
+ * CreateArticleComponent is responsible for rendering the form to create a new article.
+ * It interacts with the store to manage the form submission state and validation errors.
+ */
 @Component({
   selector: 'mc-create-article',
   standalone: true,
@@ -17,21 +21,53 @@ import { createArticleActions } from '../../store/create-article.actions';
   styleUrl: './create-article.component.scss',
 })
 export class CreateArticleComponent implements OnInit {
-  public initialValues: ArticleInputInterface = {
+  /**
+   * The initial values for the article form.
+   * These values will be used to pre-populate the form when creating a new article.
+   */
+  initialValues: ArticleInputInterface = {
     title: '',
     description: '',
     body: '',
     tagList: [],
   };
-  public isSubmitting$!: Observable<boolean>;
-  public backendErrors$!: Observable<BackendErrorsInterface | null>;
+
+  /**
+   * Observable that tracks the submission state of the article form.
+   */
+  isSubmitting$!: Observable<boolean>;
+
+  /**
+   * Observable that holds any backend validation errors.
+   */
+  backendErrors$!: Observable<BackendErrorsInterface | null>;
 
   constructor(private store: Store) {}
 
+  /**
+   * Lifecycle hook that is called after Angular has initialized all data-bound
+   * properties of a directive. It is called only once when the directive is
+   * instantiated.
+   *
+   * This method is used to initialize the `isSubmitting$` and `backendErrors$`
+   * observables by calling the `initializeValues` method.
+   *
+   * @returns void
+   */
   ngOnInit(): void {
     this.initializeValues();
   }
 
+  /**
+   * Initializes the `isSubmitting$` and `backendErrors$` observables by selecting
+   * the corresponding values from the store.
+   *
+   * The `isSubmitting$` observable tracks the state of the article form submission.
+   * The `backendErrors$` observable holds any backend validation errors that may
+   * have occurred as a result of submitting the form.
+   *
+   * @returns void
+   */
   initializeValues(): void {
     this.isSubmitting$ = this.store.select(
       createArticleFeature.selectIsSubmitting
@@ -41,6 +77,13 @@ export class CreateArticleComponent implements OnInit {
     );
   }
 
+  /**
+   * Submits the article form by dispatching the `createArticle` action
+   * with the provided `articleInput`.
+   *
+   * @param articleInput The input data for the article form.
+   * @returns void
+   */
   onSubmit(articleInput: ArticleInputInterface): void {
     this.store.dispatch(createArticleActions.createArticle({ articleInput }));
   }

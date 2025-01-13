@@ -1,3 +1,7 @@
+<!-- The component renders a form for creating a new article using the mc-article-form component. -->
+
+<!-- Pass the initial form values, backend errors, and submission state to the form component.
+     Listen for the 'articleSubmit' event to trigger the form submission when the user submits the form. -->
 <mc-article-form [initialValues]="initialValues" [errors]="backendErrors$ | async"
   [isSubmitting]="isSubmitting$ | async" (articleSubmit)="onSubmit($event)">
 </mc-article-form>
