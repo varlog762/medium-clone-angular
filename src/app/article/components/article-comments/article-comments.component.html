@@ -1,22 +1,31 @@
 <div class="row">
   <div class="col-xs-12 col-md-8 offset-md-2">
+    <!-- Displays a loading message while fetching comments -->
     @if (isLoading$ | async) {
     <div>Loading...</div>
     }
+
+    <!-- Displays errors if any occur -->
     @if (errors$ | async) {
     <mc-backend-error-messages [backendErrors]="errors$ | async"></mc-backend-error-messages>
     }
+
+    <!-- If the user is logged in -->
     @if (isLoggedIn$ | async) {
     <div>
+      <!-- Form for adding a new comment -->
       <form class="card comment-form" [formGroup]="addCommentForm" id="addCommentForm" (ngSubmit)="onSubmit()">
         <fieldset>
           <div class="card-block">
+            <!-- Textarea for entering the comment -->
             <textarea id="commentBody" placeholder="Write a comment..." rows="3" class="form-control"
               formControlName="body"></textarea>
           </div>
           <div class="card-footer">
+            <!-- Displays the current user's profile image or a default image -->
             <img [src]="(currentUser$ | async)?.image || defaultUserImage" class="comment-author-img"
               alt="Comment author image">
+            <!-- Submit button (disabled if the form is invalid or submitting) -->
             <button type="submit" class="btn btn-sm btn-primary"
               [disabled]="(isSubmitting$ | async) || body?.invalid">Post
               Comment</button>
@@ -24,9 +33,12 @@
         </fieldset>
       </form>
     </div>
+
+    <!-- List of existing comments -->
     @for (comment of articleComments$ | async; track comment.id) {
     <mc-comment-card [articleSlug]="articleSlugProps" [comment]="comment"></mc-comment-card>
     }
+    <!-- If the user is not logged in -->
     } @else {
     <div><a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">Sign up</a> to add comments on this
       article.</div>
