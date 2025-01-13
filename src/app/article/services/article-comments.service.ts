@@ -14,6 +14,13 @@ import { GetSingleCommentResponseInterface } from '../types/get-single-comment-r
 export class ArticleCommentsService {
   constructor(private http: HttpClient) {}
 
+  /**
+   * Retrieves the list of comments for a given article.
+   *
+   * @param slug - The unique identifier for the article.
+   * @returns An observable that emits an array of CommentInterface objects.
+   */
+
   getComments(slug: string): Observable<CommentInterface[]> {
     return this.http
       .get<GetMultipleCommentsResponseInterface>(`/articles/${slug}/comments`)
@@ -23,6 +30,14 @@ export class ArticleCommentsService {
         )
       );
   }
+
+  /**
+   * Adds a new comment to a specified article.
+   *
+   * @param slug - The unique identifier for the article to which the comment will be added.
+   * @param commentInput - The content of the comment to be added.
+   * @returns An observable that emits the added CommentInterface object.
+   */
 
   addComment(
     slug: string,
@@ -38,6 +53,13 @@ export class ArticleCommentsService {
       );
   }
 
+  /**
+   * Deletes a comment from the specified article.
+   *
+   * @param slug - The unique identifier for the article from which the comment will be deleted.
+   * @param id   - The unique identifier for the comment to be deleted.
+   * @returns An observable that emits nothing.
+   */
   deleteComment(slug: string, id: number): Observable<void> {
     return this.http.delete<void>(`/articles/${slug}/comments/${id}`);
   }
