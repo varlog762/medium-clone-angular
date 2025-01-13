@@ -13,6 +13,12 @@ import { SaveArticleInterface } from '../../shared/types/save-article-response.i
 export class EditArticleService {
   constructor(private http: HttpClient) {}
 
+  /**
+   * Updates an existing article.
+   * @param slug The slug of the article to be updated.
+   * @param articleInput The updated article data.
+   * @returns An Observable of the updated article.
+   */
   updateArticle(
     slug: string,
     articleInput: ArticleInputInterface
