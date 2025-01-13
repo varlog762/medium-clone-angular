@@ -1,13 +1,19 @@
 <div class="card">
   <div class="card-block">
+    <!-- Displays the text of the comment -->
     <p class="card-text">{{commentProps.body}}</p>
   </div>
   <div class="card-footer">
+    <!-- Displays the author's avatar and username -->
     <a [routerLink]="['/profiles', commentProps.author.username]">
       <img [src]="commentProps.author.image || defaultUserImage" class="comment-author-img" alt="Comment author image">
     </a>
     <a [routerLink]="['/profiles', commentProps.author.username]">{{commentProps.author.username}}</a>
+
+    <!-- Displays the publication date of the comment -->
     <span class="date-posted">{{commentProps.createdAt | date: 'medium'}}</span>
+
+    <!-- Displays the delete button if the current user is the author of the comment -->
     @if (isCommentAuthor) {
     <span class="mod-options" (click)="deleteComment()">
       <i class="ion-trash-a"></i>
