@@ -1,9 +1,11 @@
 <ul class="pagination">
+  <!-- Loop through the pages array and render each page as a list item -->
   @for (page of pages; track page) {
   <li class="page-item" [ngClass]="{ active: currentPage === page }">
+    <!-- Link to the corresponding page with query parameters -->
     <a [routerLink]="url" [queryParams]="{ page: page }" class="page-link">{{
       page
-    }}</a>
+      }}</a>
   </li>
   }
 </ul>
