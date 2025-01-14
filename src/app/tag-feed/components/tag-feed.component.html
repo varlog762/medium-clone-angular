@@ -1,12 +1,18 @@
 <div class="home-page">
+  <!-- Banner component displaying the project name and slogan -->
   <mc-banner></mc-banner>
+
   <div class="container">
     <div class="row">
       <div class="col-md-9">
+        <!-- Feed toggler for switching between different article categories (all, user feed, tag-based feeds) -->
         <mc-feed-toggler [tagName]="tagName"></mc-feed-toggler>
+
+        <!-- Feed component displaying a list of articles based on the current selected feed (all articles by default) -->
         <mc-feed [apiUrl]="apiUrl"></mc-feed>
       </div>
       <div class="col-md-3">
+        <!-- Popular tags component displaying a list of trending tags -->
         <mc-popular-tags></mc-popular-tags>
       </div>
     </div>
