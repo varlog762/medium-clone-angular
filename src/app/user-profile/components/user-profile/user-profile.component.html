@@ -1,21 +1,31 @@
+<!-- Conditionally display a loading spinner while the profile data is loading -->
 @if (isLoading$ | async) {
 <mc-loading></mc-loading>
 }
 @else if (userProfile) {
 <div class="profile-page">
+  <!-- User's information section -->
   <div class="user-info">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-10 offset-md-1">
+          <!-- User's profile image -->
           <img [src]="userProfile.image || defaultUserImage" alt="User image" width="200" height="200">
+
+          <!-- User's username -->
           <h4>{{userProfile.username}}</h4>
+
+          <!-- User's bio -->
           <p>{{userProfile.bio}}</p>
           <div>
+            <!-- Conditionally show the Edit Profile button if this is the current user's profile -->
             @if (isCurrentUserProfile$ | async) {
             <a [routerLink]="['/settings']" class="btn btn-sm btn-outline-secondary action-btn">
               Edit Profile Settings
             </a>
             }
+
+            <!-- Otherwise, show the follow/unfollow button -->
             @else {
             <mc-add-to-follow [isFollowed]="isFollowed" [username]="userProfile.username"
               [isLoggedIn]="isLoggedIn$ | async"></mc-add-to-follow>
@@ -25,9 +35,12 @@
       </div>
     </div>
   </div>
+
+  <!-- User's articles and favorited posts section -->
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-10 offset-md-1">
+        <!-- Tabs for navigating between posts and favorited posts -->
         <div class="articles-toggle">
           <ul class="nav nav-pills outline-active">
             <li class="nav-item">
@@ -44,6 +57,7 @@
             </li>
           </ul>
         </div>
+        <!-- Feed component dynamically loads articles based on the selected tab -->
         <mc-feed [apiUrl]="getApiUrl()"></mc-feed>
       </div>
     </div>
