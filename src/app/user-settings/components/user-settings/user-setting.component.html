@@ -3,36 +3,55 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
+        <!-- Page header -->
         <h1 class="text-xs-center">Settings</h1>
+
+        <!-- Display backend validation errors, if any -->
         @if (backendErrors$ | async) {
         <mc-backend-error-messages [backendErrors]="backendErrors$ | async"></mc-backend-error-messages>
         }
+
+        <!-- User settings form -->
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset>
+            <!-- Field for updating profile picture -->
             <fieldset class="form-group">
               <input type="text" class="form-control form-control-lg" formControlName="image"
                 placeholder="URL of your picture">
             </fieldset>
+
+            <!-- Field for updating username -->
             <fieldset class="form-group">
               <input type="text" class="form-control form-control-lg" formControlName="username" placeholder="Username">
             </fieldset>
+
+            <!-- Field for updating bio -->
             <fieldset class="form-group">
               <textarea class="form-control form-control-lg" formControlName="bio" rows="8"
                 placeholder="Short bio about you"></textarea>
             </fieldset>
+
+            <!-- Field for updating email -->
             <fieldset class="form-group">
               <input type="text" class="form-control form-control-lg" formControlName="email" placeholder="Email">
             </fieldset>
+
+            <!-- Field for updating password -->
             <fieldset class="form-group">
               <span class="new-password-tip">This field is required!</span>
               <input type="password" class="form-control form-control-lg" formControlName="password"
                 placeholder="New password">
             </fieldset>
+
+            <!-- Submit button -->
             <button type="submit" class="btn btn-lg btn-primary pull-xs-right"
               [disabled]="(isSubmitting$ | async) || form.invalid || !form.value.password">Update settings</button>
           </fieldset>
         </form>
+
         <hr>
+
+        <!-- Logout button -->
         <button class="btn btn-outline-danger" (click)="logout()">
           Or click here to logout
         </button>
