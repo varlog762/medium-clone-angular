@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -7,6 +7,11 @@ import { addToFavoritesActions } from '../../store/add-to-favorites.actions';
 import { addToFavoritesFeature } from '../../store/add-to-favorites.state';
 import { ArticleInterface } from '../../../types/article.interface';
 
+/**
+ * Component allows users to add or remove articles from their favorites.
+ * Displays a compact version of the button in the feed and a detailed version
+ * with a label on the article details page.
+ */
 @Component({
   selector: 'mc-add-to-favorites',
   standalone: true,
@@ -15,22 +20,60 @@ import { ArticleInterface } from '../../../types/article.interface';
   styleUrl: './add-to-favorites.component.scss',
 })
 export class AddToFavoritesComponent implements OnInit, OnDestroy {
+  /**
+   * Indicates whether the article is currently favorited.
+   */
   @Input('isFavorited') isFavoritedProps!: boolean;
+
+  /**
+   * The unique slug of the article.
+   */
   @Input('articleSlug') articleSlugProps!: string;
+
+  /**
+   * The initial count of favorites for the article.
+   */
   @Input('favoritesCount') favoritesCountProps!: number;
+
+  /**
+   * Determines if the button should display a larger version with text labels.
+   */
   @Input('isBigButton') isBigButtonProps!: boolean;
+
+  /**
+   * Indicates if the current user is logged in.
+   */
   @Input({ alias: 'isLoggedIn' }) isLoggedInProps!: boolean | null;
 
+  store = inject(Store);
+  router = inject(Router);
+
+  /**
+   * Current count of favorites for the article.
+   */
   favoritesCount!: number;
+
+  /**
+   * Indicates if the article is currently favorited (updated dynamically).
+   */
   isFavorited!: boolean;
+
+  /**
+   * Subscription for listening to changes in the favorites state.
+   */
   favoritesSubscription!: Subscription;
 
-  constructor(private store: Store, private router: Router) {}
-
+  /**
+   * Lifecycle hook that initializes the component's state and listeners.
+   */
   ngOnInit(): void {
     this.initializeListeners();
   }
 
+  /**
+   * Subscribes to the store and updates the component state based on the
+   * latest changes in the favorites list.
+   */
   initializeListeners(): void {
     this.favoritesSubscription = this.store
       .select(addToFavoritesFeature.selectArticles)
@@ -49,6 +92,11 @@ export class AddToFavoritesComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Handles the click event on the like button.
+   * If the user is logged in, it toggles the favorite state of the article.
+   * If the user is not logged in, it redirects to the login page.
+   */
   handleLikes(): void {
     if (this.isLoggedInProps) {
       this.store.dispatch(
@@ -62,6 +110,9 @@ export class AddToFavoritesComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * Lifecycle hook that unsubscribes from the favorites state on component destruction.
+   */
   ngOnDestroy(): void {
     this.favoritesSubscription.unsubscribe();
   }
