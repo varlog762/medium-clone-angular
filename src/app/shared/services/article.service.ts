@@ -12,6 +12,11 @@ import { ArticleInterface } from '../types/article.interface';
 export class ArticleService {
   constructor(private http: HttpClient) {}
 
+  /**
+   * Fetches an article with the given slug from the API.
+   * @param slug The slug of the article to be fetched.
+   * @returns An Observable of the fetched article.
+   */
   getArticle(slug: string): Observable<ArticleInterface> {
     return this.http
       .get<GetArticleResponseInterface>(`/articles/${slug}`)
