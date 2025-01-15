@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+/**
+ * Component for displaying a project name and slogan.
+ */
 @Component({
   selector: 'mc-banner',
   standalone: true,
