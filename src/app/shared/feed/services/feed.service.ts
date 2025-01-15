@@ -10,6 +10,11 @@ import { GetFeedResponseInterface } from '../types/get-feed-response.interface';
 export class FeedService {
   constructor(private http: HttpClient) {}
 
+  /**
+   * Makes a GET request to the given URL and returns an observable of the response.
+   * The response is expected to be in the format of GetFeedResponseInterface.
+   * @param url The URL of the API endpoint to query.
+   */
   getFeed(url: string): Observable<GetFeedResponseInterface> {
     return this.http.get<GetFeedResponseInterface>(url);
   }

@@ -1,5 +1,6 @@
 <div class="feed-toggle">
   <ul class="nav nav-pills outline-active">
+    <!-- "Your Feed" tab, visible only for authenticated users -->
     @if (isLoggedIn$ | async) {
     <li class="nav-item">
       <a [routerLink]="['/feed']" routerLinkActive="active" class="nav-link">
@@ -7,11 +8,15 @@
       </a>
     </li>
     }
+
+    <!-- "Global Feed" tab, always visible -->
     <li class="nav-item">
       <a [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
         Global Feed
       </a>
     </li>
+
+    <!-- Tag-specific feed tab, displayed if a tagName is provided -->
     @if (tagName) {
     <li class="nav-item">
       <div [routerLink]="['/tags', tagName]" routerLinkActive="active" class="nav-link">
