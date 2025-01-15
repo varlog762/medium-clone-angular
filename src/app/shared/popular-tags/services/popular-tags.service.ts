@@ -12,6 +12,15 @@ import { GetPopularTagsResponseInterface } from '../types/get-popular-tags-respo
 export class PopularTagsService {
   constructor(private http: HttpClient) {}
 
+  /**
+   * Sends a GET request to retrieve the list of popular tags from the backend.
+   *
+   * The request is sent to the '/tags' endpoint, which returns a JSON response
+   * with a single property called 'tags', containing an array of
+   * PopularTagType objects.
+   *
+   * @returns An observable emitting the array of popular tags.
+   */
   getPopularTags(): Observable<PopularTagType[]> {
     const url = '/tags';
 

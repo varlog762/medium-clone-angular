@@ -1,11 +1,19 @@
+<!-- Loading indicator shown while the tags are being fetched -->
 @if (isLoading$ | async) {
 <mc-loading></mc-loading>
-} @if (error$ | async) {
+}
+
+<!-- Error message displayed if there is an issue fetching tags -->
+@if (error$ | async) {
 <mc-error-message></mc-error-message>
-} @if (tags$ | async) {
+}
+
+<!-- Sidebar displaying the list of popular tags -->
+@if (tags$ | async) {
 <div class="sidebar">
   <h5 class="popular-taglist-header">Popular Tags</h5>
   <div class="tag-list">
+    <!-- Iterate over each tag and render it as a clickable link -->
     @for (tag of (tags$ | async); track tag) {
     <a [routerLink]="['/tags', tag]" class="tag tag-default tag-pill">{{ tag }}</a>
     }

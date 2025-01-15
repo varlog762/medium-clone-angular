@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { Location } from '@angular/common';
 
+/**
+ * Component for displaying a page not found message.
+ */
 @Component({
   selector: 'mc-page-not-found',
   standalone: true,
