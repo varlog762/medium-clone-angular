@@ -2,27 +2,35 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-10 offset-md-1 col-xs-12">
+        <!-- Display backend error messages if they exist -->
         @if (errors) {
         <mc-backend-error-messages [backendErrors]="errors"></mc-backend-error-messages>
         }
+
+        <!-- Article form -->
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset>
+            <!-- Title field -->
             <fieldset class="form-group">
               <input type="text" class="form-control form-control-lg" placeholder="Article title"
                 formControlName="title">
             </fieldset>
+            <!-- Description field -->
             <fieldset class="form-group">
               <input type="text" class="form-control form-control-lg" placeholder="What is this article about?"
                 formControlName="description">
             </fieldset>
+            <!-- Content field -->
             <fieldset class="form-group">
               <textarea class="form-control form-control-lg" rows="10"
                 placeholder="Write your article (markdown supported)" formControlName="body"></textarea>
             </fieldset>
+            <!-- Tags field -->
             <fieldset class="form-group">
               <input type="text" class="form-control form-control-lg" placeholder="Enter tags"
                 formControlName="tagList">
             </fieldset>
+            <!-- Submit button -->
             <fieldset>
               <button class="btn btn-lg pull-xs-right btn-primary" [disabled]="form.invalid || isSubmitting">
                 Publish article
