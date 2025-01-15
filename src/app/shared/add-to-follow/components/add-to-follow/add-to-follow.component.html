@@ -1,6 +1,8 @@
+<!-- Follow/Unfollow button -->
 <button class="btn btn-sm action-btn" [class.btn-outline-secondary]="!isFollowed" [class.btn-secondary]="isFollowed"
   (click)="handleFollowing()">
   <i class="ion-plus-round"></i>
+  <!-- Display different text based on the follow state -->
   @if (isFollowed) {
   &nbsp; Unfollow {{usernameProps}}
   }
