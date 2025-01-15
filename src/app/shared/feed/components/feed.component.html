@@ -1,10 +1,20 @@
+<!-- Loader component displayed while the feed data is being fetched -->
 @if (isLoading$ | async) {
 <mc-loading></mc-loading>
-} @if (error$ | async) {
+}
+
+<!-- Error message component displayed in case of a feed fetching error -->
+@if (error$ | async) {
 <mc-error-message></mc-error-message>
-} @if ((feed$ | async)) { @for (article of (feed$ | async)?.articles; track
+}
+
+<!-- Feed articles -->
+@if ((feed$ | async)) {
+<!-- Loop through each article in the feed -->
+@for (article of (feed$ | async)?.articles; track
 article.title + article.createdAt) {
 <div class="article-preview">
+  <!-- Author details and profile link -->
   <div class="article-meta">
     <a [routerLink]="['/profiles', article.author.username]">
       <img [src]="article.author.image || defaultUserImage" alt="Author logo" />
@@ -15,11 +25,14 @@ article.title + article.createdAt) {
       </a>
       <span class="date">{{ article.createdAt | date: 'medium' }}</span>
     </div>
+    <!-- "Add to Favorites" button -->
     <div class="pull-xs-right">
       <mc-add-to-favorites [isFavorited]="article.favorited" [articleSlug]="article.slug"
         [favoritesCount]="article.favoritesCount" [isLoggedIn]="isLoggedIn$ | async"></mc-add-to-favorites>
     </div>
   </div>
+
+  <!-- Article link and preview -->
   <a [routerLink]="['/articles', article.slug]" class="preview-link">
     <h1 class="feed-article-title">{{ article.title }}</h1>
     <p class="feed-article-description">{{ article.description }}</p>
@@ -27,10 +40,13 @@ article.title + article.createdAt) {
   </a>
 </div>
 }
+
+<!-- Pagination component displayed if there are more articles than fit on one page -->
 @if (((feed$ | async)?.articlesCount ?? 0) > limit) {
 <mc-pagination [total]="(feed$ | async)?.articlesCount" [limit]="limit" [url]="baseUrl" [currentPage]="currentPage">
 </mc-pagination>
 } @else if (!((feed$ | async)?.articlesCount)) {
+<!-- Message displayed if no articles are available -->
 <div>
   <h4 class="nothing-here-title">There is nothing here at the moment</h4>
 </div>
