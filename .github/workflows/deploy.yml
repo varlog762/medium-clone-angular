@@ -1,0 +1,40 @@
+name: Build and Deploy
+
+on:
+ push:
+  branches: [main]
+
+jobs:
+ build-and-deploy:
+  runs-on: ubuntu-latest
+  steps:
+		# Шаг 1: Забрать код из репозитория
+    - name: Checkout code
+      uses: actions/checkout@v3
+		# Шаг 2: Авторизация в DockerHub
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+		# Шаг 3: Собрать Docker-образ и запушить в реестр
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: true
+        tags: |
+          gashek762/medium-clone:latest
+
+    # Шаг 3: Подключиться к серверу и обновить контейнер
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        script: |
+          docker pull gashek762/medium-clone:latest
+          docker stop alias || true
+          docker rm alias || true
+          docker run -d --name alias -p 8085:80 gashek762/medium-clone:latest
