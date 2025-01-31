@@ -12,7 +12,6 @@ import { HttpInterceptorFn } from '@angular/common/http';
  * @returns The modified request.
  */
 export const urlInterceptor: HttpInterceptorFn = (req, next) => {
-  // const baseUrl: string = 'https://api.greg-p.keenetic.pro/api';
   const baseUrl: string = 'http://213.184.249.20:3001/api';
 
   return next(req.clone({ url: baseUrl + req.url }));
