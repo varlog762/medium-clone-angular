@@ -31,6 +31,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             docker pull gashek762/medium-clone:latest
-            docker stop alias || true
-            docker rm alias || true
+            docker stop medium-clone || true
+            docker rm medium-clone || true
             docker run -d --name medium-clone -p 8085:80 --restart always gashek762/medium-clone:latest
