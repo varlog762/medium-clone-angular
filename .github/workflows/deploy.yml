@@ -33,4 +33,4 @@ jobs:
             docker pull gashek762/medium-clone:latest
             docker stop alias || true
             docker rm alias || true
-            docker run -d --name alias -p 8085:80 --restart always gashek762/medium-clone:latest
+            docker run -d --name medium-clone -p 8085:80 --restart always gashek762/medium-clone:latest
